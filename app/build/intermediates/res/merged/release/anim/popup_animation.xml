@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style name="AnimationPopup">
+    <item name="android:windowEnterAnimation">@anim/push_down_in</item>
+    <item name="android:windowExitAnimation">@anim/push_up_out</item>
+</style>

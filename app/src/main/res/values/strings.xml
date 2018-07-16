@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GeoCouponAlerts</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_homepage">Homepage</string>
+    <string name="action_settings">Settings</string>
+    <string name="logo_description">Logo</string>
+    <string name="phone_number">800-590-4160</string>
+    <string name="address">1/20 S Eagle Rd Meridian, ID 83646</string>
+    <string name="website">www.GeoCouponAlerts.com</string>
+    <string name="setup_page_title">Setup</string>
+    <string name="card_list">Card List</string>
+    <string name="setup_activation">Activation</string>
+    <string name="setup_location">Location</string>
+    <string name="setup_selection">Selection</string>
+    <string name="setup_setting">Settings</string>
+    <string name="step1_heading">Enter Activation Code (Step 1/2)</string>
+    <string name="step2_heading">Enter Zip Code (Step 2/2)</string>
+    <string name="step3_heading">Select Merchants (Step 3/3)</string>
+    <string name="preview_step3_heading">Selected Merchant (0)</string>
+    <string name="step1_hint">This is found on the activation \n card you received</string>
+    <string name="step2_tit">STEP 2 - Enter Your 5-Digit Zip Code</string>
+    <string name="step2_hint">This will show you the coupons\n nearest you.</string>
+    <string name="continue_btn">Continue</string>
+    <string name="map_btn">View Nearest Merchants</string>
+    <string name="back_btn">Back</string>
+    <string name="setting_heading">Settings</string>
+    <string name="location_reminders">Location reminders</string>
+    <string name="location_reminders_text">Send me a push notification (alert via my phone) when I am at a
+location where I have an unused coupon.You must have geo-tracking enabled on your phone</string>
+    <string name="expiration_alerts">Expiration alerts</string>
+    <string name="expiration_alerts_txt">Notify me 30 days before any unused coupons are set to expire.</string>
+    <string name="enter_email">(Enter Email)</string>
+    <string name="email">Email</string>
+    <string name="sms">SMS </string>
+    <string name="enter_mobile_no">(Enter Mobile Number)</string>
+    <string name="push_notification">Push Notification</string>
+
+    <!-- 10-12-14 -->
+    <string name="new_fundraiser">New Fundraiser</string>
+    <string name="select_businesses">Select Merchants</string>
+    <string name="select_businesses_txt">Select 25 Merchants to receive those coupons</string>
+    <string name="remaining">Remaining</string>
+    <string name="remaining_12">12</string>
+    <string name="mid_arrow">left to right</string>
+    <string name="available_businesses">Available Merchants</string>
+    <string name="available_businesses_txt">(within 50 mile radius)</string>
+    <string name="included_businesses">Included Merchants</string>
+    <string name="included_businesses_txt">(within 50 mile radius)</string>
+    <string name="app_questions">App Questions? Call 800-590-4160</string>
+    <string name="app_company_name">Dunkin Donuts</string>
+    <string name="card_no">Card #1</string>
+    <string name="app_company_logo">Logo</string>
+    <!--
+    <string name="app_company_info">1120 S.Eagle Road</string>
+	<string name="app_company_info_id">Meridian, ID 83646</string>
+	<string name="app_company_info_phone">208 345 3456</string>
+
+
+
+
+
+
+    -->
+    <string name="app_company_info1">1120 S.Eagle Road </string>
+    <string name="app_company_info2">Meridian, ID 83646 </string>
+    <string name="app_company_info3">208 345 3456 </string>
+    <string name="distance">3 Miles </string>
+    <string name="bogo">BOGO</string>
+    <string name="disclaimer">Disclaimer:</string>
+    <string name="bogo_tag_title">BUY ONE GET ONE FREE</string>
+    <string name="disclaimer_content">Disclaimer: This offer is only valid for registered user.</string>
+    <string name="bogo_tag_txt">Buy one burger at regular price, get the second one FREE</string>
+    <string name="no_of_coupon">No of coupon : </string>
+    <string name="activate_date">Expires on </string>
+    <string name="btn_1">1</string>
+    <string name="btn_1_date">08 29 14</string>
+    <string name="btn_2">2</string>
+    <string name="btn_2_txt">Redeem</string>
+    <string name="btn_3">3</string>
+    <string name="btn_unlimited">∞</string>
+    <string name="btn_3_txt">Redeem</string>
+    <string name="offer_exp">Expires</string>
+    <string name="offer_exp_txt">May 31,2015</string>
+    <string name="calendar_icon">Calendar_icon</string>
+    <string name="coupon_date">Schedule date to use coupon</string>
+    <string name="coupons">Merchants</string>
+    <string name="redeemed">Redeemed</string>
+    <string name="remaining_btn">Remaining</string>
+    <string name="expiration">Expiration</string>
+    <string name="redeemed_txt">8</string>
+    <string name="remaining_btn_txt">12</string>
+    <string name="expiration_txt">3/31/15</string>
+    <string name="activate_card">Activate Another Card</string>
+    <string name="coupon_alert">COUPON ALERT</string>
+    <string name="redemtion_code">REDEMPTION CODE</string>
+    <string name="coupon_alert_txt">You have an unused coupon \n for this location.</string>
+    <string name="redeem_coupon_alert">$6.95 Special</string>
+    <string name="redeem_coupon_alert_desc">Get the $6.95 Special ANYTIME</string>
+    <string name="coupon_alert_txt_white">Would you like to view the coupon now?</string>
+    <string name="redeemtion_txt">Show this to your \n cashier to recieve \n your discount</string>
+    <string name="txt_yes">Yes</string>
+    <string name="txt_close">CLOSE</string>
+    <string name="txt_no">No</string>
+    <string name="txt_cancel">Add Merchant</string>
+    <string name="txt_allow">Allow</string>
+    <string name="txt_dont_allow">Don\'t Allow</string>
+    <string name="txt_agree">Agree</string>
+    <string name="txt_next">Next</string>
+    <string name="txt_done">Done</string>
+    <string name="txt_preview">Preview</string>
+    <string name="txt_preview_close">Close</string>
+    <string name="business_counter">0/25 Selected</string>
+    <string name="view_all_location">View locations</string>
+    <string name="Business_location">All Locations:</string>
+    <string name="redeem_coupon">Redeem Coupon</string>
+    <string name="term">Terms &amp; Conditions</string>
+    <string name="redeem_offer">$6.95 Special</string>
+    <string name="redeem_offer_desc">Get the $6.95 special ANYTIME</string>
+    <string name="redeem_coupon_txt_white">Are you sure you want to redeem this coupon now?</string>
+    <string name="term_condition">Please accept term &amp; condition to continue</string>
+    <string name="hello">
+<![CDATA[
+<html>
+ <head></head>
+ <body style="text-align:justify;color:gray;">
+With an AICTE approved fully residential Campus and a CRISIL A** rated Learning Center in Kolkata, Globsyn Business School, has uniquely positioned itself as India\'s only \'Corporate B-School\',
+drawing from the strength and diversity of the fast evolving global corporate world.<br> The new economy background of the school makes it one of the most forward thinking institutions in India today.<br> With an edifice built on Innovation, Research and Technology, 
+coupled with unique initiatives in the form of \'Knowledge Connect\' and \'Corporate Connect\', Globsyn is well on its path to creating a truly globally networked, corporate savvy,
+research driven management education system which moves beyond traditional forms of management knowledge dissemination to a research based delivery framework to 
+create \'Industry Ready Managers\' - an agile group of professionals equipped to operate in today\'s technology driven business environment.
+ </body>
+</html>
+]]>
+    </string>
+    <string name="warning_alert">You can still choose up to 5 more Deals. If you do not select them now, you will NOT be able to select them in the future</string>
+    <string name="warning_question">Are you sure you want to continue?</string>
+
+    <!-- GCM  START -->
+
+    <string name="title_activity_main">Android Push Notifications</string>
+    <string name="error_config">Please set the %1$s constant and recompile the app.</string>
+    <string name="already_registered">Device is already registered on server.</string>
+    <string name="gcm_registered">GCM: device successfully registered!</string>
+    <string name="gcm_unregistered">GCM: device successfully unregistered!</string>
+    <string name="gcm_message">GCM: you got message!</string>
+    <string name="gcm_error">GCM: error (%1$s).</string>
+    <string name="gcm_recoverable_error">GCM: recoverable error (%1$s).</string>
+    <string name="gcm_deleted">GCM: server deleted %1$d pending messages!</string>
+    <string name="server_registering">Trying (attempt %1$d/%2$d) to register device on Server.</string>
+    <string name="server_registered">Server: successfully added device!</string>
+    <string name="server_unregistered">Server: successfully removed device!</string>
+    <string name="server_register_error">Could not register device on Server after %1$d attempts.</string>
+    <string name="server_unregister_error">Could not unregister device on Server (%1$s).</string>
+    <string name="options_register">Register</string>
+    <string name="options_unregister">Unregister</string>
+    <string name="options_clear">Clear</string>
+    <string name="options_exit">Exit</string>
+    <string name="you_have">Unused Coupon Alert:</string>
+    <!-- GCM END -->
+
+    <string name="geofence_transition_notification_text">Click to view them now</string>
+    <string name="title_activity_agreement">Agreement</string>
+    <string name="activation_alert">This activation code can only be used on one device. Are you sure you want to continue?</string>
+    <string name="title_activity_merchant_coupon_details">MerchantCouponDetails</string>
+    <string name="coupon">MerchantCouponDetails</string>
+	<string name="starBucks">StarBucks</string>
+	<string name="starBucksTitle">Free Frappucino</string>
+	<string name="starBuckstxt">Nunc nulla ipsum, dictum vel sapien non, rutrum pellentesque nunc. Vivamus rhoncus massa malesuada neque laoreet iaculis.</string>
+	<string name="expires">Expires on 6/30/2016</string>
+	<string name="redeem">Redeemed on 6/30/2016</string>
+	<string name="otherOffer">Not to be combned with other offers</string>
+	<string name="settingsHeading">Settings</string>
+	<!-- <string name="pushNotification">Push Notifications</string> -->
+	<string name="pushNotification">Click to review our :</string>
+	<string name="geoCouponAler">Geo Coupon Alert</string>
+	<!-- <string name="unusedCoupons">Unused Coupons</string> -->
+	<string name="unusedCoupons">- Terms &amp; Conditions</string>
+	<!-- <string name="expiringSoonCoupons">Expiring Soon Coupons</string> -->
+	<string name="expiringSoonCoupons">- Privacy &amp; Policy</string> 
+	<string name="Changepwd">- Change Password</string> 
+	<string name="redemptionlabel">Redemption Code</string>
+	<string name="your_discount">Show this to cashier to recive your discount</string>
+	
+	<string name="location_alert">Allow "GeoCouponAlerts" to access your location while you use the app?</string>
+	<string name="location_alert_sub">This is required to receive geo alerts for coupons</string>
+	<string name="location_alert_background">Allow "GeoCouponAlerts" to access your location even when you are not using the app?</string>
+	<string name="location_alert_background_sub">This is required to receive geo alerts even when your app is not open</string>
+	<string name="view_coupons">View Coupons &amp; Locations</string>
+	<string name="terms_conditions"><u>Terms &amp; Conditions</u></string>
+	<string name="privacy_policy"><u>Privacy Policy</u></string>
+	<string name="welcome_txtView1">Welcome to GeoCouponAlerts&lt;sup&gt;TM&lt;/sup&gt;</string>
+	<string name="welcome_txtView2">Thank you for supporting your local schools and youth groups.</string>
+	<string name="welcome_txtView3">Please register so that you can continue using the app even if you change phones in the future.</string>
+
+    <string-array name="nav_drawer_items_after_login">
+        <item >Home</item>
+        <item >Add Card</item>
+        <!--<item >Nearby Merchant</item>-->
+        <item >Suggest a Merchant</item>
+        <item >Alerts</item>
+        <item >Change Password</item>
+        <item >Change Zip Code</item>
+        <item >Terms &amp; Conditions</item>
+        <item >Privacy Policy</item>
+    </string-array>
+
+    <array name="nav_drawer_icons_after_login">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_add_card</item>
+        <!--<item>@drawable/ic_neardy_merchant</item>-->
+        <item>@drawable/ic_suggest_merchant</item>
+        <item>@drawable/ic_alerts</item>
+        <item>@drawable/ic_change_password</item>
+        <item>@drawable/ic_change_zip_code</item>
+        <item>@drawable/ic_terms_conditions</item>
+        <item>@drawable/ic_privacy_policy</item>
+    </array>
+
+</resources>

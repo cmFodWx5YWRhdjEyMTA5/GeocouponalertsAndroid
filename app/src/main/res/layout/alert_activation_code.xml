@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+            android:id="@+id/pageActivation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            >
+
+            <TextView
+                android:id="@+id/coupon_alert"
+                android:layout_width="wrap_content"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+               android:padding="15dp"
+               android:gravity="center"
+                android:textColor="#333333"
+                android:layout_height="wrap_content"
+                android:text="@string/activation_alert" />
+            
+     </RelativeLayout>      
+     
+    
+    
+    
+    
+    
+    
+    <RelativeLayout
+            android:id="@+id/relBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pageActivation"
+            
+             >
+       <View
+                android:id="@+id/view1"
+                style="@style/border_gray"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />     
+        
+          
+    
+    <RelativeLayout
+            android:id="@+id/relBottominner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+                     
+             >
+
+            <TextView
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textColor="@color/text_color"
+                android:background="@null"
+                android:padding="10dp"
+                android:layout_alignParentLeft="true"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_cancel" />
+            
+            <TextView
+                android:id="@+id/btnContinue"
+                android:layout_width="wrap_content"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textColor="@color/text_color"
+                android:padding="10dp"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:layout_height="wrap_content"
+                android:text="@string/continue_btn" />
+            
+     </RelativeLayout> 
+     
+    </RelativeLayout>
+
+</RelativeLayout>

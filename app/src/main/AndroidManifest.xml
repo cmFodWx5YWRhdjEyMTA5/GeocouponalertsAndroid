@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ild.geocouponalert"
+    android:installLocation="internalOnly"
+     >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    
+    
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    
+    
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    
+    <uses-feature android:name="android.hardware.location.gps" />
+    
+  
+  <!-- My Location -->
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  
+   <uses-feature
+    android:glEsVersion="0x00020000"
+    android:required="true"/>
+     
+    
+   <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    
+     <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- Keeps the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Creates a custom permission so only this app can receive its messages. -->
+    <permission
+        android:name="com.ild.geocouponalert.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.ild.geocouponalert.permission.C2D_MESSAGE" />
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    
+     
+  
+  <!-- Maps API needs OpenGL ES 2.0. -->
+  <uses-feature
+    android:glEsVersion="0x00020000"
+    android:required="true"/> 
+    
+
+    <!-- Network State Permissions to detect Internet status -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Permission to vibrate -->
+    <uses-permission android:name="android.permission.VIBRATE" /> 
+    
+
+    <application
+        android:name=".Controller"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        >
+
+         <meta-data
+        	android:name="com.google.android.maps.v2.API_KEY"
+    		android:value="AIzaSyD8Y5b3mOmsnLI-7boGIxo69QhoEROMvNs"/>
+    
+        <!-- <meta-data
+                android:name="com.google.android.gms.version"
+                android:value="@integer/google_play_services_version" />-->
+    	
+        <activity
+            android:name=".Splash"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         <activity 
+            android:name=".Welcome_screen"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".AlertSetting"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_agreement"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".EditMerchantDetails"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_agreement"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Agreement"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_agreement"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".MerchantListHomePage"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ActivationCodeScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
+        </activity>
+        <activity
+            android:name=".PinCodeScreen"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".MerchantSelectionScreen"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".SettingScreen"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".MerchantCouponDetails"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_merchant_coupon_details" >
+        </activity>
+        <activity
+            android:name=".CouponDetails"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:label="@string/coupon" >
+        </activity>
+         <activity android:name=".CouponFragment"
+             android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".LocationFragment" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+         <activity
+            android:name=".RedeemCouponDetails"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+           >
+        </activity>
+        <activity
+            android:name=".Login" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+           >
+        </activity>
+        <activity
+            android:name=".NearbyMerchants" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+           >
+            
+        </activity>
+        <activity
+            android:name=".SuggestMerchant"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity
+            android:name=".ChangeZipCode"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity
+            android:name=".Registration" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+           >
+        </activity>
+        <activity
+            android:name=".ForgotPassword" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+           >
+        </activity>
+        <activity
+            android:name=".ChangePassword" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+           >
+        </activity>
+        <activity android:name=".CouponRedeemFragment" android:configChanges="orientation"
+                       android:screenOrientation="portrait"/>
+        
+        <activity android:name=".RedeemFragment" android:configChanges="orientation"
+                      android:screenOrientation="portrait"/> 
+                      
+        <activity android:name=".LocationRedeemFragment" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/> 
+            
+        <activity android:name=".MapBusinessLocation" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/> 
+            
+         <activity android:name=".MapRedeemBusinessLocation" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        
+        <service android:name="com.ild.geocouponalert.GCMIntentService" /> 
+        <!--  <service android:name=".GCMIntentService" /> -->
+         <!-- <service android:name=".GeofenceIntentService" /> -->
+         
+         
+	    <receiver android:name="com.ild.geocouponalert.GeofenceReceiver"
+	        android:exported="false">
+	        <intent-filter >
+	            <action android:name="com.ild.geocouponalert.ACTION_RECEIVE_GEOFENCE"/>
+	        </intent-filter>
+	    </receiver>
+    
+		<receiver android:name="com.ild.geocouponalert.BootCompletedGeofenceReceiver">
+		    <intent-filter>
+		        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+		    </intent-filter>
+		</receiver> 
+        
+		<receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.ild.geocouponalert" />
+            </intent-filter>
+        </receiver>
+	
+    </application>
+ 
+</manifest>
+ 

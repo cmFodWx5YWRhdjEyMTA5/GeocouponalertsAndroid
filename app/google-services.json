@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "430649700976",
+    "firebase_url": "https://api-project-430649700976.firebaseio.com",
+    "project_id": "api-project-430649700976",
+    "storage_bucket": "api-project-430649700976.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430649700976:android:46a4ef8c3c389a1d",
+        "android_client_info": {
+          "package_name": "com.ild.geocouponalert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430649700976-lpaniev15ob0ltcmc1o8trmlirj1n1vk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ild.geocouponalert",
+            "certificate_hash": "322F1F9B7ABFDF93ABA5CD515CC923BA2B2B7DBF"
+          }
+        },
+        {
+          "client_id": "430649700976-shbg4phgds8ktd55ld7j375o3jh8m2ba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8Y5b3mOmsnLI-7boGIxo69QhoEROMvNs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430649700976-shbg4phgds8ktd55ld7j375o3jh8m2ba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activationCode">30dp</dimen>
+    <dimen name="address">28dp</dimen>
+    <dimen name="dash_gap">8dp</dimen>
+    <dimen name="dash_width">15dp</dimen>
+    <dimen name="font_24">24dp</dimen>
+    <dimen name="font_26">26dp</dimen>
+    <dimen name="font_28">28dp</dimen>
+    <dimen name="font_30">30dp</dimen>
+    <dimen name="font_40">40dp</dimen>
+    <dimen name="font_46">46dp</dimen>
+    <dimen name="gradient_radius">30dp</dimen>
+    <dimen name="pageTitle">40dp</dimen>
+    <dimen name="phoneNumber">40dp</dimen>
+    <dimen name="radius">24dp</dimen>
+    <dimen name="stepHint">30dp</dimen>
+    <dimen name="stepHintText">22dp</dimen>
+    <dimen name="stepTitle">30dp</dimen>
+    <dimen name="stepsubheading">20dp</dimen>
+    <dimen name="stroke_widdh">3dp</dimen>
+    <dimen name="website">30dp</dimen>
+    <dimen name="width">7dp</dimen>
+</resources>

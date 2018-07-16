@@ -1,0 +1,159 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/greay_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+     <LinearLayout 
+       android:id="@+id/linearRoot"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       >
+    
+    <RelativeLayout 
+       android:id="@+id/relheading"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       
+       style="@style/green_bg">
+ 
+   
+        <TextView 
+	       android:id="@+id/settingHeading"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_centerInParent="true"
+	       android:text="@string/settingsHeading"
+	       android:textColor="@color/white"
+	       android:textSize="18sp"
+	       android:textStyle="bold"
+	       />
+        <RelativeLayout 
+            android:id="@+id/settingBack"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            >
+        <ImageView 
+            android:id="@+id/settingBackImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+	       android:layout_alignParentLeft="true"
+           android:background="@drawable/back_arr"
+           />
+        </RelativeLayout>
+        
+   </RelativeLayout>
+
+   <RelativeLayout
+       android:id="@+id/pushNotificationtxt"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+              
+        >
+
+       <TextView
+           android:id="@+id/pushNotification"         
+           android:layout_width="wrap_content"
+           style="@style/pushNotification"
+           android:layout_height="wrap_content"
+           android:layout_centerInParent="true"
+           android:text="@string/pushNotification"
+           android:textColor="@color/black" />
+   </RelativeLayout>
+   
+ 
+   
+      <RelativeLayout
+       android:id="@+id/unusedCoupons"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       style="@style/white_bg"    
+       android:layout_marginBottom="5dp"   
+        >
+
+       <TextView
+           android:id="@+id/unusedCoupons1"        
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/unusedCoupons"
+           android:textColor="@color/black"
+           android:textSize="16sp"
+           android:layout_centerInParent="true"
+           
+           />
+       
+        <!-- <CheckBox 
+          android:id="@+id/unusedcoupon"
+          style="@style/check_business"
+          android:layout_marginRight="20dp"
+          android:layout_marginLeft="20dp"
+          android:scaleX="1.50"
+    	  android:scaleY="1.50"
+          android:button="@drawable/checkbox_selector"
+          android:layout_gravity="center_vertical|center_horizontal"
+          android:layout_alignParentRight="true"
+          /> -->
+       
+   </RelativeLayout>
+    <RelativeLayout
+       android:id="@+id/expiringSoonCoupons"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       style="@style/white_bg" 
+       android:layout_marginBottom="5dp"      
+        >
+
+       <TextView
+           android:id="@+id/expiringSoonCoupons1"        
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/expiringSoonCoupons"
+           android:textColor="@color/black"
+           android:textSize="16sp"
+           android:layout_centerInParent="true"
+           />
+       
+       
+        <!-- <CheckBox 
+          android:id="@+id/expiringsooncoupon"
+          style="@style/check_business"
+          android:layout_marginRight="20dp"
+          android:layout_marginLeft="20dp"
+          android:scaleX="1.50"
+    		android:scaleY="1.50"
+         android:button="@drawable/checkbox_selector"
+          android:layout_gravity="center_vertical|center_horizontal"
+          android:layout_alignParentRight="true"
+          /> -->
+       
+   </RelativeLayout>
+   <RelativeLayout
+       android:id="@+id/relChangepwd"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       style="@style/white_bg"       
+        >
+    <TextView
+           android:id="@+id/changePassword"        
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/Changepwd"
+           android:textColor="@color/black"
+           android:textSize="16sp"
+           android:layout_centerInParent="true"
+           />
+   </RelativeLayout>
+ 
+    </LinearLayout>
+
+     <!-- <Button
+         android:id="@+id/save"
+         style="@style/save_btn"
+         android:layout_alignParentBottom="true"
+         android:layout_centerHorizontal="true"
+         android:text="Save"
+         android:textAlignment="center" /> -->
+    
+</RelativeLayout> 
+

@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\release\\drawable-xlarge-mdpi\\splash_bg.png",
+        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\drawable-xlarge-mdpi\\splash_bg.png"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\release\\drawable-xlarge-mdpi\\logo.png",
+        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\drawable-xlarge-mdpi\\logo.png"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\release\\drawable-xlarge-mdpi\\logo_large.png",
+        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\drawable-xlarge-mdpi\\logo_large.png"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\release\\drawable-xlarge-mdpi\\activation_bg.png",
+        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\drawable-xlarge-mdpi\\activation_bg.png"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\release\\drawable-xlarge-mdpi\\location_bg.png",
+        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\drawable-xlarge-mdpi\\location_bg.png"
+    }
+]

@@ -1,0 +1,164 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ild.couponapp.user.Splash"
+    android:background="#ebebeb" >
+
+    <RelativeLayout 
+       android:id="@+id/relheading"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:background="#33cc33"
+        >
+      
+   <TextView 
+       android:id="@+id/heading" 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+       android:layout_marginTop="20dp"
+       android:padding="10dp"
+       android:textColor="@color/white"
+       android:textStyle="bold"
+       android:textSize="18sp"
+       android:text="@string/step3_heading"
+       />
+   
+   </RelativeLayout> 
+   
+    <RelativeLayout 
+       android:id="@+id/relSpinner"
+       android:layout_width="fill_parent"
+       android:layout_height="40dp"
+       android:layout_below="@+id/relheading"
+       android:background="#009966"
+        >
+   
+       <TextView 
+            android:id="@+id/category_textview"
+           	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="All Merchants"
+        	android:layout_centerHorizontal="true"
+        	android:layout_centerVertical="true"
+        	android:textSize="20dp"
+        	android:textColor="#ffffff"
+           />
+        <ImageView 
+  		android:id="@+id/category_arrow"
+      	android:layout_width="25dp" 
+        android:layout_height="15dp"
+        android:layout_toRightOf="@+id/category_textview"
+        android:layout_marginLeft="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/down_arrow"
+       	/> 
+     
+   
+   </RelativeLayout>
+   	<ListView 
+        android:id="@+id/listViewCategory"
+        android:scrollbars="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="250dip"
+        android:layout_below="@+id/relSpinner"
+        android:visibility="gone"
+        >
+   </ListView> 
+   <ImageView 
+  		android:id="@+id/category_down_arrow"
+      	android:layout_width="25dp" 
+        android:layout_height="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/listViewCategory"
+        android:src="@drawable/down_arrow_black"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+       	/> 
+   <!-- <ListView 
+       android:id="@+id/listViewMerchant"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/relSpinner"
+       android:layout_above="@+id/relBottom"
+       android:divider="@null"
+	   android:dividerHeight="0dp"
+        >
+   </ListView> -->
+   <ScrollView 
+    android:id="@+id/scrolllistViewMerchant"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/relSpinner"
+    android:layout_above="@+id/relBottom">
+   <LinearLayout 
+       android:id="@+id/listViewMerchant"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"  
+    ></LinearLayout>
+   </ScrollView> 
+   <ImageView 
+       android:id="@+id/bgtransparent" 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/category_down_arrow"
+       android:background="@drawable/bg_transparent" 
+       android:visibility="gone"
+       
+       />
+   <RelativeLayout
+            android:id="@+id/relBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#012229"
+            
+             >
+   			 <TextView
+                android:id="@+id/btnPreview"
+                android:layout_width="wrap_content"
+                android:textAllCaps="false"
+                android:textSize="22sp"
+                android:textColor="@color/text_white_color"
+                android:padding="20dp"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true"
+                android:background="@null"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_preview" />
+   			<TextView
+                android:id="@+id/countBusiness"
+                android:layout_width="wrap_content"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:textColor="#339a99"
+                android:padding="20dp"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:layout_height="wrap_content"
+                android:text="@string/business_counter" />
+          
+            <TextView
+                android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:textAllCaps="false"
+                android:textSize="22sp"
+                android:textColor="@color/text_white_color"
+                android:padding="20dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_done" />
+            
+        
+    </RelativeLayout>
+    
+
+</RelativeLayout> 

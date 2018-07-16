@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#ff0000</color>
+    <color name="blue">#00327b</color>
+    <color name="light_green">#33cc33</color>
+    <color name="tab_green">#012229</color>
+    <color name="redeem_btn">#26a652</color>
+    <color name="orange">#fe6732</color>
+    <color name="brown">#C4DDC7</color>
+</resources>
