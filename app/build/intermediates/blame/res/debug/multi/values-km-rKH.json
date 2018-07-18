@@ -7,331 +7,8 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endColumn": 102,
-                    "endOffset": 153
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 280,
-                        "endColumn": 102,
-                        "endOffset": 378
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 158,
-                    "endColumn": 107,
-                    "endOffset": 261
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 383,
-                        "endColumn": 107,
-                        "endOffset": 486
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 266,
-                    "endColumn": 122,
-                    "endOffset": 384
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 491,
-                        "endColumn": 122,
-                        "endOffset": 609
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 389,
-                    "endColumn": 99,
-                    "endOffset": 484
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 614,
-                        "endColumn": 99,
-                        "endOffset": 709
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 489,
-                    "endColumn": 111,
-                    "endOffset": 596
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 714,
-                        "endColumn": 111,
-                        "endOffset": 821
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 7,
-                    "startColumn": 4,
-                    "startOffset": 601,
-                    "endColumn": 86,
-                    "endOffset": 683
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 826,
-                        "endColumn": 86,
-                        "endOffset": 908
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 688,
-                    "endColumn": 103,
-                    "endOffset": 787
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 4,
-                        "startOffset": 913,
-                        "endColumn": 103,
-                        "endOffset": 1012
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 9,
-                    "startColumn": 4,
-                    "startOffset": 792,
-                    "endColumn": 117,
-                    "endOffset": 905
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 1017,
-                        "endColumn": 117,
-                        "endOffset": 1130
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 10,
-                    "startColumn": 4,
-                    "startOffset": 910,
-                    "endColumn": 82,
-                    "endOffset": 988
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 12,
-                        "startColumn": 4,
-                        "startOffset": 1135,
-                        "endColumn": 82,
-                        "endOffset": 1213
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 11,
-                    "startColumn": 4,
-                    "startOffset": 993,
-                    "endColumn": 103,
-                    "endOffset": 1092
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 1218,
-                        "endColumn": 103,
-                        "endOffset": 1317
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 12,
-                    "startColumn": 4,
-                    "startOffset": 1097,
-                    "endColumn": 104,
-                    "endOffset": 1197
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 4,
-                        "startOffset": 1322,
-                        "endColumn": 104,
-                        "endOffset": 1422
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 13,
-                    "startColumn": 4,
-                    "startOffset": 1202,
-                    "endColumn": 99,
-                    "endOffset": 1297
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 15,
-                        "startColumn": 4,
-                        "startOffset": 1427,
-                        "endColumn": 99,
-                        "endOffset": 1522
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 14,
-                    "startColumn": 4,
-                    "startOffset": 1302,
-                    "endColumn": 109,
-                    "endOffset": 1407
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 16,
-                        "startColumn": 4,
-                        "startOffset": 1527,
-                        "endColumn": 109,
-                        "endOffset": 1632
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 15,
-                    "startColumn": 4,
-                    "startOffset": 1412,
                     "endColumn": 106,
-                    "endOffset": 1514
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 4,
-                        "startOffset": 1637,
-                        "endColumn": 106,
-                        "endOffset": 1739
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 16,
-                    "startColumn": 4,
-                    "startOffset": 1519,
-                    "endColumn": 107,
-                    "endOffset": 1622
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 18,
-                        "startColumn": 4,
-                        "startOffset": 1744,
-                        "endColumn": 107,
-                        "endOffset": 1847
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 17,
-                    "startColumn": 4,
-                    "startOffset": 1627,
-                    "endColumn": 122,
-                    "endOffset": 1745
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 19,
-                        "startColumn": 4,
-                        "startOffset": 1852,
-                        "endColumn": 122,
-                        "endOffset": 1970
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 18,
-                    "startColumn": 4,
-                    "startOffset": 1750,
-                    "endColumn": 97,
-                    "endOffset": 1843
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 20,
-                        "startColumn": 4,
-                        "startOffset": 1975,
-                        "endColumn": 97,
-                        "endOffset": 2068
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 19,
-                    "startColumn": 4,
-                    "startOffset": 1848,
-                    "endColumn": 106,
-                    "endOffset": 1950
+                    "endOffset": 157
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
@@ -346,11 +23,11 @@
             },
             {
                 "to": {
-                    "startLine": 20,
+                    "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 1955,
+                    "startOffset": 162,
                     "endColumn": 114,
-                    "endOffset": 2065
+                    "endOffset": 272
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
@@ -365,11 +42,11 @@
             },
             {
                 "to": {
-                    "startLine": 21,
+                    "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 2070,
+                    "startOffset": 277,
                     "endColumn": 100,
-                    "endOffset": 2166
+                    "endOffset": 373
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
@@ -384,11 +61,11 @@
             },
             {
                 "to": {
-                    "startLine": 22,
+                    "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 2171,
+                    "startOffset": 378,
                     "endColumn": 100,
-                    "endOffset": 2267
+                    "endOffset": 474
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
@@ -403,11 +80,11 @@
             },
             {
                 "to": {
-                    "startLine": 23,
+                    "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 2272,
+                    "startOffset": 479,
                     "endColumn": 117,
-                    "endOffset": 2385
+                    "endOffset": 592
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
@@ -422,11 +99,11 @@
             },
             {
                 "to": {
-                    "startLine": 24,
+                    "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 2390,
+                    "startOffset": 597,
                     "endColumn": 95,
-                    "endOffset": 2481
+                    "endOffset": 688
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
@@ -441,11 +118,11 @@
             },
             {
                 "to": {
-                    "startLine": 25,
+                    "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 2486,
+                    "startOffset": 693,
                     "endColumn": 93,
-                    "endOffset": 2575
+                    "endOffset": 782
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
@@ -460,11 +137,11 @@
             },
             {
                 "to": {
-                    "startLine": 26,
+                    "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 2580,
+                    "startOffset": 787,
                     "endColumn": 117,
-                    "endOffset": 2693
+                    "endOffset": 900
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
@@ -479,11 +156,11 @@
             },
             {
                 "to": {
-                    "startLine": 27,
+                    "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 2698,
+                    "startOffset": 905,
                     "endColumn": 101,
-                    "endOffset": 2795
+                    "endOffset": 1002
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
@@ -498,11 +175,11 @@
             },
             {
                 "to": {
-                    "startLine": 28,
+                    "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 2800,
+                    "startOffset": 1007,
                     "endColumn": 87,
-                    "endOffset": 2883
+                    "endOffset": 1090
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
@@ -517,11 +194,11 @@
             },
             {
                 "to": {
-                    "startLine": 29,
+                    "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 2888,
+                    "startOffset": 1095,
                     "endColumn": 92,
-                    "endOffset": 2976
+                    "endOffset": 1183
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
@@ -531,25 +208,6 @@
                         "startOffset": 1322,
                         "endColumn": 92,
                         "endOffset": 1410
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 30,
-                    "startColumn": 4,
-                    "startOffset": 2981,
-                    "endColumn": 100,
-                    "endOffset": 3077
-                },
-                "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.0\\res\\values-km-rKH\\values-km-rKH.xml",
-                    "position": {
-                        "startLine": 21,
-                        "startColumn": 4,
-                        "startOffset": 2073,
-                        "endColumn": 100,
-                        "endOffset": 2169
                     }
                 }
             }

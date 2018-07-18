@@ -1,18 +1,21 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 26
     buildToolsVersion "25.0.1"
     useLibrary  'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.ild.geocouponalert"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionCode 8
         versionName "2.4"
         // Enabling multidex support.
         multiDexEnabled true
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
 
     buildTypes {
@@ -23,13 +26,21 @@ android {
     }
 }
 
+
+
 dependencies {
-    compile 'com.android.support:appcompat-v7:23.0.0'
-    compile 'com.android.support:design:23.0.0'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.0.0'
+    compile 'com.android.support:design:26.0.0'
+    compile 'com.android.support:support-vector-drawable:26.0.0'
+    compile 'com.google.android.gms:play-services:9.0.0'
     compile files('libs/flexjson-2.1.jar')
     compile files('libs/httpmime-4.1.jar')
     compile files('libs/signpost-core-1.2.1.1.jar')
-    compile 'com.google.android.gms:play-services:9.0.0'
     compile files('libs/gcm.jar')
+    compile 'org.jsoup:jsoup:1.9.2'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -103,7 +103,7 @@ location where I have an unused coupon.You must have geo-tracking enabled on you
     <string name="txt_yes">Yes</string>
     <string name="txt_close">CLOSE</string>
     <string name="txt_no">No</string>
-    <string name="txt_cancel">Add Merchant</string>
+    <string name="txt_cancel">Cancel</string>
     <string name="txt_allow">Allow</string>
     <string name="txt_dont_allow">Don\'t Allow</string>
     <string name="txt_agree">Agree</string>
@@ -163,6 +163,7 @@ create \'Industry Ready Managers\' - an agile group of professionals equipped to
     <string name="geofence_transition_notification_text">Click to view them now</string>
     <string name="title_activity_agreement">Agreement</string>
     <string name="activation_alert">This activation code can only be used on one device. Are you sure you want to continue?</string>
+    <string name="expire_remaining_days">All of your coupons will be expiring soon. Support the charity of your choice to recieve a new activation code good for 12 month.</string>
     <string name="title_activity_merchant_coupon_details">MerchantCouponDetails</string>
     <string name="coupon">MerchantCouponDetails</string>
 	<string name="starBucks">StarBucks</string>

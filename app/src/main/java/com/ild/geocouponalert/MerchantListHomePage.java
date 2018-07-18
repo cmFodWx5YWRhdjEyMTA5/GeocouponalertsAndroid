@@ -6,8 +6,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.ild.geocouponalert.CommonUtilities;
-
 import static com.ild.geocouponalert.CommonUtilities.DISPLAY_MESSAGE_ACTION;
 import static com.ild.geocouponalert.CommonUtilities.EXTRA_MESSAGE;
 import static com.ild.geocouponalert.CommonUtilities.SENDER_ID;
@@ -16,23 +14,15 @@ import java.util.List;
 import com.google.android.gcm.GCMRegistrar;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.maps.model.LatLng;
-import com.ild.geocouponalert.ActivationCodeScreen.ActivationCodeAsyncTask;
-import com.ild.geocouponalert.MerchantSelectionScreen.SelectionAsyncTask;
 import com.ild.geocouponalert.adapter.CategoryAdapter;
 import com.ild.geocouponalert.adapter.NavDrawerListAdapter;
 import com.ild.geocouponalert.adapter.SelectedMerchantAdapter;
 import com.ild.geocouponalert.adapter.ViewHolder;
-import com.ild.geocouponalert.adapter.SelectedMerchantAdapter.ViewcouponAsyncTask;
 import com.ild.geocouponalert.classtypes.BusinessCouponLocation;
 import com.ild.geocouponalert.classtypes.BusinessLocationMaster;
 import com.ild.geocouponalert.classtypes.BusinessMaster;
-import com.ild.geocouponalert.classtypes.Category;
 import com.ild.geocouponalert.classtypes.NavDrawerItem;
 import com.ild.geocouponalert.datastore.DataStore;
-import com.ild.geocouponalert.AlertDialogManager;
-import com.ild.geocouponalert.ConnectionDetector;
-import com.ild.geocouponalert.ServerUtilities;
-import com.ild.geocouponalert.WakeLocker;
 import com.ild.geocouponalert.gpstracker.GPSTracker;
 import com.ild.geocouponalert.utils.COUtils;
 import com.ild.geocouponalert.utils.FOGlobalVariable;
@@ -44,11 +34,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -60,23 +47,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -85,11 +66,10 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 	static Context mContext;
 	SelectedMerchantAsyncTask manageActivation;
 	ListView listViewMerchant;
-	List<BusinessMaster> lst_business = new ArrayList<BusinessMaster>();
-	List<BusinessMaster> lst_filtered_buss = new ArrayList<BusinessMaster>();
-	List<BusinessCouponLocation> lst_business_coupon = new ArrayList<BusinessCouponLocation>();
+	List<BusinessMaster> lst_business;
+	List<BusinessMaster> lst_filtered_buss;
+	List<BusinessCouponLocation> lst_business_coupon;
 	SelectedMerchantAdapter selectedmerchantadapter=null;
-	//Spinner categorySpinner;
     CategoryAdapter catadapter=null;
     ImageView bgtransparent,category_arrow,category_down_arrow,menuicon;
     GPSTracker gps;
@@ -101,7 +81,6 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
  // LogCat tag
   	private static final String TAG = MerchantListHomePage.class.getSimpleName();
 
-  	private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
   	/**
  	 * Geofence Data
  	 */ 
@@ -119,7 +98,7 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
  	/**
  	 * Geofence Store
  	 */
- 	private GeofenceStore mGeofenceStore; 
+ 	private GeofenceStore mGeofenceStore;
  	
  // Alert dialog manager
  	AlertDialogManager alert = new AlertDialogManager();
@@ -128,15 +107,8 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 	// Asyntask
 	AsyncTask<Void, Void, Void> mRegisterTask;
 	String regId;
-
-	private String[] mPlanetTitles;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
-	private ActionBarDrawerToggle mDrawerToggle;
-	// nav drawer title
-	private CharSequence mDrawerTitle;
-	// used to store app title
-	private CharSequence mTitle;
 	// slide menu items
 	private String[] navMenuTitles;
 	private TypedArray navMenuIcons;
@@ -146,16 +118,14 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 	RelativeLayout listRel,mapRel,searchRel;
 	ImageView imgList,imgMap,imgSearch;
 	TextView list,map,search,edit;
-
 	boolean doubleBackToExitPressedOnce = false;
-
 	// Google Map
 	private GoogleMap googleMap;
 
 	LinearLayout gmapLin;
 	RelativeLayout relcat,searchMerchantRel,catDropdownRel;
 
-	List<BusinessLocationMaster> lst_bus_location = new ArrayList<BusinessLocationMaster>();
+	List<BusinessLocationMaster> lst_bus_location = new ArrayList<>();
 	List<BusinessMaster> new_lst_filtered_buss = null;
 	EditText searchText;
 
@@ -165,8 +135,11 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 		setContentView(R.layout.merchant_list_home_page_main);
 		
 		mContext=this;
-		mGeofences = new ArrayList<Geofence>();
-		mGeofenceCoordinates = new ArrayList<LatLng>();
+		lst_business = new ArrayList<>();
+		lst_filtered_buss = new ArrayList<>();
+		lst_business_coupon = new ArrayList<>();
+		mGeofences = new ArrayList<>();
+		mGeofenceCoordinates = new ArrayList<>();
 		initView();
 	}
 
@@ -311,35 +284,26 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 
 		edit = (TextView)findViewById(R.id.levelText);
 		edit.setOnClickListener(this);
-
 		list      = (TextView)findViewById(R.id.list);
 		map       = (TextView)findViewById(R.id.map);
 		search    = (TextView)findViewById(R.id.search);
-
 		searchText = (EditText) findViewById(R.id.searchText);
 		searchText.addTextChangedListener(searchtextWatcher);
-
 		relcat = (RelativeLayout) findViewById(R.id.relcat);
 		relcat.setOnClickListener(this);
-
 		listRel   = (RelativeLayout) findViewById(R.id.listRel);
 		listRel.setOnClickListener(this);
-
 		mapRel    = (RelativeLayout) findViewById(R.id.mapRel);
 		mapRel.setOnClickListener(this);
-
 		searchRel = (RelativeLayout) findViewById(R.id.searchRel);
 		searchRel.setOnClickListener(this);
-
 		searchMerchantRel = (RelativeLayout) findViewById(R.id.searchMerchantRel);
 		catDropdownRel = (RelativeLayout) findViewById(R.id.catDropdownRel);
-
 		imgList     = (ImageView)findViewById(R.id.imgList);
 		imgMap      = (ImageView)findViewById(R.id.imgMap);
 		imgSearch   = (ImageView)findViewById(R.id.imgSearch);
 
 		gmapLin = (LinearLayout) findViewById(R.id.gmapLin);
-
 		// load slide menu items
 		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items_after_login);
 		// nav drawer icons from resources
@@ -376,8 +340,6 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 		params.width = width;
 		mDrawerList.setLayoutParams(params);
 
-
-		
 		category_down_arrow = (ImageView)findViewById(R.id.category_down_arrow);
 		category_down_arrow.setOnClickListener(this);
 		//categorySpinner = (Spinner)findViewById(R.id.categorySpinner);
@@ -503,7 +465,8 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 		@Override
 		protected Void doInBackground(Void... params) {    
 			
-			bSuccess=RestCallManager.getInstance().getSelectedMerchant(Secure.getString(mContext.getContentResolver(),Secure.ANDROID_ID),COUtils.getDefaults("emailID", mContext));
+			bSuccess=RestCallManager.getInstance().getSelectedMerchant(Secure.getString(mContext.getContentResolver(),Secure.ANDROID_ID),
+					COUtils.getDefaults("emailID", mContext));
 			gcmService();
 			return null;
 		} 
@@ -589,13 +552,14 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
    		   					    final TextView coupon_alert = (TextView) promptView.findViewById(R.id.coupon_alert);
    		   				        final TextView coupon_alert_sub = (TextView) promptView.findViewById(R.id.coupon_alert_sub);
    		   						
-   		   						dialogNo2.setText(R.string.txt_cancel);
+   		   						dialogNo2.setText(R.string.txt_dont_allow);
    		   						coupon_alert.setText(R.string.location_alert_background);
    		   						coupon_alert_sub.setText(R.string.location_alert_background_sub);
    		   						
    		   						dialogNo2.setOnClickListener(new OnClickListener() {
    		   							@Override
    		   							public void onClick(View v) {
+										alertD2.dismiss();
    		   							}
    		   						});
    		   					
@@ -1027,17 +991,14 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 	}
 	
 	private void geofencingService(List<BusinessMaster> lst_business){ 
-		
-		
+
 		//GeofenceStore storeObj=new GeofenceStore(mContext, mGeofences);
 		//storeObj.removeGeofence();
 		mGeofences.clear();
 		for(int i=0;i<lst_business.size();i++){
 			
 			List<BusinessLocationMaster> business_detials=lst_business.get(i).geofence_location_details;
-			
-			
-			
+
 			mGeofenceCoordinates.clear();
 			for(int j=0;j<business_detials.size();j++){
 				
