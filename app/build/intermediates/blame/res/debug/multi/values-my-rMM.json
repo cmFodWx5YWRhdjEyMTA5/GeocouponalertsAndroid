@@ -7,17 +7,17 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endColumn": 115,
-                    "endOffset": 166
+                    "endColumn": 107,
+                    "endOffset": 158
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 282,
-                        "endColumn": 115,
-                        "endOffset": 393
+                        "startOffset": 55,
+                        "endColumn": 107,
+                        "endOffset": 158
                     }
                 }
             },
@@ -25,18 +25,18 @@
                 "to": {
                     "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 171,
-                    "endColumn": 122,
-                    "endOffset": 289
+                    "startOffset": 163,
+                    "endColumn": 108,
+                    "endOffset": 267
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 398,
-                        "endColumn": 122,
-                        "endOffset": 516
+                        "startOffset": 163,
+                        "endColumn": 108,
+                        "endOffset": 267
                     }
                 }
             },
@@ -44,18 +44,18 @@
                 "to": {
                     "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 294,
-                    "endColumn": 109,
-                    "endOffset": 399
+                    "startOffset": 272,
+                    "endColumn": 108,
+                    "endOffset": 376
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 521,
-                        "endColumn": 109,
-                        "endOffset": 626
+                        "startOffset": 272,
+                        "endColumn": 108,
+                        "endOffset": 376
                     }
                 }
             },
@@ -63,18 +63,18 @@
                 "to": {
                     "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 404,
-                    "endColumn": 117,
-                    "endOffset": 517
+                    "startOffset": 381,
+                    "endColumn": 110,
+                    "endOffset": 487
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 631,
-                        "endColumn": 117,
-                        "endOffset": 744
+                        "startOffset": 381,
+                        "endColumn": 110,
+                        "endOffset": 487
                     }
                 }
             },
@@ -82,18 +82,18 @@
                 "to": {
                     "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 522,
-                    "endColumn": 124,
-                    "endOffset": 642
+                    "startOffset": 492,
+                    "endColumn": 105,
+                    "endOffset": 593
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 749,
-                        "endColumn": 124,
-                        "endOffset": 869
+                        "startOffset": 492,
+                        "endColumn": 105,
+                        "endOffset": 593
                     }
                 }
             },
@@ -101,18 +101,18 @@
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 647,
-                    "endColumn": 98,
-                    "endOffset": 741
+                    "startOffset": 598,
+                    "endColumn": 92,
+                    "endOffset": 686
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 874,
-                        "endColumn": 98,
-                        "endOffset": 968
+                        "startOffset": 598,
+                        "endColumn": 92,
+                        "endOffset": 686
                     }
                 }
             },
@@ -120,18 +120,18 @@
                 "to": {
                     "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 746,
-                    "endColumn": 97,
-                    "endOffset": 839
+                    "startOffset": 691,
+                    "endColumn": 93,
+                    "endOffset": 780
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 973,
-                        "endColumn": 97,
-                        "endOffset": 1066
+                        "startOffset": 691,
+                        "endColumn": 93,
+                        "endOffset": 780
                     }
                 }
             },
@@ -139,18 +139,18 @@
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 844,
-                    "endColumn": 129,
-                    "endOffset": 969
+                    "startOffset": 785,
+                    "endColumn": 110,
+                    "endOffset": 891
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 1071,
-                        "endColumn": 129,
-                        "endOffset": 1196
+                        "startOffset": 785,
+                        "endColumn": 110,
+                        "endOffset": 891
                     }
                 }
             },
@@ -158,18 +158,18 @@
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 974,
-                    "endColumn": 109,
-                    "endOffset": 1079
+                    "startOffset": 896,
+                    "endColumn": 97,
+                    "endOffset": 989
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 1201,
-                        "endColumn": 109,
-                        "endOffset": 1306
+                        "startOffset": 896,
+                        "endColumn": 97,
+                        "endOffset": 989
                     }
                 }
             },
@@ -177,18 +177,18 @@
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 1084,
-                    "endColumn": 83,
-                    "endOffset": 1163
+                    "startOffset": 994,
+                    "endColumn": 103,
+                    "endOffset": 1093
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 1311,
-                        "endColumn": 83,
-                        "endOffset": 1390
+                        "startOffset": 994,
+                        "endColumn": 103,
+                        "endOffset": 1093
                     }
                 }
             },
@@ -196,18 +196,189 @@
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 1168,
-                    "endColumn": 100,
-                    "endOffset": 1264
+                    "startOffset": 1098,
+                    "endColumn": 101,
+                    "endOffset": 1195
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1098,
+                        "endColumn": 101,
+                        "endOffset": 1195
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1200,
+                    "endColumn": 96,
+                    "endOffset": 1292
+                },
+                "from": {
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1200,
+                        "endColumn": 96,
+                        "endOffset": 1292
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1297,
+                    "endColumn": 112,
+                    "endOffset": 1405
+                },
+                "from": {
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 1395,
+                        "startOffset": 1297,
+                        "endColumn": 112,
+                        "endOffset": 1405
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1410,
+                    "endColumn": 118,
+                    "endOffset": 1524
+                },
+                "from": {
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1410,
+                        "endColumn": 118,
+                        "endOffset": 1524
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1529,
+                    "endColumn": 86,
+                    "endOffset": 1611
+                },
+                "from": {
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1529,
+                        "endColumn": 86,
+                        "endOffset": 1611
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1616,
+                    "endColumn": 84,
+                    "endOffset": 1696
+                },
+                "from": {
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1616,
+                        "endColumn": 84,
+                        "endOffset": 1696
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1701,
+                    "endColumn": 103,
+                    "endOffset": 1800
+                },
+                "from": {
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1701,
+                        "endColumn": 103,
+                        "endOffset": 1800
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1805,
+                    "endColumn": 117,
+                    "endOffset": 1918
+                },
+                "from": {
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1805,
+                        "endColumn": 117,
+                        "endOffset": 1918
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1923,
+                    "endColumn": 83,
+                    "endOffset": 2002
+                },
+                "from": {
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1923,
+                        "endColumn": 83,
+                        "endOffset": 2002
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 2007,
+                    "endColumn": 100,
+                    "endOffset": 2103
+                },
+                "from": {
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-my-rMM\\values-my-rMM.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 2007,
                         "endColumn": 100,
-                        "endOffset": 1491
+                        "endOffset": 2103
                     }
                 }
             }

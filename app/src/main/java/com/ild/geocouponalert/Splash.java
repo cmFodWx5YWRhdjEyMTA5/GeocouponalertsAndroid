@@ -396,6 +396,7 @@ public class Splash extends Activity {
 
 		public CheckPostcardAvailablity(Context context) {
 			mFriendLogin = context;
+			oneTimeRestCall1=1;
 		}
 
 		@Override
@@ -419,7 +420,6 @@ public class Splash extends Activity {
 
 					Intent intent = new Intent(Splash.this,MerchantListHomePage.class);
 					intent.putExtra("business_id", "");
-					intent.putExtra("notification_mode", "1");
 					intent.putExtra("new_merchant_notification","");
 					startActivity(intent);
 					Splash.this.finish();

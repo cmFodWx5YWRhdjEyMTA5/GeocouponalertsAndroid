@@ -216,8 +216,46 @@
                     "startLine": 13,
                     "startColumn": 4,
                     "startOffset": 502,
+                    "endColumn": 68,
+                    "endOffset": 566
+                },
+                "from": {
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-sw720dp-v13\\values-sw720dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 68,
+                        "endOffset": 119
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 571,
+                    "endColumn": 68,
+                    "endOffset": 635
+                },
+                "from": {
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\values-sw720dp-v13\\values-sw720dp-v13.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 124,
+                        "endColumn": 68,
+                        "endOffset": 188
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 640,
                     "endColumn": 40,
-                    "endOffset": 538
+                    "endOffset": 676
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",
@@ -232,11 +270,11 @@
             },
             {
                 "to": {
-                    "startLine": 14,
+                    "startLine": 16,
                     "startColumn": 4,
-                    "startOffset": 543,
+                    "startOffset": 681,
                     "endColumn": 42,
-                    "endOffset": 581
+                    "endOffset": 719
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",
@@ -251,11 +289,11 @@
             },
             {
                 "to": {
-                    "startLine": 15,
+                    "startLine": 17,
                     "startColumn": 4,
-                    "startOffset": 586,
+                    "startOffset": 724,
                     "endColumn": 37,
-                    "endOffset": 619
+                    "endOffset": 757
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",
@@ -270,11 +308,11 @@
             },
             {
                 "to": {
-                    "startLine": 16,
+                    "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 624,
+                    "startOffset": 762,
                     "endColumn": 39,
-                    "endOffset": 659
+                    "endOffset": 797
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",
@@ -289,11 +327,11 @@
             },
             {
                 "to": {
-                    "startLine": 17,
+                    "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 664,
+                    "startOffset": 802,
                     "endColumn": 43,
-                    "endOffset": 703
+                    "endOffset": 841
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",
@@ -308,11 +346,11 @@
             },
             {
                 "to": {
-                    "startLine": 18,
+                    "startLine": 20,
                     "startColumn": 4,
-                    "startOffset": 708,
+                    "startOffset": 846,
                     "endColumn": 40,
-                    "endOffset": 744
+                    "endOffset": 882
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",
@@ -327,11 +365,11 @@
             },
             {
                 "to": {
-                    "startLine": 19,
+                    "startLine": 21,
                     "startColumn": 4,
-                    "startOffset": 749,
+                    "startOffset": 887,
                     "endColumn": 45,
-                    "endOffset": 790
+                    "endOffset": 928
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",
@@ -346,11 +384,11 @@
             },
             {
                 "to": {
-                    "startLine": 20,
+                    "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 795,
+                    "startOffset": 933,
                     "endColumn": 42,
-                    "endOffset": 833
+                    "endOffset": 971
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",
@@ -365,11 +403,11 @@
             },
             {
                 "to": {
-                    "startLine": 21,
+                    "startLine": 23,
                     "startColumn": 4,
-                    "startOffset": 838,
+                    "startOffset": 976,
                     "endColumn": 38,
-                    "endOffset": 872
+                    "endOffset": 1010
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",
@@ -384,11 +422,11 @@
             },
             {
                 "to": {
-                    "startLine": 22,
+                    "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 877,
+                    "startOffset": 1015,
                     "endColumn": 35,
-                    "endOffset": 908
+                    "endOffset": 1046
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",

@@ -30,11 +30,8 @@ public class COUtils {
 	//---------------------------------------------------------------------
 		public static boolean isEmailValid(String email) {
 		    boolean isValid = false;
-		
-		    //String expression = "[A-Za-z0-9._%+-]+@[A-Za-z0-9._]+\\.[A-Za-z]{2,4}";
 		    String expression="^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 		    CharSequence inputStr = email;
-		
 		    Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
 		    Matcher matcher = pattern.matcher(inputStr);
 		    if (matcher.matches()) {
@@ -45,7 +42,6 @@ public class COUtils {
 		
 		public static boolean isMobileNoValid(String mobile_no) {
 		    boolean isValid = false;
-		
 		    //String expression = "[A-Za-z0-9._%+-]+@[A-Za-z0-9._]+\\.[A-Za-z]{2,4}";
 		    //String expression="^\\+?([0-9]{2})?[0-9]+$";
 		    //android.util.Patterns.PHONE.matcher(mobile_no).matches();
@@ -110,6 +106,18 @@ public class COUtils {
 		public static String getDefaults(String key, Context context) {
 		    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		    return preferences.getString(key, null);
+		}
+
+		public static void setDefaultsLong(String key, Long value, Context context) {
+			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.putLong(key, value);
+			editor.commit();
+		}
+
+		public static Long getDefaultsLong(String key, Context context) {
+			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+			return preferences.getLong(key, 0);
 		}
 		
 		

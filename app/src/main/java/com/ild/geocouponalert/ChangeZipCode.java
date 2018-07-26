@@ -106,7 +106,6 @@ public class ChangeZipCode extends Activity implements OnClickListener {
 						alertD2.dismiss();
 						Intent czintent = new Intent(ChangeZipCode.this, MerchantListHomePage.class);
 						czintent.putExtra("business_id", "");
-						czintent.putExtra("notification_mode", "1");
 						czintent.putExtra("new_merchant_notification","");
 						startActivity(czintent);
 					}else {

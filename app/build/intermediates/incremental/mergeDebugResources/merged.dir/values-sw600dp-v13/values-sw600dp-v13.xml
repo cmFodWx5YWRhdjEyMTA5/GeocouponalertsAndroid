@@ -25,7 +25,8 @@
     <dimen name="font_28">28dp</dimen>
     <dimen name="font_32">32dp</dimen>
     <dimen name="gradient_radius">20dp</dimen>
-    <dimen name="mr_media_route_controller_art_max_height">480dp</dimen>
+    <item name="mr_dialog_fixed_width_major" type="dimen">60%</item>
+    <item name="mr_dialog_fixed_width_minor" type="dimen">90%</item>
     <dimen name="pageTitle">36dp</dimen>
     <dimen name="phoneNumber">28dp</dimen>
     <dimen name="radius">8dp</dimen>

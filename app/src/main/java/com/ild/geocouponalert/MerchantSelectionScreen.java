@@ -369,7 +369,6 @@ public class MerchantSelectionScreen extends Activity implements OnClickListener
 			else{
 			Intent intent = new Intent(mContext, MerchantListHomePage.class);
 			intent.putExtra("business_id", "");
-			intent.putExtra("notification_mode", "1");
 			startActivity(intent);
 			overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 			}

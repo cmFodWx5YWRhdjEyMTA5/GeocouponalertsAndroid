@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
-        android:hint="User ID/Email"
+        android:hint="Email"
         android:background="@drawable/shape"
         android:layout_marginTop="10dp"
         android:padding="10dp"

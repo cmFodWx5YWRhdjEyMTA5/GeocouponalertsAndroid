@@ -187,7 +187,7 @@
 	<RelativeLayout
 		android:id="@+id/seconHeader"
 		android:layout_width="match_parent"
-		android:layout_height="55dp"
+		android:layout_height="45dp"
 		android:layout_below="@+id/segment"
 		android:layout_marginTop="5dp"
 		android:layout_marginRight="10dp"
@@ -207,7 +207,7 @@
 					android:id="@+id/catDropdownRel"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:padding="10dp"
+					android:padding="5dp"
 					android:layout_centerInParent="true"
 					>
 					<TextView
@@ -225,7 +225,7 @@
 						<ImageView
 							android:id="@+id/category_arrow"
 							android:layout_toRightOf="@+id/category_textview"
-							android:layout_width="25dp"
+							android:layout_width="20dp"
 							android:layout_height="15dp"
 							android:layout_centerHorizontal="true"
 							android:layout_centerVertical="true"
@@ -344,12 +344,19 @@
 		android:layout_marginTop="5dp"
 		android:visibility="gone"
 		>
-	<fragment
+	<!--<fragment
 		android:id="@+id/gmap"
 		android:name="com.google.android.gms.maps.MapFragment"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		/>
+		/>-->
+		<fragment
+			android:id="@+id/gmap"
+			android:name="com.google.android.gms.maps.SupportMapFragment"
+			android:layout_width="match_parent"
+			android:layout_gravity="center"
+			android:layout_height="match_parent"
+			/>
 	</LinearLayout>
  <!-- Map end -->
 

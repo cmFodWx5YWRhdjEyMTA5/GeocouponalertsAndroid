@@ -75,7 +75,7 @@ public class NearbyMerchants extends Activity implements OnClickListener{
 		initView();	
 		 try {
 	            // Loading map
-	            initilizeMap();
+	            //initilizeMap();
 	 
 	        } catch (Exception e) {  
 	            e.printStackTrace(); 
@@ -83,7 +83,7 @@ public class NearbyMerchants extends Activity implements OnClickListener{
                
     } 
 	
-	private void initilizeMap() {
+	/*private void initilizeMap() {
 		
 		lst_business = DataStore.getInstance().getSelectedBusiness();
 		
@@ -92,8 +92,8 @@ public class NearbyMerchants extends Activity implements OnClickListener{
 			
 			user_latitude = String.valueOf(gps.getLatitude());
 			user_longitude = String.valueOf(gps.getLongitude());
-			/*user_latitude = "38.7073";
-			user_longitude = "-121.2708";*/
+			*//*user_latitude = "38.7073";
+			user_longitude = "-121.2708";*//*
         if (googleMap == null) {
             googleMap = ((MapFragment) getFragmentManager().findFragmentById(
                     R.id.map)).getMap();
@@ -194,12 +194,12 @@ public class NearbyMerchants extends Activity implements OnClickListener{
          // Changing marker icon
             //marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_plusone_medium_off_client));
          //Moving camera with location
-           /* CameraPosition cameraPosition = new CameraPosition.Builder().target(
+           *//* CameraPosition cameraPosition = new CameraPosition.Builder().target(
                     new LatLng(latitude, longitude)).zoom(8).build();
      
             googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             
-     */       //Showing Current Location
+     *//*       //Showing Current Location
             
             googleMap.setMyLocationEnabled(true); // false to disable
             
@@ -231,12 +231,12 @@ public class NearbyMerchants extends Activity implements OnClickListener{
             }
         }
 	  }
-    }
+    }*/
  
     @Override
     protected void onResume() {
         super.onResume();
-        initilizeMap();
+        //initilizeMap();
     }
 	
 	
@@ -298,7 +298,6 @@ public class NearbyMerchants extends Activity implements OnClickListener{
 		/*Intent intent = new Intent(mContext, MerchantListHomePage.class);
 		intent.putExtra("business_id", "");
 		intent.putExtra("location_id", "");
-		intent.putExtra("notification_mode", "2");
 		intent.putExtra("new_merchant_notification", "");
 		startActivity(intent);
 		overridePendingTransition(R.anim.fade_in,R.anim.fade_out);*/

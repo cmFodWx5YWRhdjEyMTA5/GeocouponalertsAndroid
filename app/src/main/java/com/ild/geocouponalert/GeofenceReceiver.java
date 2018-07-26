@@ -51,7 +51,8 @@ import java.util.Random;
 public class GeofenceReceiver extends BroadcastReceiver {
     Context context;
     
-    protected static final String TAG = "geofence-transitions-service";
+    //protected static final String TAG = "geofence-transitions-service";
+	protected static final String TAG = "geofence-service";
     
     protected static String CurrentDate;
     

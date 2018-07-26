@@ -70,7 +70,7 @@ public class MapRedeemBusinessLocation extends Activity implements OnClickListen
 		initView();	
 		 try {
 	            // Loading map
-	            initilizeMap();
+	            //initilizeMap();
 	 
 	        } catch (Exception e) {  
 	            e.printStackTrace(); 
@@ -78,7 +78,7 @@ public class MapRedeemBusinessLocation extends Activity implements OnClickListen
                
     } 
 	
-	private void initilizeMap() {
+	/*private void initilizeMap() {
 		
 		latitude = getIntent().getExtras().getString("buss_loc_lat");
 		longitude = getIntent().getExtras().getString("buss_loc_long");
@@ -151,7 +151,7 @@ public class MapRedeemBusinessLocation extends Activity implements OnClickListen
 					String address;
 					if(latitude != lat && longitude != longt) {
 					if(location.get(i).getAddress2().equalsIgnoreCase("")){
-					address=location.get(i).getAddress1()+", "+location.get(i).getCity()+", "+location.get(i).getState_initial()+", "+location.get(i).getZip()/*+", "+distance+" Miles"*/;
+					address=location.get(i).getAddress1()+", "+location.get(i).getCity()+", "+location.get(i).getState_initial()+", "+location.get(i).getZip()*//*+", "+distance+" Miles"*//*;
 					MarkerOptions marker = new MarkerOptions().
 					position(new LatLng(latitude, longitude)).
 					title(couponLocation.get(0).buss_name).
@@ -174,7 +174,7 @@ public class MapRedeemBusinessLocation extends Activity implements OnClickListen
 			            });
 					}
 					else{
-					address=location.get(i).getAddress1()+", "+location.get(i).getAddress2()+", "+location.get(i).getCity()+", "+location.get(i).getState_initial()+", "+location.get(i).getZip()/*+", "+distance+" Miles"*/;	
+					address=location.get(i).getAddress1()+", "+location.get(i).getAddress2()+", "+location.get(i).getCity()+", "+location.get(i).getState_initial()+", "+location.get(i).getZip()*//*+", "+distance+" Miles"*//*;
 					MarkerOptions marker = new MarkerOptions().
 					position(new LatLng(latitude, longitude)).
 					title(couponLocation.get(0).buss_name).
@@ -207,12 +207,12 @@ public class MapRedeemBusinessLocation extends Activity implements OnClickListen
          // Changing marker icon
             //marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_plusone_medium_off_client));
          //Moving camera with location
-           /* CameraPosition cameraPosition = new CameraPosition.Builder().target(
+           *//* CameraPosition cameraPosition = new CameraPosition.Builder().target(
                     new LatLng(latitude, longitude)).zoom(8).build();
      
             googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             
-     */       //Showing Current Location
+     *//*       //Showing Current Location
             
             googleMap.setMyLocationEnabled(true); // false to disable
             
@@ -243,12 +243,12 @@ public class MapRedeemBusinessLocation extends Activity implements OnClickListen
                         .show();
             }
         }
-    }
+    }*/
  
     @Override
     protected void onResume() {
         super.onResume();
-        initilizeMap();
+        //initilizeMap();
     }
 	
 	

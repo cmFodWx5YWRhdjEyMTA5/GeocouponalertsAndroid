@@ -1,0 +1,205 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearRoot"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        
+        <RelativeLayout
+            android:id="@+id/starBuckstxt"
+            style="@style/white_bg_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/relFal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+                
+                <TextView
+                    android:id="@+id/lblOnline"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="Online only coupon"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:background="@color/light_green"/>
+
+                <ImageView
+                    android:id="@+id/settingBacktag"
+                    style="@style/tag_right"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/expiredexpiring_soon_red_ribbon" />
+
+                <LinearLayout
+                    android:id="@+id/linearstarBucksTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@+id/settingBacktag"
+                    android:layout_below="@+id/lblOnline"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/starBucksTitle"
+                        style="@style/starBucksTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/starBucksTitle" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/starBuckstxt1"
+                    style="@style/starBuckstxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/linearstarBucksTitle"
+                    android:layout_toLeftOf="@+id/settingBacktag"
+                    android:text="@string/starBuckstxt" />
+
+                <TextView
+                    android:id="@+id/expirestxt"
+                    style="@style/starBucksorg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/starBuckstxt1"
+                    android:text="@string/expires" />
+
+                <TextView
+                    android:id="@+id/expires"
+                    style="@style/otherOffer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/expirestxt"
+                    android:text="@string/otherOffer" />
+
+                <LinearLayout
+                    android:id="@+id/linearBottom"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/expires"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/light_green">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@color/redeem_btn">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:text="Click to Redeem"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                                android:textSize="10dp"
+                                android:text="(and reveal promo code)"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:background="@color/brown"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_margin="5dp"
+                            >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Where to Redeem" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/light_green"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="3dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Web:"
+                                android:textSize="12sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Click Here"
+                                android:layout_marginLeft="10dp"
+                                android:textColor="#0000EE"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:gravity="center_vertical"
+                                android:layout_margin="3dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Phone:"
+                                    android:textSize="12sp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="800-500-2411"
+                                    android:layout_marginLeft="10dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp"/>
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    android:background="@drawable/add_icon"/>
+                            </LinearLayout>
+
+                    </LinearLayout>
+
+                    </LinearLayout>
+                   
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout> 
+

@@ -53,13 +53,10 @@ import com.ild.geocouponalert.utils.FOGlobalVariable;
 public class RestCallManager {
 
 	private String tag = "RestCallHelper";
-	public static final String BASE_URL = "http://geocouponalerts.com/coupon-app-v2/coupon-service-v2_1/";
-	//public static final String BASE_URL = "http://infologictechnologies.com/projects/mobile-coupon-beta/coupon-service-v2_1/";
+	public static final String BASE_URL = "http://geocouponalerts.com/coupon-app-v2/coupon-service-v2_3/";
 	//public static final String BASE_URL = "http://geocouponalerts.com/coupon-app-v2/coupon-service-v2_0/";
-	//public static final String BASE_URL = "http://infologictechnologies.com/projects/mobile-coupon-beta/coupon-service-v2_0/";
 	//public static final String BASE_URL = "http://geocouponalerts.com/coupon-app-v2/coupon-service/";
 	//public static final String BASE_URL = "http://geocouponalerts.com/coupon-app-v2/coupon-service-v1_3/";
-	//public static final String BASE_URL = "http://www.foodel.co.in/coupon-service/";
 	private static RestCallManager instance;
 	public static String response = null;
 	static InputStream is = null;
@@ -113,7 +110,7 @@ public class RestCallManager {
 	public WebServiceResponse postCallNew(String requestURL,
 												  HashMap<String, String> postDataParams) {
 
-		WebServiceResponse webresponse = new WebServiceResponse();
+		WebServiceResponse webresponse;
 		HttpURLConnection conn = null;
 
 		try {
@@ -189,9 +186,7 @@ public class RestCallManager {
 		try {
 			HttpGet getRequest = new HttpGet(strURL);
 			getRequest.addHeader("accept", "application/json");
-
 			HttpResponse response = httpClient.execute(getRequest);
-
 			if (response.getStatusLine().getStatusCode() != 200) {
 
 //				throw new RuntimeException("Failed : HTTP error code : "
@@ -674,34 +669,18 @@ public boolean pushNotificationForCouponAvailable(String zipcode,String device_i
 
 		return false;
 	}
-	
-	
-	
-	public boolean updateAttandenceStatus(String input) {
-		// TODO Auto-generated method stub
-		String url = BASE_URL + "setAttendenceStatus/";
-		WebServiceResponse wbResponse = postCall(url,input);
-    	
-    	if(wbResponse != null && wbResponse.StatusCode.equals("0")){
-			//return webResponse.Data;
-			return true;
-		}
-		else if(wbResponse != null && !wbResponse.StatusCode.equals("0")){
-			Log.i(tag, "Rest call unsuccessfull");
-		}
-		else{
-			Log.i(tag, "Rest call unsuccessfull response is null");
-		}
 
-		return false;
-	}
 	
-public boolean getSelectedMerchant(String device_id,String email) {
+public boolean getSelectedMerchant(String deviceID,String emailID, String deviceType, String deviceToken,
+								   String deviceOS, String userCurrentLat, String userCurrentLong,
+								   String loadNearByLocation ) {
 	 	
 		String url = BASE_URL;
-		url = url + "getSelectedBusiness?device_id=" + device_id+"&device_type=Android&email="+email+"&deviceOS=android";
-		WebServiceResponse wbResponse = new WebServiceResponse();
-		wbResponse = getCall(url);
+		url = url + "getSelectedBusiness?device_id="+deviceID+"&device_type="+deviceType+"&email="+emailID+
+				"&gcmRegID="+deviceToken+"&deviceOS="+deviceOS+"&userCurrentLat="+userCurrentLat+
+				"&userCurrentLong="+userCurrentLong+"&loadNearByLocation="+loadNearByLocation;
+		WebServiceResponse wbResponse;
+		wbResponse = getCallNew(url);
 		List<BusinessMaster> business_master = new ArrayList<BusinessMaster>();
 		if (wbResponse != null && wbResponse.StatusCode.equals("0")
 				&& wbResponse.Data != null) {
@@ -717,11 +696,17 @@ public boolean getSelectedMerchant(String device_id,String email) {
 			return true;  
 		}else if (wbResponse != null && wbResponse.StatusCode.equals("1")
 				&& wbResponse.Data != null) {
-			FOGlobalVariable.IsActivationCodeAlreadyExist="1";
+			FOGlobalVariable.IsActivationCodeAlreadyExist="1"; // means all card expired.
 			return false;
-		}else if(wbResponse != null && !wbResponse.StatusCode.equals("0")
+		}
+		else if (wbResponse != null && wbResponse.StatusCode.equals("2")
+				&& wbResponse.Data != null) {
+			FOGlobalVariable.IsActivationCodeAlreadyExist="2"; // means no merchant found.
+			return false;
+		}
+		else if(wbResponse != null && !wbResponse.StatusCode.equals("0")
 				&& wbResponse.Data != null){
-			FOGlobalVariable.IsActivationCodeAlreadyExist="0";
+			FOGlobalVariable.IsActivationCodeAlreadyExist="0"; // means some server problem
 			return false;
 		}
 
@@ -777,23 +762,25 @@ public String userLogin(String email,String password,String device_id){
 	
 }
 
-public Boolean userRegistration(String email,String password,String device_id){
-	
+public Boolean userRegistration(String email, String mobile_no, String password,String device_id, String gcm_reg_id, String device_os){
 	String url = BASE_URL;
-	url = url + "userRegistration?email="+email+"&password="+password+"&device_id="+device_id;
-	WebServiceResponse wbResponse = new WebServiceResponse();
+	url = url + "userRegistration?email="+email+
+			"&mobile_no="+mobile_no+
+			"&password="+password+
+			"&device_id="+device_id+
+			"&gcmRegID="+gcm_reg_id+
+			"&device_os="+device_os;
+	WebServiceResponse wbResponse;
 	wbResponse = getCall(url);
 	if (wbResponse != null && wbResponse.StatusCode.equals("0")
 			&& wbResponse.Data != null) {
 		return true;    
-	}  
-	
+	}
 	else if(wbResponse != null && !wbResponse.StatusCode.equals("0") && wbResponse.Data != null){
 		FOGlobalVariable.IsActivationCodeAlreadyExist=wbResponse.Data;
 		return false;   
 	}
-	return false;   
-	
+	return false;
 }
 
 public Boolean forgotPassword(String email){
@@ -940,5 +927,21 @@ public Boolean changePassword(String email,String old_password,String new_passwo
 		return false;
 	}
 
-
+	public boolean checkDistanceRange(String email,String userLat, String userLong) {
+		String url = BASE_URL;
+		url = url + "checkRangeUserLocation?user_email="+email+"&current_lat="+userLat+"&current_long="+userLong;
+		WebServiceResponse wbResponse;
+		wbResponse = getCallNew(url);
+		List<FavoriteAlertLocationMerchant> business_master = new ArrayList<FavoriteAlertLocationMerchant>();
+		if (wbResponse != null && wbResponse.StatusCode.equals("0")
+				&& wbResponse.Data != null) {
+			return true;
+		}
+		else if (wbResponse != null && !wbResponse.StatusCode.equals("0")
+				&& wbResponse.Data != null) {
+			FOGlobalVariable.IsActivationCodeAlreadyExist=wbResponse.Data;
+			return false;
+		}
+		return false;
+	}
 }

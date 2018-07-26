@@ -9,8 +9,6 @@ package com.ild.geocouponalert;
 
 public final class Manifest {
     public static final class permission {
-        /**  Creates a custom permission so only this app can receive its messages. 
-         */
         public static final String C2D_MESSAGE="com.ild.geocouponalert.permission.C2D_MESSAGE";
     }
 }

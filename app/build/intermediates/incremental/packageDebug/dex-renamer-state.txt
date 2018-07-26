@@ -1,7 +1,0 @@
-#Tue Jul 17 18:24:49 PDT 2018
-base.0=D\:\\GeoCouponAlert1\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=D\:\\GeoCouponAlert1\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes2.dex
-base.1=D\:\\GeoCouponAlert1\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
-file.0=D\:\\GeoCouponAlert1\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

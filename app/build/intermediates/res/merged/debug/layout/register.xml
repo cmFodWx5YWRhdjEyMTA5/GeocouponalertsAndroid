@@ -15,23 +15,37 @@
       android:layout_marginTop="20dp"
       />
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/txt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
-        android:hint="User ID/Email"
+        android:hint="Email"
         android:background="@drawable/shape"
         android:layout_marginTop="10dp"
         android:padding="10dp"
+        android:text=""
         android:textColorHint="@color/white"
         android:textColor="@color/white"
         android:inputType="textEmailAddress"
          />
+  <EditText
+      android:id="@+id/txt_mobile_no"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/txt_email"
+      android:hint="Mobile No"
+      android:background="@drawable/shape"
+      android:layout_marginTop="10dp"
+      android:padding="10dp"
+      android:textColorHint="@color/white"
+      android:inputType="phone"
+      android:textColor="@color/white"
+      />
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/txt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/email"
+        android:layout_below="@+id/txt_mobile_no"
         android:hint="Password"
         android:background="@drawable/shape"
         android:layout_marginTop="10dp"
@@ -41,10 +55,10 @@
         android:textColor="@color/white"
          />
     <EditText
-        android:id="@+id/confirm_password"
+        android:id="@+id/txt_confirm_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/txt_password"
         android:hint="Confirm Password"
         android:background="@drawable/shape"
         android:layout_marginTop="10dp"
@@ -55,22 +69,22 @@
          />
     
     <Button 
-       android:id="@+id/register_button" 
+       android:id="@+id/btn_register"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:text="Register"
        android:textSize="18sp"
-       android:layout_below="@+id/confirm_password"
+       android:layout_below="@+id/txt_confirm_password"
        android:layout_centerHorizontal="true"
        android:layout_marginTop="10dp"
        android:background="@drawable/button_shape"
        android:textAllCaps="false"
         />
     <RelativeLayout
-       android:id="@+id/login_text" 
+       android:id="@+id/rel_login"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_below="@+id/register_button"  
+       android:layout_below="@+id/btn_register"
        android:paddingTop="10dp"
        android:gravity="center"
     > 
@@ -83,7 +97,7 @@
        android:textColor="@color/black"
       />
     <TextView 
-       android:id="@+id/login"
+       android:id="@+id/lbl_login"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_toRightOf="@+id/txtView"
@@ -98,7 +112,7 @@
        android:id="@+id/register_text"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_below="@+id/login_text"
+       android:layout_below="@+id/rel_login"
        android:gravity="center"
        android:text="By registering, I accept the"
        android:layout_marginTop="60dp"
@@ -113,7 +127,7 @@
        android:gravity="center"
     >
     <TextView 
-        android:id="@+id/terms"
+        android:id="@+id/lbl_terms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/terms_conditions"
@@ -125,13 +139,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="and"
-        android:layout_toRightOf="@+id/terms"
+        android:layout_toRightOf="@+id/lbl_terms"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:paddingLeft="10dp"
         />
     <TextView 
-        android:id="@+id/privacy"
+        android:id="@+id/lbl_privacy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/privacy_policy"

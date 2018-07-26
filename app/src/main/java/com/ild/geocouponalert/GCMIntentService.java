@@ -125,7 +125,6 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 		notificationIntent.putExtra("new_merchant_notification","1");
 		notificationIntent.putExtra("business_id","");
-		notificationIntent.putExtra("notification_mode", "");
 		
         // Construct a task stack.
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context); 

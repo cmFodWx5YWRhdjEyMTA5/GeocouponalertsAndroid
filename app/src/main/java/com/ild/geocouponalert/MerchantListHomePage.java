@@ -4,12 +4,15 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import static com.ild.geocouponalert.CommonUtilities.DISPLAY_MESSAGE_ACTION;
 import static com.ild.geocouponalert.CommonUtilities.EXTRA_MESSAGE;
-import static com.ild.geocouponalert.CommonUtilities.SENDER_ID;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import com.google.android.gcm.GCMRegistrar;
 import com.google.android.gms.location.Geofence;
@@ -45,14 +48,17 @@ import android.provider.Settings.Secure;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -61,10 +67,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MerchantListHomePage extends Activity implements OnClickListener{
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class MerchantListHomePage extends AppCompatActivity implements OnClickListener, OnMapReadyCallback {
 	
-	static Context mContext;
-	SelectedMerchantAsyncTask manageActivation;
+	Context mContext;
 	ListView listViewMerchant;
 	List<BusinessMaster> lst_business;
 	List<BusinessMaster> lst_filtered_buss;
@@ -77,24 +85,17 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
     ListView listViewCategory;
     String buss_id,user_latitude,user_longitude,buss_name,banner_img,location_id;
     RelativeLayout relheading;
-    String new_merchant_notification;
+    int push_notification_mode;
  // LogCat tag
   	private static final String TAG = MerchantListHomePage.class.getSimpleName();
-
-  	/**
- 	 * Geofence Data
- 	 */ 
-
  	/**
  	 * Geofences Array 
  	 */
  	ArrayList<Geofence> mGeofences;
- 	
  	/**
  	 * Geofence Coordinates
  	 */
  	ArrayList<LatLng> mGeofenceCoordinates;
- 			 
  	/**
  	 * Geofence Store
  	 */
@@ -121,6 +122,8 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 	boolean doubleBackToExitPressedOnce = false;
 	// Google Map
 	private GoogleMap googleMap;
+	SupportMapFragment mapFragment;
+	View mapView;
 
 	LinearLayout gmapLin;
 	RelativeLayout relcat,searchMerchantRel,catDropdownRel;
@@ -128,6 +131,11 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 	List<BusinessLocationMaster> lst_bus_location = new ArrayList<>();
 	List<BusinessMaster> new_lst_filtered_buss = null;
 	EditText searchText;
+
+	private static final int NORMAL = 0;
+	private static final int PUSH_NEW_MERCHANT = 1;
+	private static final int PUSH_EXPIRING_CARD_7_DAYS = 2;
+	private static final int PUSH_EXPIRING_CARD_1_DAY = 3;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -142,131 +150,91 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 		mGeofenceCoordinates = new ArrayList<>();
 		initView();
 	}
+	private void initializeMap() {
+		mapFragment = (SupportMapFragment) getSupportFragmentManager()
+				.findFragmentById(R.id.gmap);
+		mapView = mapFragment.getView();
+		mapFragment.getMapAsync(this);
+	}
+	@Override
+	public void onMapReady(GoogleMap googleMapDefault) {
+		googleMap = googleMapDefault;
+		googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+		// Get the button view
+		View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+		// and next place it, on bottom right (as Google Maps app)
+		RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
+				locationButton.getLayoutParams();
+		// position on right bottom
+		layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
+		layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+		layoutParams.setMargins(0, 0, 30, 30);
 
+		//Showing Current Location
+		googleMap.setMyLocationEnabled(true); // false to disable
+		//googleMap.getUiSettings().setZoomControlsEnabled(true);
+		//googleMap.getUiSettings().setCompassEnabled(true);
+		//Location Button
+		googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+		CameraUpdate center =
+				CameraUpdateFactory.newLatLng(new LatLng(Double.parseDouble(user_latitude), Double.parseDouble(user_longitude)));
+		CameraUpdate zoom = CameraUpdateFactory.zoomTo(10);
 
-	private void initilizeMap(List<BusinessMaster> businessList) {
-
-		gps = new GPSTracker(this);
-		if(gps.canGetLocation()){
-
-			user_latitude = String.valueOf(gps.getLatitude());
-			user_longitude = String.valueOf(gps.getLongitude());
-			/*user_latitude = "38.7073";
-			user_longitude = "-121.2708";*/
-			if (googleMap == null) {
-				googleMap = ((MapFragment) getFragmentManager().findFragmentById(
-						R.id.gmap)).getMap();
-			}else{
-				googleMap.clear();
-			}
-
-				try {
-
-					if(businessList.size()>0){
-						int count = 0;
-						for(int i=0;i<businessList.size();i++){
-
-							lst_bus_location = businessList.get(i).geofence_location_details;
-							for(int j=0;j<lst_bus_location.size();j++){
-
-								double M_PI = 3.1415926535897932385;
-
-								int nRadius = 6371; // Earth's radius in Kilometers
-								double latDiff = (Double.valueOf(lst_bus_location.get(j).buss_loc_lat) - Double.valueOf(user_latitude)) * (M_PI/180);
-								double lonDiff = (Double.valueOf(lst_bus_location.get(j).buss_loc_long) - Double.valueOf(user_longitude)) * (M_PI/180);
-								double lat1InRadians = Double.valueOf(user_latitude) * (M_PI/180);
-								double lat2InRadians = Double.valueOf(lst_bus_location.get(j).buss_loc_lat)  * (M_PI/180);
-								double nA = Math.pow ( Math.sin(latDiff/2), 2 ) + Math.cos(lat1InRadians)*  Math.cos(lat2InRadians)*  Math.pow ( Math.sin(lonDiff/2), 2 );
-								double nC = 2 * Math.atan2( Math.sqrt(nA), Math.sqrt( 1 - nA ));
-								double nD = nRadius * nC;
-								//double distance_in_meters = nD*1000;
-								//if(nD <= 16.0934){
-									count=count+1;
-									Location dest_location = new Location("");
-
-									final Double latt = Double.valueOf(lst_bus_location.get(j).buss_loc_lat);
-									final Double longtt = Double.valueOf(lst_bus_location.get(j).buss_loc_long);
-
-									dest_location.setLatitude(latt);
-									dest_location.setLongitude(longtt);
-
-									String address;
-									if (lst_bus_location.get(j).address2.toString().equalsIgnoreCase("") ){
-										address = lst_bus_location.get(j).address1+", " + lst_bus_location.get(j).city;
-									}
-									else{
-										address = lst_bus_location.get(j).address1+", " +
-												lst_bus_location.get(j).address2 +", " + lst_bus_location.get(j).city;
-									}
-
-									MarkerOptions marker = new MarkerOptions().
-											position(new LatLng(latt, longtt)).
-											title(businessList.get(i).name)
-											.snippet(address);
-									//snippet(address).
-									//icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_green));
-
-									// adding marker
-
-									CameraUpdate center=
-											CameraUpdateFactory.newLatLng(new LatLng(latt,longtt));
-									CameraUpdate zoom=CameraUpdateFactory.zoomTo(10);
-
-									googleMap.moveCamera(center);
-									googleMap.animateCamera(zoom);
-									googleMap.addMarker(marker);
-
-									googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener()
-									{
-										@Override
-										public void onInfoWindowClick(Marker arg0) {
-											LatLng coordinate2=arg0.getPosition();
-
-											Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-													Uri.parse("http://maps.google.com/maps?daddr="+coordinate2.latitude+","+coordinate2.longitude));
-											startActivity(intent);
-										}
-									});
-								//}
-							}
-							// create marker
-						}
-
-
-					}
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				// Changing marker icon
-				//marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_plusone_medium_off_client));
-				//Moving camera with location
-           /* CameraPosition cameraPosition = new CameraPosition.Builder().target(
-                    new LatLng(latitude, longitude)).zoom(8).build();
-
-            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-     */       //Showing Current Location
-				googleMap.setMyLocationEnabled(true); // false to disable
-				//Zooming button
-				googleMap.getUiSettings().setZoomControlsEnabled(true);
-				//Zooming Functionality.You can disable zooming gesture functionality
-				// googleMap.getUiSettings().setZoomGesturesEnabled(false);
-				//Compass Functionality
-				googleMap.getUiSettings().setCompassEnabled(true);
-				//Location Button
-				googleMap.getUiSettings().setMyLocationButtonEnabled(true);
-
-				// check if map is created successfully or not
-				if (googleMap == null) {
-					Toast.makeText(getApplicationContext(),
-							"Sorry! unable to create maps", Toast.LENGTH_SHORT)
-							.show();
-				}
-
-		}
+		googleMap.moveCamera(center);
+		googleMap.animateCamera(zoom);
+		lst_business = DataStore.getInstance().getSelectedBusiness();
+		populateMarkerOnMap(lst_business);
 	}
 
+	public void populateMarkerOnMap(List<BusinessMaster> lst_business){
+		try {
+			googleMap.clear();
+			if(lst_business.size()>0){
+				for(int i=0;i<lst_business.size();i++){
+
+					lst_bus_location = lst_business.get(i).geofence_location_details;
+					for(int j=0;j<lst_bus_location.size();j++) {
+						Location dest_location = new Location("");
+						final Double latt = Double.valueOf(lst_bus_location.get(j).buss_loc_lat);
+						final Double longtt = Double.valueOf(lst_bus_location.get(j).buss_loc_long);
+						dest_location.setLatitude(latt);
+						dest_location.setLongitude(longtt);
+
+						String address;
+						if (lst_bus_location.get(j).address2.toString().equalsIgnoreCase("")) {
+							address = lst_bus_location.get(j).address1 + ", " + lst_bus_location.get(j).city;
+						} else {
+							address = lst_bus_location.get(j).address1 + ", " +
+									lst_bus_location.get(j).address2 + ", " + lst_bus_location.get(j).city;
+						}
+
+						MarkerOptions marker = new MarkerOptions().
+								position(new LatLng(latt, longtt)).
+								title(lst_business.get(i).name)
+								.snippet(address);
+
+						// adding marker
+
+						googleMap.addMarker(marker);
+
+						googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+							@Override
+							public void onInfoWindowClick(Marker arg0) {
+								LatLng coordinate2 = arg0.getPosition();
+
+								Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+										Uri.parse("http://maps.google.com/maps?daddr=" + coordinate2.latitude + "," + coordinate2.longitude));
+								startActivity(intent);
+							}
+						});
+					}
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	private TextWatcher searchtextWatcher = new TextWatcher() {
 		public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 		}
@@ -282,35 +250,35 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 	@SuppressWarnings("ResourceType")
 	private void initView(){
 
-		edit = (TextView)findViewById(R.id.levelText);
+		edit = findViewById(R.id.levelText);
 		edit.setOnClickListener(this);
-		list      = (TextView)findViewById(R.id.list);
-		map       = (TextView)findViewById(R.id.map);
-		search    = (TextView)findViewById(R.id.search);
-		searchText = (EditText) findViewById(R.id.searchText);
+		list      = findViewById(R.id.list);
+		map       = findViewById(R.id.map);
+		search    = findViewById(R.id.search);
+		searchText =  findViewById(R.id.searchText);
 		searchText.addTextChangedListener(searchtextWatcher);
-		relcat = (RelativeLayout) findViewById(R.id.relcat);
+		relcat =  findViewById(R.id.relcat);
 		relcat.setOnClickListener(this);
-		listRel   = (RelativeLayout) findViewById(R.id.listRel);
+		listRel   =  findViewById(R.id.listRel);
 		listRel.setOnClickListener(this);
-		mapRel    = (RelativeLayout) findViewById(R.id.mapRel);
+		mapRel    =  findViewById(R.id.mapRel);
 		mapRel.setOnClickListener(this);
-		searchRel = (RelativeLayout) findViewById(R.id.searchRel);
+		searchRel =  findViewById(R.id.searchRel);
 		searchRel.setOnClickListener(this);
-		searchMerchantRel = (RelativeLayout) findViewById(R.id.searchMerchantRel);
-		catDropdownRel = (RelativeLayout) findViewById(R.id.catDropdownRel);
-		imgList     = (ImageView)findViewById(R.id.imgList);
-		imgMap      = (ImageView)findViewById(R.id.imgMap);
-		imgSearch   = (ImageView)findViewById(R.id.imgSearch);
+		searchMerchantRel =  findViewById(R.id.searchMerchantRel);
+		catDropdownRel =  findViewById(R.id.catDropdownRel);
+		imgList     = findViewById(R.id.imgList);
+		imgMap      = findViewById(R.id.imgMap);
+		imgSearch   = findViewById(R.id.imgSearch);
 
-		gmapLin = (LinearLayout) findViewById(R.id.gmapLin);
+		gmapLin =  findViewById(R.id.gmapLin);
 		// load slide menu items
 		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items_after_login);
 		// nav drawer icons from resources
 		navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons_after_login);
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerList   = (ListView) findViewById(R.id.list_slidermenu);
-		navDrawerItems = new ArrayList<NavDrawerItem>();
+		mDrawerLayout =  findViewById(R.id.drawer_layout);
+		mDrawerList   =  findViewById(R.id.list_slidermenu);
+		navDrawerItems = new ArrayList<>();
 		// adding nav drawer items to array
 		// Pages
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
@@ -321,9 +289,6 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
-		//navDrawerItems.add(new NavDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(8, -1)));
-		//navDrawerItems.add(new NavDrawerItem(navMenuTitles[9], navMenuIcons.getResourceId(9, -1)));
-		// Pages
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -340,44 +305,54 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 		params.width = width;
 		mDrawerList.setLayoutParams(params);
 
-		category_down_arrow = (ImageView)findViewById(R.id.category_down_arrow);
+		category_down_arrow = findViewById(R.id.category_down_arrow);
 		category_down_arrow.setOnClickListener(this);
 		//categorySpinner = (Spinner)findViewById(R.id.categorySpinner);
-		bgtransparent = (ImageView)findViewById(R.id.bgtransparent);
+		bgtransparent = findViewById(R.id.bgtransparent);
 		category_textview = (TextView)findViewById(R.id.category_textview);
 		//category_textview.setOnClickListener(this);
 		//category_textview.setVisibility(View.GONE);
-		category_arrow = (ImageView)findViewById(R.id.category_arrow);
+		category_arrow = findViewById(R.id.category_arrow);
 		//category_arrow.setOnClickListener(this);
 		
-		menuicon = (ImageView)findViewById(R.id.menuicon);
+		menuicon = findViewById(R.id.menuicon);
 		menuicon.setOnClickListener(this);
 
-		listViewMerchant = (ListView)findViewById(R.id.listViewMerchant);
-		listViewCategory = (ListView)findViewById(R.id.listViewCategory); 
-		relheading = (RelativeLayout)findViewById(R.id.relheading);
-		
+		listViewMerchant = findViewById(R.id.listViewMerchant);
+		listViewCategory = findViewById(R.id.listViewCategory);
+		relheading = findViewById(R.id.relheading);
+
+		gps = new GPSTracker(mContext);
+		if(gps.canGetLocation()){
+
+			user_latitude = String.valueOf(gps.getLatitude());
+			user_longitude = String.valueOf(gps.getLongitude());
+		}
+
 	if(!getIntent().getExtras().getString("business_id").equalsIgnoreCase("")
 			&& !getIntent().getExtras().getString("location_id").equalsIgnoreCase("")){ // call when click on notification
-			
-
 			relheading.setVisibility(View.GONE);
 			buss_id = getIntent().getExtras().getString("business_id");
 			location_id = getIntent().getExtras().getString("location_id");
-			gps = new GPSTracker(mContext);
-			if(gps.canGetLocation()){
-				
-				user_latitude = String.valueOf(gps.getLatitude());
-				user_longitude = String.valueOf(gps.getLongitude());
-			}
+
 			ViewcouponAsyncTask manageActivation = new ViewcouponAsyncTask(this);
 			manageActivation.execute();
 			
-		} else {
-			manageActivation = new SelectedMerchantAsyncTask(this);
-			manageActivation.execute();
-			 
-		}
+	} else {
+			long storeDateInMilis = COUtils.getDefaultsLong("myDateKey",mContext);
+			if (storeDateInMilis!=0){
+				Date myCurrentDates = Calendar.getInstance().getTime();
+				long myCurrentDatesInMilis = myCurrentDates.getTime();
+				long difference = Math.abs(myCurrentDatesInMilis - storeDateInMilis);
+				if (difference>24*60*60*1000){
+					new CheckLocationRangeAsyncTask(mContext).execute();
+				}else{
+					new SelectedMerchantAsyncTask(this).execute(COUtils.getDefaults("loadNearByLocation",mContext));
+				}
+			}else{
+				new CheckLocationRangeAsyncTask(mContext).execute();
+			}
+	}
 	}
 
 	/**
@@ -451,37 +426,38 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 		}
 	}
 	
-	public class SelectedMerchantAsyncTask extends AsyncTask<Void, Void, Void> {
+	public class SelectedMerchantAsyncTask extends AsyncTask<String, Void, Void> {
 
 		ProgressDialog pDialog;
-		Activity mFriendLogin;
+		Context mFriendLogin;
 		boolean bSuccess;
 		
-		
-		public SelectedMerchantAsyncTask(Activity activity) { 
+		public SelectedMerchantAsyncTask(Context activity) {
 			mFriendLogin = activity;
 		}
 
 		@Override
-		protected Void doInBackground(Void... params) {    
-			
+		protected Void doInBackground(String... params) {
+			String loadNearByLocation = params[0];
 			bSuccess=RestCallManager.getInstance().getSelectedMerchant(Secure.getString(mContext.getContentResolver(),Secure.ANDROID_ID),
-					COUtils.getDefaults("emailID", mContext));
-			gcmService();
+					COUtils.getDefaults("emailID", mContext),
+					"Android", COUtils.getDefaults("DeviceTokenFCM",mContext),"Android",user_latitude,user_longitude,loadNearByLocation);
 			return null;
 		} 
 
 		@Override
-		protected void onPostExecute(Void result) {  
+		protected void onPostExecute(Void result) {
 			pDialog.dismiss();
-			if(bSuccess){
-				
-				lst_business = DataStore.getInstance().getSelectedBusiness();
-				new_merchant_notification = getIntent().getExtras().getString("new_merchant_notification");
-				if(new_merchant_notification.equalsIgnoreCase("1")){
-					
+			if(bSuccess) {
+				push_notification_mode = getIntent().getIntExtra("push_notification_mode", 0);
+				if (push_notification_mode == NORMAL){
+					lst_business = DataStore.getInstance().getSelectedBusiness();
+					selectedmerchantadapter = new SelectedMerchantAdapter(MerchantListHomePage.this,lst_business);
+					listViewMerchant.setAdapter(selectedmerchantadapter);
+					selectedmerchantadapter.notifyDataSetChanged();
+				}
+				else if(push_notification_mode==PUSH_NEW_MERCHANT){
 					category_textview.setText("New Merchants");
-					
 					for(int i=0;i<lst_business.size();i++){
 				    	   if(lst_business.get(i).isNewBusiness.equalsIgnoreCase("yes")){
 				    		   lst_filtered_buss.add(lst_business.get(i));
@@ -490,113 +466,123 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 		    		   selectedmerchantadapter = new SelectedMerchantAdapter(MerchantListHomePage.this,lst_filtered_buss);
 		    		   listViewMerchant.setAdapter(selectedmerchantadapter);
 					   selectedmerchantadapter.notifyDataSetChanged();
-				} else {
-				
-					selectedmerchantadapter = new SelectedMerchantAdapter(MerchantListHomePage.this,lst_business);
-					listViewMerchant.setAdapter(selectedmerchantadapter);
-					selectedmerchantadapter.notifyDataSetChanged();
 				}
-				
-				/*catadapter = new CategoryAdapter(MerchantListHomePage.this,lst_business.get(0).cat_details);
-				categorySpinner.setAdapter(catadapter);	*/
-				
-				
-				// TODO Auto-generated method stub
+				else if(push_notification_mode==PUSH_EXPIRING_CARD_7_DAYS || push_notification_mode==PUSH_EXPIRING_CARD_1_DAY){
+					//2,3 card expiring alert
+					LayoutInflater layoutInflater2 = LayoutInflater.from(mContext);
+					View promptView = layoutInflater2.inflate(R.layout.alert_card_expiring_days, null);
+					AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(mContext);
+					alertDialogBuilder2.setView(promptView);
+					final AlertDialog alertD2 = alertDialogBuilder2.create();
+					TextView alertTxt =  promptView.findViewById(R.id.alertTxt);
+					TextView topTxt =  promptView.findViewById(R.id.topTxt);
+					if (push_notification_mode==PUSH_EXPIRING_CARD_7_DAYS)
+						topTxt.setText("Only 7 days Left");
+					else
+						topTxt.setText("Only 1 days Left");
+					Button btnSupport =  promptView.findViewById(R.id.btnSupportCharity);
+					btnSupport.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v){
+							alertD2.dismiss();
+							try {
+								JSONObject jsonObj = new JSONObject(getIntent().getStringExtra("pushNotificationJsonString"));
+								String web_url = jsonObj.getString("url");
+								Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(web_url));
+								startActivity(browserIntent);
+							}
+							catch (JSONException e){
+								Log.e(TAG, "Exception: " + e.getMessage());
+							}
+
+						}
+					});
+					Button btnClose =  promptView.findViewById(R.id.btnClose);
+					btnClose.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							alertD2.dismiss();
+						}
+					});
+
+					alertD2.setCanceledOnTouchOutside(false);
+					alertD2.show();
+				}
+
    				gps = new GPSTracker(mContext);
    				if(gps.canGetLocation()){
-   					if(getIntent().getExtras().getString("notification_mode").equalsIgnoreCase("1")){
-   						
-   						
    						String geoLocationEnabled=COUtils.getDefaults("geoLocationEnabled", mContext);
-   						
    						if(geoLocationEnabled==null){
-   						
-   						LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-   						View promptView = layoutInflater.inflate(R.layout.alert_location, null);
-   						//promptView.setBackgroundColor(Color.TRANSPARENT);
-   						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
-   						alertDialogBuilder.setView(promptView);
-   						final AlertDialog alertD = alertDialogBuilder.create();
-   						
-   						final TextView dialogNo = (TextView) promptView.findViewById(R.id.btnDontAllow);
-   						final TextView dialogYes = (TextView) promptView.findViewById(R.id.btnAllow);
-   						 
-   						
-   						// if button is clicked, close the custom dialog
-   						dialogNo.setOnClickListener(new OnClickListener() {
-   							@Override
-   							public void onClick(View v) {
-   								COUtils.setDefaults("geoLocationEnabled", "0", mContext);
-   								alertD.dismiss();
-   							}
-   						});
-   						
-   						
-   						// if button is clicked, close the custom dialog
-   						dialogYes.setOnClickListener(new OnClickListener() {
-   							@Override
-   							public void onClick(View v) {
-   								COUtils.setDefaults("geoLocationEnabled", "1", mContext);
-   								geofencingService(lst_business);
-   								alertD.dismiss();
-   								
-   								LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-   		   						View promptView = layoutInflater.inflate(R.layout.alert_location, null);
-   		   						//promptView.setBackgroundColor(Color.TRANSPARENT);
-   		   						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
-   		   						alertDialogBuilder.setView(promptView);
-   		   						final AlertDialog alertD2 = alertDialogBuilder.create();
-   		   						
-   		   						final TextView dialogNo2 = (TextView) promptView.findViewById(R.id.btnDontAllow);
-   		   						final TextView dialogYes2 = (TextView) promptView.findViewById(R.id.btnAllow);
-   		   					    final TextView coupon_alert = (TextView) promptView.findViewById(R.id.coupon_alert);
-   		   				        final TextView coupon_alert_sub = (TextView) promptView.findViewById(R.id.coupon_alert_sub);
-   		   						
-   		   						dialogNo2.setText(R.string.txt_dont_allow);
-   		   						coupon_alert.setText(R.string.location_alert_background);
-   		   						coupon_alert_sub.setText(R.string.location_alert_background_sub);
-   		   						
-   		   						dialogNo2.setOnClickListener(new OnClickListener() {
-   		   							@Override
-   		   							public void onClick(View v) {
-										alertD2.dismiss();
-   		   							}
-   		   						});
-   		   					
-   		   						dialogYes2.setOnClickListener(new OnClickListener() {
-   		   							@Override
-   		   							public void onClick(View v) {
-   		   								
-   		   								
-   		   								alertD2.dismiss();
-   		   							}
-   		   						});
-   		   						 
-   		   						alertD2.show();
-   							
-   							}
-   						});
-   						 
-   						alertD.show();
-   						
-   						}
-   						else if(geoLocationEnabled.equalsIgnoreCase("1")){
-   							
-   							geofencingService(lst_business);
-   						}
-   					}
-   								
+								LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+								View promptView = layoutInflater.inflate(R.layout.alert_location, null);
+								//promptView.setBackgroundColor(Color.TRANSPARENT);
+								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
+								alertDialogBuilder.setView(promptView);
+								final AlertDialog alertD = alertDialogBuilder.create();
+
+								final TextView dialogNo =  promptView.findViewById(R.id.btnDontAllow);
+								final TextView dialogYes = promptView.findViewById(R.id.btnAllow);
+								// if button is clicked, close the custom dialog
+								dialogNo.setOnClickListener(new OnClickListener() {
+									@Override
+									public void onClick(View v) {
+										COUtils.setDefaults("geoLocationEnabled", "0", mContext);
+										alertD.dismiss();
+									}
+								});
+								dialogYes.setOnClickListener(new OnClickListener() {
+									@Override
+									public void onClick(View v) {
+										COUtils.setDefaults("geoLocationEnabled", "1", mContext);
+										geofencingService(lst_business);
+										alertD.dismiss();
+
+										LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+										View promptView = layoutInflater.inflate(R.layout.alert_location, null);
+										//promptView.setBackgroundColor(Color.TRANSPARENT);
+										AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
+										alertDialogBuilder.setView(promptView);
+										final AlertDialog alertD2 = alertDialogBuilder.create();
+
+										final TextView dialogNo2 = (TextView) promptView.findViewById(R.id.btnDontAllow);
+										final TextView dialogYes2 = (TextView) promptView.findViewById(R.id.btnAllow);
+										final TextView coupon_alert = (TextView) promptView.findViewById(R.id.coupon_alert);
+										final TextView coupon_alert_sub = (TextView) promptView.findViewById(R.id.coupon_alert_sub);
+
+										dialogNo2.setText(R.string.txt_dont_allow);
+										coupon_alert.setText(R.string.location_alert_background);
+										coupon_alert_sub.setText(R.string.location_alert_background_sub);
+
+										dialogNo2.setOnClickListener(new OnClickListener() {
+											@Override
+											public void onClick(View v) {
+												alertD2.dismiss();
+											}
+										});
+
+										dialogYes2.setOnClickListener(new OnClickListener() {
+											@Override
+											public void onClick(View v) {
+												alertD2.dismiss();
+											}
+										});
+										alertD2.show();
+									}
+								});
+								alertD.show();
+								}
+								else if(geoLocationEnabled.equalsIgnoreCase("1")){
+									geofencingService(lst_business);
+								}
    				}
    				else {
    			       	// can't get location
    			       	// GPS or Network is not enabled
    			       	// Ask user to enable GPS/network in settings
-   			       	gps.showSettingsAlert(); 
+   			       	gps.showSettingsAlert();
    			    }
+				initializeMap(); // Initialize google map
 
-
-				initilizeMap(lst_business);
-   				
 			}  else{
 
 				if(FOGlobalVariable.IsActivationCodeAlreadyExist.equalsIgnoreCase("1") ){
@@ -609,9 +595,9 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 					TextView alertTxt = (TextView) promptView.findViewById(R.id.alertTxt);
 					TextView topTxt = (TextView) promptView.findViewById(R.id.topTxt);
 					topTxt.setText("Expired");
-					alertTxt.setText("All cards are expired. Please add new card to continue.");
+					alertTxt.setText("All card/cards are expired. Please add new card to continue.");
 
-					TextView btnAddNewCard = (TextView) promptView.findViewById(R.id.btnAddNewCard);
+					TextView btnAddNewCard =  promptView.findViewById(R.id.btnAddNewCard);
 					btnAddNewCard.setOnClickListener(new OnClickListener() {
 						@Override
 						public void onClick(View v){
@@ -623,7 +609,7 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 						}
 					});
 
-					TextView btnClose = (TextView) promptView.findViewById(R.id.btnClose);
+					TextView btnClose =  promptView.findViewById(R.id.btnClose);
 					btnClose.setOnClickListener(new OnClickListener() {
 						@Override
 						public void onClick(View v) {
@@ -635,27 +621,46 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 					alertD2.setCanceledOnTouchOutside(false);
 					alertD2.show();
 
-				}else {
-
+				}else if(FOGlobalVariable.IsActivationCodeAlreadyExist.equalsIgnoreCase("2") ){
 					LayoutInflater layoutInflater2 = LayoutInflater.from(mContext);
 					View promptView = layoutInflater2.inflate(R.layout.alert_validation, null);
 					AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(mContext);
 					alertDialogBuilder2.setView(promptView);
 					final AlertDialog alertD2 = alertDialogBuilder2.create();
-					TextView alertTxt = (TextView) promptView.findViewById(R.id.alertTxt);
-					TextView topTxt = (TextView) promptView.findViewById(R.id.topTxt);
-					topTxt.setText("Warning!");
-					alertTxt.setText("There is a problem with the system");
+					TextView alertTxt =  promptView.findViewById(R.id.alertTxt);
+					TextView topTxt =  promptView.findViewById(R.id.topTxt);
+					topTxt.setText("Oops!!!!");
+					alertTxt.setText("There is no any merchant available in your area.");
 					RelativeLayout relBottominner = (RelativeLayout) promptView.findViewById(R.id.relBottominner);
 					relBottominner.setOnClickListener(new OnClickListener() {
 						@Override
 						public void onClick(View v) {
-							alertD2.dismiss();
+							System.exit(0);
 						}
 					});
 					alertD2.setCanceledOnTouchOutside(false);
 					alertD2.show();
 
+				}
+				else{
+					LayoutInflater layoutInflater2 = LayoutInflater.from(mContext);
+					View promptView = layoutInflater2.inflate(R.layout.alert_validation, null);
+					AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(mContext);
+					alertDialogBuilder2.setView(promptView);
+					final AlertDialog alertD2 = alertDialogBuilder2.create();
+					TextView alertTxt =  promptView.findViewById(R.id.alertTxt);
+					TextView topTxt =  promptView.findViewById(R.id.topTxt);
+					topTxt.setText("Oops!!!!");
+					alertTxt.setText("There are some problem with the server.");
+					RelativeLayout relBottominner = (RelativeLayout) promptView.findViewById(R.id.relBottominner);
+					relBottominner.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							System.exit(0);
+						}
+					});
+					alertD2.setCanceledOnTouchOutside(false);
+					alertD2.show();
 				}
 			}
 			 
@@ -672,6 +677,81 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 		}
 	}
 
+	public class CheckLocationRangeAsyncTask extends AsyncTask<Void, Void, Void> {
+
+		ProgressDialog pDialog;
+		Context mFriendLogin;
+		boolean bSuccess;
+
+		public CheckLocationRangeAsyncTask(Context context)
+		{
+			mFriendLogin = context;
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			bSuccess=RestCallManager.getInstance().checkDistanceRange(COUtils.getDefaults("emailID", mContext),user_latitude,user_longitude);
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			pDialog.dismiss();
+				if(bSuccess){
+					new SelectedMerchantAsyncTask(mFriendLogin).execute("0");
+				}
+				else{
+					LayoutInflater layoutInflater2 = LayoutInflater.from(mContext);
+					View promptView = layoutInflater2.inflate(R.layout.alert_card_expire, null);
+					AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(mContext);
+					alertDialogBuilder2.setView(promptView);
+					final AlertDialog alertD2 = alertDialogBuilder2.create();
+					TextView alertTxt =  promptView.findViewById(R.id.alertTxt);
+					TextView topTxt =  promptView.findViewById(R.id.topTxt);
+					topTxt.setText("Nearby Merchant");
+					alertTxt.setText(FOGlobalVariable.IsActivationCodeAlreadyExist);
+					TextView btnNO =  promptView.findViewById(R.id.btnAddNewCard);
+					btnNO.setText("NO");
+					btnNO.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v){
+							alertD2.dismiss();
+							Date currentDate = Calendar.getInstance().getTime();
+							long millis = currentDate.getTime();
+							COUtils.setDefaultsLong("myDateKey", millis,mContext);
+							COUtils.setDefaults("loadNearByLocation","0" ,mContext);
+							new SelectedMerchantAsyncTask(mContext).execute(COUtils.getDefaults("loadNearByLocation",mContext));
+						}
+					});
+					TextView btnYES =  promptView.findViewById(R.id.btnClose);
+					btnYES.setText("YES");
+					btnYES.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							alertD2.dismiss();
+							Date currentDate = Calendar.getInstance().getTime();
+							long millis = currentDate.getTime();
+							COUtils.setDefaultsLong("myDateKey", millis,mContext);
+							COUtils.setDefaults("loadNearByLocation","1" ,mContext);
+							new SelectedMerchantAsyncTask(mContext).execute(COUtils.getDefaults("loadNearByLocation",mContext));
+						}
+					});
+					alertD2.setCanceledOnTouchOutside(false);
+					alertD2.show();
+			}
+
+		}
+
+		@Override
+		protected void onPreExecute() {
+			pDialog = new ProgressDialog(mFriendLogin);
+			pDialog.setMessage("Loading Please Wait...");
+			pDialog.setCancelable(false);
+			pDialog.setCanceledOnTouchOutside(false);
+			pDialog.show();
+		}
+	}
+
 	public class ViewcouponAsyncTask extends AsyncTask<Void, Void, Void> {
 			boolean bSuccess; 
 			ProgressDialog pDialog;
@@ -685,8 +765,8 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 				
 				bSuccess=RestCallManager.getInstance().downloadAllLocationOfBusiness(Secure.getString(mContext.getContentResolver(),Secure.ANDROID_ID),buss_id,user_latitude,user_longitude,COUtils.getDefaults("emailID", mContext));
 				return null; 
-			}  
-			
+			}
+
 			@Override  
 			protected void onPostExecute(Void result) {    
 				
@@ -707,7 +787,7 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 					MerchantListHomePage.this.startActivity(intent);
 					MerchantListHomePage.this.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
 				} else {
-					Toast.makeText(mContext, "No coupons found.", 3000).show();
+					Toast.makeText(mContext, "No coupons found.", Toast.LENGTH_LONG).show();
 				}
 				
 				/*if(bSuccess){ 
@@ -735,7 +815,6 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 
 		if(v==edit){
 			Intent czintent = new Intent(MerchantListHomePage.this, AlertSetting.class);
@@ -903,12 +982,12 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 							} else {
 								listViewMerchant.setAdapter(null);
 								selectedmerchantadapter.notifyDataSetChanged();
-								Toast.makeText(getApplicationContext(), "There is no merchant in this category.", 2000).show();
+								Toast.makeText(getApplicationContext(), "There is no merchant in this category.", Toast.LENGTH_LONG).show();
 							}
 						}
 
 
-						initilizeMap(new_lst_filtered_buss); // filtering map pointing
+						populateMarkerOnMap(new_lst_filtered_buss); // filtering map pointing
 
 					}
 				});
@@ -1089,80 +1168,12 @@ public class MerchantListHomePage extends Activity implements OnClickListener{
 			String newMessage = intent.getExtras().getString(EXTRA_MESSAGE);
 			// Waking up mobile if it is sleeping
 			WakeLocker.acquire(getApplicationContext());
-			
-			/**
-			 * Take appropriate action on this message
-			 * depending upon your app requirement
-			 * For now i am just displaying it on the screen
-			 * */
-			
-			// Showing received message
-			//Toast.makeText(getApplicationContext(), "New Message: " + newMessage, Toast.LENGTH_LONG).show();
-			
 			// Releasing wake lock
 			WakeLocker.release();
 		}
 	};
 	
-	private void gcmService(){
-		
-		cd = new ConnectionDetector(mContext); 
-		// Check if Internet present
-		if (!cd.isConnectingToInternet()) {
-			// Internet Connection is not present
-			alert.showAlertDialog(MerchantListHomePage.this,
-					"Internet Connection Error",
-					"Please connect to working Internet connection", false);
-			// stop executing code by return
-			return;
-		}
-		
-		// Make sure the device has the proper dependencies.
-		GCMRegistrar.checkDevice(mContext);
 
-		// Make sure the manifest was properly set - comment out this line
-		// while developing the app, then uncomment it when it's ready.
-		GCMRegistrar.checkManifest(mContext);
-		registerReceiver(mHandleMessageReceiver, new IntentFilter(
-				DISPLAY_MESSAGE_ACTION));
-		
-		// Get GCM registration id
-		regId = GCMRegistrar.getRegistrationId(mContext);
-		
-		// Check if regid already presents
-				if (regId.equals("")) {
-					// Registration is not present, register now with GCM			
-					GCMRegistrar.register(mContext, SENDER_ID);
-				} else {
-					// Device is already registered on GCM
-					if (GCMRegistrar.isRegisteredOnServer(this)) {
-						// Skips registration.				
-						//Toast.makeText(getApplicationContext(), "Already registered with GCM", Toast.LENGTH_LONG).show();
-					} else {
-						// Try to register again, but not in the UI thread.
-						// It's also necessary to cancel the thread onDestroy(),
-						// hence the use of AsyncTask instead of a raw thread.
-						final Context context = this;
-						mRegisterTask = new AsyncTask<Void, Void, Void>() {
-
-							@Override
-							protected Void doInBackground(Void... params) {
-								// Register on our server
-								// On server creates a new user
-								ServerUtilities.register(context,regId);
-								return null;
-							}
- 
-							@Override
-							protected void onPostExecute(Void result) { 
-								mRegisterTask = null;
-							}
-
-						};
-						mRegisterTask.execute(null, null, null);
-					}
-				}
-	}
 
 	@Override
 	protected void onResume() {

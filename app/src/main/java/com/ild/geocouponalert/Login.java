@@ -206,7 +206,6 @@ public class Login extends Activity implements OnClickListener {
 					
 				Intent intent = new Intent(Login.this,MerchantListHomePage.class);
 				intent.putExtra("business_id", "");
-				intent.putExtra("notification_mode", "1");
 				intent.putExtra("new_merchant_notification","");
 				startActivity(intent);
 				Login.this.finish();

@@ -92,7 +92,6 @@ public class PinCodeScreen extends Activity implements OnClickListener {
 				Intent intent = new Intent(mContext, MerchantListHomePage.class);
 				intent.putExtra("business_id", "");
 				intent.putExtra("location_id", "");
-				intent.putExtra("notification_mode", "1");
 				intent.putExtra("new_merchant_notification","");
 				startActivity(intent);
 				overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);

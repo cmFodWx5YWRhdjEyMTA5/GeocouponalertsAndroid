@@ -278,7 +278,6 @@ import android.widget.Toast;
 				Intent intent = new Intent(RedeemCouponDetails.this, MerchantListHomePage.class);
 				intent.putExtra("business_id", "");
 				intent.putExtra("location_id", "");
-				intent.putExtra("notification_mode", "2");
 				intent.putExtra("new_merchant_notification", "");
 				startActivity(intent); 
 				//finish();

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_playback_control.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\layout\\mr_playback_control.xml"
+    },
+    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0\\res\\layout\\abc_alert_dialog_title_material.xml"
     },
@@ -24,12 +28,16 @@
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\26.0.0\\res\\layout\\design_layout_snackbar_include.xml"
     },
     {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_tracks_chooser_dialog_layout.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\11.8.0\\res\\layout\\cast_tracks_chooser_dialog_layout.xml"
+    },
+    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\forgot_password.xml",
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\forgot_password.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_progress.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-location\\9.0.0\\res\\layout\\place_autocomplete_progress.xml"
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-places\\11.8.0\\res\\layout\\place_autocomplete_progress.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\business_row.xml",
@@ -44,16 +52,16 @@
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
-        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\preview_merchant_selection_screen.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\preview_merchant_selection_screen.xml"
-    },
-    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_media_route_chooser_dialog.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\layout\\mr_media_route_chooser_dialog.xml"
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\preview_merchant_selection_screen.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\preview_merchant_selection_screen.xml"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_controller_material_dialog_b.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\layout\\mr_controller_material_dialog_b.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\agreement_alert.xml",
@@ -116,6 +124,10 @@
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\activity_agreement.xml"
     },
     {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_help_text.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\11.8.0\\res\\layout\\cast_help_text.xml"
+    },
+    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0\\res\\layout\\abc_action_mode_bar.xml"
     },
@@ -124,12 +136,16 @@
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\alert_setting.xml"
     },
     {
-        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_media_route_controller_material_dialog_b.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\layout\\mr_media_route_controller_material_dialog_b.xml"
-    },
-    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\setting_screen.xml",
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\setting_screen.xml"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_intro_overlay.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\11.8.0\\res\\layout\\cast_intro_overlay.xml"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\online_coupon_fragment_row.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\online_coupon_fragment_row.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_splash.xml",
@@ -148,16 +164,20 @@
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\26.0.0\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_mini_controller.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\11.8.0\\res\\layout\\cast_mini_controller.xml"
+    },
+    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\26.0.0\\res\\layout\\design_navigation_item_header.xml"
     },
     {
-        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\merchant_coupon_details.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\merchant_coupon_details.xml"
-    },
-    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\merchant_coupon_details.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\merchant_coupon_details.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
@@ -236,6 +256,10 @@
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\progressbar.xml"
     },
     {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_volume_control.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\layout\\mr_volume_control.xml"
+    },
+    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\support-media-compat\\26.0.0\\res\\layout\\notification_media_action.xml"
     },
@@ -260,6 +284,10 @@
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\edit_merchant_details.xml"
     },
     {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_controller_volume_item.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\layout\\mr_controller_volume_item.xml"
+    },
+    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\support-compat\\26.0.0\\res\\layout\\notification_template_icon_group.xml"
     },
@@ -278,6 +306,10 @@
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\category_row.xml",
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\category_row.xml"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_chooser_list_item.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\layout\\mr_chooser_list_item.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
@@ -309,15 +341,15 @@
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_fragment.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-location\\9.0.0\\res\\layout\\place_autocomplete_fragment.xml"
-    },
-    {
-        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-places\\11.8.0\\res\\layout\\place_autocomplete_fragment.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\alert_redeem.xml",
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\alert_redeem.xml"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\menu_popup.xml",
@@ -329,11 +361,15 @@
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_item_powered_by_google.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-location\\9.0.0\\res\\layout\\place_autocomplete_item_powered_by_google.xml"
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-places\\11.8.0\\res\\layout\\place_autocomplete_item_powered_by_google.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\merchant_list_home_page.xml",
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\merchant_list_home_page.xml"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_chooser_dialog.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\layout\\mr_chooser_dialog.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\selected_merchant_row.xml",
@@ -348,16 +384,16 @@
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\support-compat\\26.0.0\\res\\layout\\notification_template_part_time.xml"
     },
     {
-        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_media_route_list_item.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\layout\\mr_media_route_list_item.xml"
-    },
-    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\location_fragment.xml",
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\location_fragment.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\location_fragment_row.xml",
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\location_fragment_row.xml"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_expanded_controller_activity.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\11.8.0\\res\\layout\\cast_expanded_controller_activity.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
@@ -392,6 +428,10 @@
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\26.0.0\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\26.0.0\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
@@ -404,16 +444,16 @@
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\layout\\test_screen.xml"
     },
     {
-        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\26.0.0\\res\\layout\\design_layout_snackbar.xml"
-    },
-    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_item_prediction.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-location\\9.0.0\\res\\layout\\place_autocomplete_item_prediction.xml"
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-places\\11.8.0\\res\\layout\\place_autocomplete_item_prediction.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\wallet_test_layout.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-wallet\\11.8.0\\res\\layout\\wallet_test_layout.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
@@ -446,6 +486,10 @@
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\26.0.0\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_tracks_chooser_dialog_row_layout.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\11.8.0\\res\\layout\\cast_tracks_chooser_dialog_row_layout.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",

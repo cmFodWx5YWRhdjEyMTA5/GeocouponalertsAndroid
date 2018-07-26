@@ -67,7 +67,6 @@ public class BootCompletedGeofenceReceiver extends WakefulBroadcastReceiver {
 
             Intent i = new Intent(context, MerchantListHomePage.class);
             i.putExtra("business_id", "");
-			i.putExtra("notification_mode", "1");
 			i.putExtra("new_merchant_notification", "");
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

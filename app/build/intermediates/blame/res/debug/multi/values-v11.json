@@ -520,28 +520,30 @@
                     "startLine": 195,
                     "startColumn": 4,
                     "startOffset": 14211,
-                    "endColumn": 117,
-                    "endOffset": 14324
+                    "endLine": 196,
+                    "endColumn": 8,
+                    "endOffset": 14332
                 },
                 "from": {
-                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-appinvite\\9.0.0\\res\\values-v11\\values.xml",
+                    "file": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-appinvite\\11.8.0\\res\\values-v11\\values.xml",
                     "position": {
                         "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 220,
-                        "endColumn": 117,
-                        "endOffset": 333
+                        "startColumn": 0,
+                        "startOffset": 172,
+                        "endLine": 5,
+                        "endColumn": 8,
+                        "endOffset": 293
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 196,
+                    "startLine": 197,
                     "startColumn": 4,
-                    "startOffset": 14329,
-                    "endLine": 198,
+                    "startOffset": 14337,
+                    "endLine": 199,
                     "endColumn": 12,
-                    "endOffset": 14437
+                    "endOffset": 14445
                 },
                 "from": {
                     "file": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\values-v11\\styles.xml",
