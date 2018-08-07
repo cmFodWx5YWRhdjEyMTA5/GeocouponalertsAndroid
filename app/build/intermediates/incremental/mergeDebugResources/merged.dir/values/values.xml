@@ -1260,10 +1260,10 @@ location where I have an unused coupon.You must have geo-tracking enabled on you
     <string name="sms">SMS </string>
     <string name="starBucks">StarBucks</string>
     <string name="starBucksTitle">Free Frappucino</string>
-    <string name="starBuckstxt">Nunc nulla ipsum, dictum vel sapien non, rutrum pellentesque nunc. Vivamus rhoncus massa malesuada neque laoreet iaculis.</string>
+    <string name="starBuckstxt">Nunc nulla ipsum, dictum vel sapien non, rutrum pellentesque nunc.</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="step1_heading">Enter Activation Code (Step 1/2)</string>
-    <string name="step1_hint">This is found on the activation \n card you received</string>
+    <string name="step1_hint">This is found on the activation \n card/email you received</string>
     <string name="step2_heading">Enter Zip Code (Step 2/2)</string>
     <string name="step2_hint">This will show you the coupons\n nearest you.</string>
     <string name="step2_tit">STEP 2 - Enter Your 5-Digit Zip Code</string>
@@ -1297,7 +1297,7 @@ location where I have an unused coupon.You must have geo-tracking enabled on you
     <string name="warning_question">Are you sure you want to continue?</string>
     <string name="website">www.GeoCouponAlerts.com</string>
     <string name="welcome_txtView1">Welcome to GeoCouponAlerts&lt;sup>TM&lt;/sup></string>
-    <string name="welcome_txtView2">Thank you for supporting your local schools and youth groups.</string>
+    <string name="welcome_txtView2">Thank you for supporting your local schools, youth groups and charities.</string>
     <string name="welcome_txtView3">Please register so that you can continue using the app even if you change phones in the future.</string>
     <string name="you_have">Unused Coupon Alert:</string>
     <string name="your_discount">Show this to cashier to recive your discount</string>

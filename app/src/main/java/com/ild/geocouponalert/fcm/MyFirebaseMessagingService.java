@@ -3,10 +3,12 @@ package com.ild.geocouponalert.fcm;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.ild.geocouponalert.MerchantListHomePage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,13 +18,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private NotificationUtils notificationUtils;
     private static final String TAG = MyFirebaseMessagingService.class.getSimpleName();
-    private static final int CONFIRM_BOOKING = 1;
-    private static final int DRIVER_ONE_MIN_AWAY = 2;
-    private static final int DRIVER_IS_ARRIVED = 3;
-    private static final int START_TRIP = 4;
-    private static final int CANCEL_TRIP_BY_DRIVER = 5;
-    private static final int TRIP_COMPLETE = 6;
-    private static final int NO_CAB_FOUND = 7;
+    private static final int NEW_MERCHANT = 1;
+    private static final int EXPIRING_CARD_7_DAYS = 2;
+    private static final int EXPIRING_CARD_1_DAY = 3;
+
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -71,35 +70,24 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         try {
             JSONObject data = json.getJSONObject("data");
 
-            //String title = data.getString("title");
-            //String message = data.getString("message");
-            //JSONObject payload = data.getJSONObject("payload");
-
-            //Log.e(TAG, "title: " + title);
-            //Log.e(TAG, "message: " + message);
-            //Log.e(TAG, "payload: " + payload.toString());
+            String title = data.getString("title");
+            String message = data.getString("message");
+            String imageUrl = data.getString("image");
+            String timestamp = data.getString("timestamp");
+            JSONObject payload = data.getJSONObject("payload");
 
             if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
                 // app is in foreground, broadcast the push message
                 Log.e(TAG, "App Fore ground ");
-                int notification_mode = Integer.parseInt(data.getString("notification_mode"));
+                int notification_mode = Integer.parseInt(payload.getString("notification_mode"));
                 Intent pushNotification=null;
-                if (notification_mode==CONFIRM_BOOKING) {
-                    pushNotification = new Intent(Config.PUSH_CONFIRM_BOOKING);
+                if (notification_mode==NEW_MERCHANT) {
+                    pushNotification = new Intent(Config.PUSH_NEW_MERCHANT);
                 }
-                else if (notification_mode==NO_CAB_FOUND){
-                    pushNotification = new Intent(Config.PUSH_NO_CAB_FOUND);
+                else if (notification_mode==EXPIRING_CARD_7_DAYS || notification_mode==EXPIRING_CARD_1_DAY ){
+                    pushNotification = new Intent(Config.PUSH_EXPIRING_CARD_REMINDER);
                 }
-                else if (notification_mode==DRIVER_IS_ARRIVED || notification_mode == START_TRIP){
-                    pushNotification = new Intent(Config.PUSH_DRIVER_IS_ARRIVED_AND_START_TRIP);
-                }
-                else if (notification_mode==CANCEL_TRIP_BY_DRIVER){
-                    pushNotification = new Intent(Config.PUSH_CANCEL_TRIP_BY_DRIVER);
-                }
-                else if (notification_mode==TRIP_COMPLETE){
-                    pushNotification = new Intent(Config.PUSH_TRIP_COMPLETE);
-                }
-                pushNotification.putExtra("jsonValue",data.toString());
+                pushNotification.putExtra("jsonValue",payload.toString());
                 LocalBroadcastManager.getInstance(this).sendBroadcast(pushNotification);
 
                 // play notification sound
@@ -107,8 +95,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 notificationUtils.playNotificationSound();
             } else {
                 // app is in background, show the notification in notification tray
-                /*Log.e(TAG, "App background ");
-                Intent resultIntent = new Intent(getApplicationContext(), HomePage.class);
+                Log.e(TAG, "App background ");
+                Intent resultIntent = new Intent(getApplicationContext(), MerchantListHomePage.class);
                 resultIntent.putExtra("message", message);
 
                 // check for image attachment
@@ -117,7 +105,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 } else {
                     // image is present, show notification with image
                     showNotificationMessageWithBigImage(getApplicationContext(), title, message, timestamp, resultIntent, imageUrl);
-                }*/
+                }
             }
         } catch (JSONException e) {
             Log.e(TAG, "Json Exception: " + e.getMessage());

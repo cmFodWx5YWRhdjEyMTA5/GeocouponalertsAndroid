@@ -17,6 +17,7 @@ import com.ild.geocouponalert.classtypes.BusinessCouponLocation;
 import com.ild.geocouponalert.classtypes.BusinessMaster;
 import com.ild.geocouponalert.gpstracker.GPSTracker;
 import com.ild.geocouponalert.imagefile.ImageLoader;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,7 +114,12 @@ public class AlertMerchantAdapter extends BaseAdapter  implements Filterable {
        
         holder.buss_name.setText(business.name.toString());
         holder.business_id=business.buss_id.toString().trim();
-        imageLoader.DisplayImage(business.logo_img.toString(), holder.image_view);
+        //imageLoader.DisplayImage(business.logo_img.toString(), holder.image_view);
+		Picasso.with(activity)
+				.load(business.logo_img.toString())
+				.fit()
+				.placeholder(R.drawable.no_image)
+				.into(holder.image_view);
         if(business.no_of_coupon.toString().equals("1")){
         	holder.no_of_coupon.setText(business.no_of_coupon.toString()+" Coupon");
         } else {

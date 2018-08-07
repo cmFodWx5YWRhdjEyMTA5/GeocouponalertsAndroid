@@ -1,61 +1,28 @@
 package com.ild.geocouponalert.adapter;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import com.ild.geocouponalert.adapter.ViewHolder;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.ild.geocouponalert.imagefile.ImageLoader;
-import com.ild.geocouponalert.ActivationCodeScreen;
-import com.ild.geocouponalert.MapBusinessLocation;
-import com.ild.geocouponalert.MapRedeemBusinessLocation;
-//import com.ild.geocouponalert.MapBusinessLocation;
-import com.ild.geocouponalert.MerchantCouponDetails;
-import com.ild.geocouponalert.PinCodeScreen;
-//import com.ild.geocouponalert.user.BusinessDetails;
 import com.ild.geocouponalert.R;
-import com.ild.geocouponalert.classtypes.BusinessCouponLocation;
 import com.ild.geocouponalert.classtypes.BusinessLocationMaster;
 
-import com.ild.geocouponalert.classtypes.CouponMaster;
-
 public class LocationSpinnerAdapter extends BaseAdapter {
-	public List<BusinessCouponLocation> couponlocationList;
     public List<BusinessLocationMaster> locationList;
     public Activity activity;
     public static LayoutInflater inflater=null;
-    //public ImageLoader imageLoader; 
-    public LocationSpinnerAdapter(Activity a,List<BusinessCouponLocation> couponLocation) {
+    public LocationSpinnerAdapter(Activity a,List<BusinessLocationMaster> couponLocation) {
         activity = a;
-        couponlocationList = couponLocation;
-        locationList = couponLocation.get(0).location_details;
+        locationList = couponLocation;
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //imageLoader=new ImageLoader(activity.getApplicationContext());
     }
 
     public int getCount() {
-    	final int count = locationList.size();
-        return count+1;
-    	//return locationList.size();
+    	return locationList.size();
     }
 
     public Object getItem(int position) {   
@@ -69,71 +36,52 @@ public class LocationSpinnerAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
     	
         View vi=convertView;
-        ViewHolder holder = null;   
+        ViewHolder holder;
        
         if(vi==null){
             vi = inflater.inflate(R.layout.location_fragment_row, null);
             holder = new ViewHolder();
-            holder.address1=(TextView)vi.findViewById(R.id.address1);
-            holder.address2=(TextView)vi.findViewById(R.id.address2);
-            holder.phone=(TextView)vi.findViewById(R.id.phone);
-            holder.distance=(TextView)vi.findViewById(R.id.distance);
-            holder.parentRelativeLayout = (RelativeLayout)vi.findViewById(R.id.parentRelativeLayout);
-            
-            
+            holder.address1=vi.findViewById(R.id.address1);
+            holder.address2=vi.findViewById(R.id.address2);
+            holder.phone=vi.findViewById(R.id.phone);
+            holder.distance=vi.findViewById(R.id.distance);
+            holder.parentRelativeLayout = vi.findViewById(R.id.parentRelativeLayout);
             vi.setTag(holder); 
         }
         else {
-
-			holder = new ViewHolder();
 			holder = (ViewHolder) vi.getTag();
 		}
-        	//final int pos = position;
-        
-        if(position ==0){
-        	holder.address1.setText("All Locations");
+        BusinessLocationMaster locationObj = locationList.get(position);
+        if(locationObj.id =="" || locationObj.id =="O"){
         	holder.address2.setVisibility(View.GONE);
         	holder.phone.setVisibility(View.GONE);
         	holder.distance.setVisibility(View.GONE);
-        } else {
-        	holder.address2.setVisibility(View.VISIBLE);
-        	holder.phone.setVisibility(View.VISIBLE); 
-        	holder.distance.setVisibility(View.VISIBLE);
-        	int position1 = position-1;
-        	final BusinessLocationMaster locationObj = locationList.get(position1);
-	        holder.loc_name = locationObj.address1.toString();
-	        holder.loc_id = locationObj.id.toString();
-	        holder.buss_id = couponlocationList.get(0).buss_id.toString();
-	        holder.bus_name = couponlocationList.get(0).buss_name.toString();
-	        holder.bus_banner = couponlocationList.get(0).banner_img.toString();
-	        
-	        holder.address1.setText(locationObj.address1.toString()+" "+locationObj.address2.toString());
-	        holder.address2.setText(locationObj.city.toString()+", "+locationObj.state_initial.toString().toUpperCase()+" "+locationObj.zip.toString());
-	        if(holder.phone.length()<7){
-	        	holder.phone.setText(locationObj.phone.toString());
-			}
-			else{
-			
-				String first_three=locationObj.phone.toString().substring(0,3);
-				String second_three=locationObj.phone.toString().substring(3,6);
-				String last=locationObj.phone.toString().substring(6);
-				holder.phone.setText(first_three + Html.fromHtml("<font color='#ff0000'>-</font>")+second_three+Html.fromHtml("<font color='#ff0000'>-</font>")+last);
-			}
-	        holder.distance.setText(locationObj.distance.toString() + " Miles");
-	        final Float dist=Float.parseFloat(locationObj.distance);
-       }
-       /* holder.parentRelativeLayout.setOnClickListener(new View.OnClickListener() {
-   			
-   			@Override
-   			public void onClick(View v) {
-   			    //Toast.makeText(activity, "Test", 2000).show();
-   				Intent intent = new Intent(activity, MapRedeemBusinessLocation.class);
-				intent.putExtra("buss_loc_lat", locationObj.buss_loc_lat);
-				intent.putExtra("buss_loc_long", locationObj.buss_loc_long);
-				activity.startActivity(intent);
-				activity.overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);	
-   			}
-   		});*/
+
+            holder.address1.setText(locationObj.address1.toString());
+            holder.loc_name = locationObj.address1.toString();
+            holder.loc_id = locationObj.id.toString();
+        }
+        else {
+            holder.address2.setVisibility(View.VISIBLE);
+            holder.phone.setVisibility(View.VISIBLE);
+            holder.distance.setVisibility(View.VISIBLE);
+            holder.loc_name = locationObj.address1.toString();
+            holder.loc_id = locationObj.id.toString();
+
+            holder.address1.setText(locationObj.address1.toString()+" "+locationObj.address2.toString());
+            holder.address2.setText(locationObj.city.toString()+", "+locationObj.state_initial.toString().toUpperCase()+" "+locationObj.zip.toString());
+            if(holder.phone.length()<7){
+                holder.phone.setText(locationObj.phone.toString());
+            }
+            else{
+
+                String first_three=locationObj.phone.toString().substring(0,3);
+                String second_three=locationObj.phone.toString().substring(3,6);
+                String last=locationObj.phone.toString().substring(6);
+                holder.phone.setText(first_three + Html.fromHtml("<font color='#ff0000'>-</font>")+second_three+Html.fromHtml("<font color='#ff0000'>-</font>")+last);
+            }
+            holder.distance.setText(locationObj.distance.toString() + " Miles");
+        }
         return vi;
     }
 }

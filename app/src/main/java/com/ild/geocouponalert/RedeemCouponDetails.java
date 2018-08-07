@@ -10,12 +10,14 @@ import com.ild.geocouponalert.adapter.ViewHolder;
 import com.ild.geocouponalert.adapter.SelectedMerchantAdapter.ViewcouponAsyncTask;
 import com.ild.geocouponalert.classtypes.BusinessCouponLocation;
 import com.ild.geocouponalert.classtypes.BusinessLocationMaster;
+import com.ild.geocouponalert.classtypes.BusinessMaster;
 import com.ild.geocouponalert.datastore.DataStore;
 import com.ild.geocouponalert.gpstracker.GPSTracker;
 import com.ild.geocouponalert.imagefile.ImageLoader;
 import com.ild.geocouponalert.imagefile.ImageLoaderFull;
 import com.ild.geocouponalert.utils.COUtils;
 import com.ild.geocouponalert.webmethod.RestCallManager;
+import com.squareup.picasso.Picasso;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -53,7 +55,7 @@ import android.widget.Toast;
 		RelativeLayout relImgTxt,relImgheading,relLoc;
 		LocationSpinnerAdapter locationadapter=null;
 		List<BusinessCouponLocation> couponLocation = new ArrayList<BusinessCouponLocation>();
-		List<BusinessLocationMaster> location = new ArrayList<BusinessLocationMaster>();
+		List<BusinessLocationMaster> locationList = new ArrayList<BusinessLocationMaster>();
 		ListView listViewLocation;
 		LinearLayout linear_tabhost;
 		GPSTracker gps;
@@ -61,7 +63,7 @@ import android.widget.Toast;
 		Button close_loc;
 		int position1 = 0;
 		Context mContext;
-		String bussId;
+		public BusinessMaster bussObj;
 		
 		@SuppressWarnings("deprecation")
 		@Override
@@ -69,33 +71,36 @@ import android.widget.Toast;
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.coupon_listing);
 			mContext = this;
-			close_loc = (Button)findViewById(R.id.close_loc);
+			close_loc = findViewById(R.id.close_loc);
 			close_loc.setOnClickListener(this);
-			relLoc = (RelativeLayout)findViewById(R.id.relLoc);
-			relImgheading = (RelativeLayout)findViewById(R.id.relImgheading);
+			relLoc = findViewById(R.id.relLoc);
+			relImgheading = findViewById(R.id.relImgheading);
 			relImgheading.setOnClickListener(this);
-			got_it = (Button)findViewById(R.id.got_it);
+			got_it = findViewById(R.id.got_it);
 			got_it.setOnClickListener(this);
-			edit = (TextView)findViewById(R.id.levelText);
+			edit = findViewById(R.id.levelText);
 			edit.setOnClickListener(this);
-			//cross = (ImageView)findViewById(R.id.cross);
-			//cross.setOnClickListener(this);
-			couponLocation = DataStore.getInstance().getCouponLocation();
-	        location = couponLocation.get(0).location_details;
-	        Collections.sort(location,new DistanceComp1());
-	        linear_tabhost = (LinearLayout) findViewById(R.id.linear_tabhost);
-			listViewLocation = (ListView) findViewById(R.id.listViewLocation);
-			location_textview = (TextView)findViewById(R.id.location_textview);
+	        linear_tabhost =  findViewById(R.id.linear_tabhost);
+			listViewLocation =  findViewById(R.id.listViewLocation);
+			location_textview = findViewById(R.id.location_textview);
 			location_textview.setOnClickListener(this);
-			location_arrow = (ImageView)findViewById(R.id.location_arrow);
+			location_arrow = findViewById(R.id.location_arrow);
 			location_arrow.setOnClickListener(this);
-			banner_image = (ImageView)findViewById(R.id.banner_image);
-			overlayImg = (ImageView)findViewById(R.id.overlayImg);
+			banner_image = findViewById(R.id.banner_image);
+			overlayImg = findViewById(R.id.overlayImg);
 			overlayImg.setOnClickListener(this);
-			relImgTxt = (RelativeLayout)findViewById(R.id.relImgTxt);
+			relImgTxt = findViewById(R.id.relImgTxt);
 			imageLoader=new ImageLoaderFull(this.getApplicationContext());
+
 			all_coupon_location_same = getIntent().getExtras().getString("all_coupon_location_same");
-			bussId =  getIntent().getExtras().getString("buss_id");
+			buss_id =  getIntent().getExtras().getString("buss_id");
+			bussObj = DataStore.getInstance().GetBusinessdetails(buss_id);
+			bus_name = bussObj.name;
+			bus_banner = bussObj.banner_img;
+			couponLocation = DataStore.getInstance().getCouponLocation();
+			locationList = couponLocation.get(0).location_details;
+			Collections.sort(locationList,new DistanceComp1());
+
 			if(all_coupon_location_same.equalsIgnoreCase("0")){
 				overlayImg.setVisibility(View.VISIBLE);
 				relImgTxt.setVisibility(View.VISIBLE);
@@ -111,10 +116,10 @@ import android.widget.Toast;
 			location_id = getIntent().getExtras().getString("location_id");
 			if(!location_id.equals("")){
 				
-				if(location.size()>0){
-					for(int i=0;i<location.size();i++){
-						if(location_id.equalsIgnoreCase(location.get(i).id)){
-							location_name  = location.get(i).address1;
+				if(locationList.size()>0){
+					for(int i=0;i<locationList.size();i++){
+						if(location_id.equalsIgnoreCase(locationList.get(i).id)){
+							location_name  = locationList.get(i).address1;
 							break;
 						}
 					}
@@ -125,8 +130,13 @@ import android.widget.Toast;
 				}
 			}
 			
-			imageLoader.clearCache();
-			imageLoader.DisplayImage(banner_img.trim().toString(), banner_image);
+			/*imageLoader.clearCache();
+			imageLoader.DisplayImage(banner_img.trim().toString(), banner_image);*/
+			Picasso.with(mContext)
+					.load(banner_img.trim().toString())
+					.fit()
+					.placeholder(R.drawable.no_image_full)
+					.into(banner_image);
 			settingBack = (RelativeLayout)findViewById(R.id.settingBack);
 			starBucksHeading = (TextView)findViewById(R.id.starBucksHeading); 
 			starBucksHeading.setText(buss_name);
@@ -143,6 +153,18 @@ import android.widget.Toast;
 			       	// Ask user to enable GPS/network in settings
 			       	gps.showSettingsAlert(); 
 			}
+
+			BusinessLocationMaster locObjAllLocation = new BusinessLocationMaster();
+			locObjAllLocation.id="";
+			locObjAllLocation.address1 = "All Locations";
+			locationList.add(0,locObjAllLocation);
+			if (bussObj.hasOnline.equalsIgnoreCase("O")){
+				BusinessLocationMaster locObjOnlineLocation = new BusinessLocationMaster();
+				locObjOnlineLocation.id="O";
+				locObjOnlineLocation.address1 = "Online Coupons";
+				locationList.add(1,locObjOnlineLocation);
+			}
+
 			tabrefresh();
 				
 		}
@@ -212,7 +234,7 @@ import android.widget.Toast;
 			@Override
 			protected Void doInBackground(Void... params) {
 
-				bSuccess=RestCallManager.getInstance().getMerchanFavouriteAndParticluarLocationAlert(COUtils.getDefaults("emailID", mContext),bussId);
+				bSuccess=RestCallManager.getInstance().getMerchanFavouriteAndParticluarLocationAlert(COUtils.getDefaults("emailID", mContext),buss_id);
 				return null;
 			}
 
@@ -222,34 +244,15 @@ import android.widget.Toast;
 				pDialog.dismiss();
 				if(bSuccess){
 					Intent intent = new Intent(mContext, EditMerchantDetails.class);
-					intent.putExtra("buss_id", bussId);
+					intent.putExtra("buss_id", buss_id);
 					intent.putExtra("buss_name", buss_name);
 					intent.putExtra("banner_img", banner_img);
 					startActivity(intent);
 					overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
-					/*Intent intent = new Intent(mContext, RedeemCouponDetails.class);
 
-					lst_business_coupon =  DataStore.getInstance().getCouponLocation();
-					//Toast.makeText(getApplicationContext(), lst_business_coupon.get(0).all_coupon_location_same, 3000).show();
-					buss_name = lst_business_coupon.get(0).buss_name;
-					banner_img = lst_business_coupon.get(0).banner_img;
-					intent.putExtra("buss_name", buss_name);
-					intent.putExtra("banner_img", banner_img);
-					intent.putExtra("all_coupon_location_same", "1");
-					intent.putExtra("location_id", location_id);
-
-					MerchantListHomePage.this.startActivity(intent);
-					MerchantListHomePage.this.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);*/
 				} else {
-					Toast.makeText(mContext, "No coupons found.", 3000).show();
+					Toast.makeText(mContext, "No coupons found.", Toast.LENGTH_LONG).show();
 				}
-
-				/*if(bSuccess){
-					Toast.makeText(activity, "Item edited successfully.", 3000).show();
-				} else {
-					Toast.makeText(activity, "Edit failed..", 3000).show();
-				}*/
-
 
 			}
 
@@ -268,9 +271,7 @@ import android.widget.Toast;
 
 		@Override
 		public void onClick(View v) {
-			// TODO Auto-generated method stub
 			if(v==edit){
-				//Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_SHORT).show();
 				new EditMerchantAsyncTask(mContext).execute();
 			}
 
@@ -288,102 +289,62 @@ import android.widget.Toast;
 				relImgTxt.setVisibility(View.GONE);
 			}
 			if(v == location_textview){
-				
 				overlayImg.setVisibility(View.VISIBLE);
 				relLoc.setVisibility(View.VISIBLE);
-		         if(location.size() >0){
-		        	 locationadapter = new LocationSpinnerAdapter(this,couponLocation);
+		         if(locationList.size() >0){
+					 locationadapter = new LocationSpinnerAdapter(this,locationList);
 		        	 listViewLocation.setAdapter(locationadapter);
 		        	 listViewLocation.setOnItemClickListener(new OnItemClickListener() {
 					      public void onItemClick(AdapterView<?> parent, View v,
 					        int position, long id) {
 					    	  
-					    	  overlayImg.setVisibility(View.GONE);
-							  relLoc.setVisibility(View.GONE);
-							  position1 = position;
-							  if(position == 0){
-								 
-								  ViewHolder vholder = (ViewHolder) v.getTag();
-						    	  loc_name = "All Locations";
-						    	  location_textview.setText(loc_name);
-						    	  loc_id = "0";
-						    	  buss_id = vholder.buss_id;
-						    	  bus_name = vholder.bus_name;
-						    	  bus_banner = vholder.bus_banner;
-						    	  
-						    	  ViewcouponAsyncTask manageActivation = new ViewcouponAsyncTask(RedeemCouponDetails.this);
-				   				  manageActivation.execute();
-							  }
-							  else {
-								 
-					    	  //cross.setVisibility(View.GONE);
+								  overlayImg.setVisibility(View.GONE);
+								  relLoc.setVisibility(View.GONE);
+								  position1 = position;
+
 						    	  ViewHolder vholder = (ViewHolder) v.getTag();
 						    	  loc_name = vholder.loc_name;
 						    	  location_textview.setText(loc_name);
 						    	  loc_id = vholder.loc_id;
-						    	  buss_id = vholder.buss_id;
-						    	  bus_name = vholder.bus_name;
-						    	  bus_banner = vholder.bus_banner;
-						    	  
+
 						    	  ViewcouponAsyncTask manageActivation = new ViewcouponAsyncTask(RedeemCouponDetails.this);
 				   				  manageActivation.execute();
-							  }
 					      }
 		        	 });
 		         }   
 			}
-			if(v == location_arrow){ 
-				
+			if(v == location_arrow){
 				overlayImg.setVisibility(View.VISIBLE);
 				relLoc.setVisibility(View.VISIBLE);
-				if(location.size() >0){
-		        	 locationadapter = new LocationSpinnerAdapter(this,couponLocation);
+				if(locationList.size() >0){
+		        	 locationadapter = new LocationSpinnerAdapter(this,locationList);
 		        	 listViewLocation.setAdapter(locationadapter);
 		        	 listViewLocation.setOnItemClickListener(new OnItemClickListener() {
 					      public void onItemClick(AdapterView<?> parent, View v,
 					        int position, long id) {
 					    	  
-					    	  overlayImg.setVisibility(View.GONE);
-							  relLoc.setVisibility(View.GONE);
-							  position1 = position;
-							  if(position == 0){
-								  
-								  ViewHolder vholder = (ViewHolder) v.getTag();
-						    	  loc_name = "All Locations";
-						    	  location_textview.setText(loc_name);
-						    	  loc_id = "0";
-						    	  buss_id = vholder.buss_id;
-						    	  bus_name = vholder.bus_name;
-						    	  bus_banner = vholder.bus_banner;
-						    	  
-						    	  ViewcouponAsyncTask manageActivation = new ViewcouponAsyncTask(RedeemCouponDetails.this);
-				   				  manageActivation.execute();
-							  }
-							  else {
-					    	  //cross.setVisibility(View.GONE);
+								  overlayImg.setVisibility(View.GONE);
+								  relLoc.setVisibility(View.GONE);
+								  position1 = position;
+
 						    	  ViewHolder vholder = (ViewHolder) v.getTag();
 						    	  loc_name = vholder.loc_name;
 						    	  location_textview.setText(loc_name);
 						    	  loc_id = vholder.loc_id;
-						    	  buss_id = vholder.buss_id;
-						    	  bus_name = vholder.bus_name;
-						    	  bus_banner = vholder.bus_banner;
-						    	  
+
 						    	  ViewcouponAsyncTask manageActivation = new ViewcouponAsyncTask(RedeemCouponDetails.this);
 				   				  manageActivation.execute();
-							  }
-						      
+
 					      }
 		        	 });
 		         } 
 				
 			}
 			if(v == relImgheading){
-
 				relImgTxt.setVisibility(View.GONE);
 				relLoc.setVisibility(View.VISIBLE);
-		         if(location.size() >0){
-		        	 locationadapter = new LocationSpinnerAdapter(this,couponLocation);
+		         if(locationList.size() >0){
+					 locationadapter = new LocationSpinnerAdapter(this,locationList);
 		        	 listViewLocation.setAdapter(locationadapter);
 		        	 listViewLocation.setOnItemClickListener(new OnItemClickListener() {
 					      public void onItemClick(AdapterView<?> parent, View v,
@@ -392,43 +353,23 @@ import android.widget.Toast;
 					    	  overlayImg.setVisibility(View.GONE);
 							  relLoc.setVisibility(View.GONE);
 							  position1 = position;
-							  if(position == 0){
-								  
-								  ViewHolder vholder = (ViewHolder) v.getTag();
-						    	  loc_name = "All Locations";
-						    	  location_textview.setText(loc_name);
-						    	  loc_id = "0";
-						    	  buss_id = vholder.buss_id;
-						    	  bus_name = vholder.bus_name;
-						    	  bus_banner = vholder.bus_banner;
-						    	  
-						    	  ViewcouponAsyncTask manageActivation = new ViewcouponAsyncTask(RedeemCouponDetails.this);
-				   				  manageActivation.execute();
-							  }
-							  else {
-					    	  //cross.setVisibility(View.GONE);
+
 						    	  ViewHolder vholder = (ViewHolder) v.getTag();
 						    	  loc_name = vholder.loc_name;
 						    	  location_textview.setText(loc_name);
 						    	  loc_id = vholder.loc_id;
-						    	  buss_id = vholder.buss_id;
-						    	  bus_name = vholder.bus_name;
-						    	  bus_banner = vholder.bus_banner;
-						    	  
+
 						    	  ViewcouponAsyncTask manageActivation = new ViewcouponAsyncTask(RedeemCouponDetails.this);
 				   				  manageActivation.execute();
-							  }
 					      }
 		        	 });
-		         }  
-			
+		         }
 			}
 			
 			if(v == close_loc){
 				overlayImg.setVisibility(View.GONE);
 				relLoc.setVisibility(View.GONE);
 			}
-			
 		}
 		
 		public class ViewcouponAsyncTask extends AsyncTask<Void, Void, Void> {
@@ -455,20 +396,10 @@ import android.widget.Toast;
 				
 				pDialog.dismiss();
 				if(bSuccess){
-					/*finish();
-					Intent intent = new Intent(RedeemCouponDetails.this, RedeemCouponDetails.class);
-					intent.putExtra("buss_name", bus_name);
-					intent.putExtra("banner_img", bus_banner);
-					intent.putExtra("all_coupon_location_same", "1");
-					intent.putExtra("location_name", loc_name);
-					startActivity(intent);
-					overridePendingTransition(R.anim.fade_in,R.anim.fade_out);*/
 					linear_tabhost.setVisibility(View.VISIBLE);
 					banner_image.setVisibility(View.VISIBLE);
-					//onResume();
 					tabrefresh();
-				} 
-	 
+				}
 			}   
 	  
 			@Override
@@ -479,8 +410,6 @@ import android.widget.Toast;
 				pDialog.setCancelable(false);
 				pDialog.setCanceledOnTouchOutside(false);
 				pDialog.show(); 
-			} 
-			
-			
+			}
 		}
 	}

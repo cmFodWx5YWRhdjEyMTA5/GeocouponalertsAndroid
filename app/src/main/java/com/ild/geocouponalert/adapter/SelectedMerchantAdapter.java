@@ -41,6 +41,7 @@ import com.ild.geocouponalert.MerchantCouponDetails;
 import com.ild.geocouponalert.RedeemCouponDetails;
 //import com.ild.geocouponalert.user.BusinessDetails;
 import com.ild.geocouponalert.R;
+import com.squareup.picasso.Picasso;
 
 public class SelectedMerchantAdapter extends BaseAdapter  implements Filterable {
     
@@ -101,7 +102,12 @@ public class SelectedMerchantAdapter extends BaseAdapter  implements Filterable 
        
         holder.buss_name.setText(business.name.toString());    
         holder.business_id=business.buss_id.toString().trim();
-        imageLoader.DisplayImage(business.logo_img.toString(), holder.image_view);
+        //imageLoader.DisplayImage(business.logo_img.toString(), holder.image_view);
+		Picasso.with(activity)
+				.load(business.logo_img.toString())
+				.fit()
+				.placeholder(R.drawable.no_image)
+				.into(holder.image_view);
         if(business.no_of_coupon.toString().equals("1")){
         	holder.no_of_coupon.setText(business.no_of_coupon.toString()+" Coupon");
         } else {

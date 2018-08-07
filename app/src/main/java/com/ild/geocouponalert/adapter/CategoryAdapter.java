@@ -24,7 +24,8 @@ import com.ild.geocouponalert.ActivationCodeScreen;
 import com.ild.geocouponalert.MerchantCouponDetails;
 //import com.ild.geocouponalert.user.BusinessDetails;
 import com.ild.geocouponalert.R;
-import com.ild.geocouponalert.classtypes.Category;;
+import com.ild.geocouponalert.classtypes.Category;
+import com.squareup.picasso.Picasso;;
 
 public class CategoryAdapter extends BaseAdapter {
     public List<Category> categoryList;
@@ -81,7 +82,12 @@ public class CategoryAdapter extends BaseAdapter {
         	holder.category_name = catObj.cat_name.toString();
         	holder.category_id = catObj.cat_id.toString();
         	holder.category_img.setVisibility(View.VISIBLE);
-        	imageLoader.DisplayImage(catObj.cat_img.toString(), holder.category_img);
+        	//imageLoader.DisplayImage(catObj.cat_img.toString(), holder.category_img);
+            Picasso.with(activity)
+                    .load(catObj.cat_img.toString())
+                    .fit()
+                    .placeholder(R.drawable.no_image)
+                    .into(holder.category_img);
         }
         return vi;
     }

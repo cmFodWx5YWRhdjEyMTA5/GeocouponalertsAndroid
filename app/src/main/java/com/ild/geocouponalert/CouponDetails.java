@@ -2,8 +2,10 @@ package com.ild.geocouponalert;
 
 import com.ild.geocouponalert.imagefile.ImageLoader;
 import com.ild.geocouponalert.imagefile.ImageLoaderFull;
+import com.squareup.picasso.Picasso;
 
 import android.app.TabActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -22,17 +24,24 @@ import android.widget.TabHost.TabSpec;
 		String buss_name,banner_img;
 		TextView starBucksHeading;
 		ImageView banner_image;
+		Context mContext;
 		public ImageLoaderFull imageLoader; 
 		
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.coupon_listing);
+			mContext=this;
 			banner_image = (ImageView)findViewById(R.id.banner_image);
 			imageLoader=new ImageLoaderFull(this.getApplicationContext());
 			buss_name = getIntent().getExtras().getString("buss_name");
 			banner_img = getIntent().getExtras().getString("banner_img");
 			//imageLoader.clearCache();
-			imageLoader.DisplayImage(banner_img.trim().toString(), banner_image);
+			/*imageLoader.DisplayImage(banner_img.trim().toString(), banner_image);*/
+			Picasso.with(mContext)
+					.load(banner_img.trim().toString())
+					.fit()
+					.placeholder(R.drawable.no_image)
+					.into(banner_image);
 			starBucksHeading = (TextView)findViewById(R.id.starBucksHeading);
 			starBucksHeading.setText(buss_name);
 			settingBack = (RelativeLayout)findViewById(R.id.settingBack);

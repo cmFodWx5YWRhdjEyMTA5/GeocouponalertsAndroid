@@ -436,7 +436,7 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 													locationadapter = new LocationRedeemFragmnetAdapter(mFriendLogin,location);
 													listViewLocation.setAdapter(locationadapter);
 												} else {
-													Toast.makeText(mFriendLogin, "No Information Found.", 2000).show();
+													Toast.makeText(mFriendLogin, "No Information Found.", Toast.LENGTH_LONG).show();
 												}
 
 										        close_screen_btn.setOnClickListener(new View.OnClickListener() {

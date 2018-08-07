@@ -43,5 +43,6 @@ dependencies {
     compile files('libs/signpost-core-1.2.1.1.jar')
     compile files('libs/gcm.jar')
     compile 'org.jsoup:jsoup:1.9.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 apply plugin: 'com.google.gms.google-services'

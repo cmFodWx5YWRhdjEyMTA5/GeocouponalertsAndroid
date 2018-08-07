@@ -19,7 +19,7 @@
     <string name="step2_heading">Enter Zip Code (Step 2/2)</string>
     <string name="step3_heading">Select Merchants (Step 3/3)</string>
     <string name="preview_step3_heading">Selected Merchant (0)</string>
-    <string name="step1_hint">This is found on the activation \n card you received</string>
+    <string name="step1_hint">This is found on the activation \n card/email you received</string>
     <string name="step2_tit">STEP 2 - Enter Your 5-Digit Zip Code</string>
     <string name="step2_hint">This will show you the coupons\n nearest you.</string>
     <string name="continue_btn">Continue</string>
@@ -168,7 +168,7 @@ create \'Industry Ready Managers\' - an agile group of professionals equipped to
     <string name="coupon">MerchantCouponDetails</string>
 	<string name="starBucks">StarBucks</string>
 	<string name="starBucksTitle">Free Frappucino</string>
-	<string name="starBuckstxt">Nunc nulla ipsum, dictum vel sapien non, rutrum pellentesque nunc. Vivamus rhoncus massa malesuada neque laoreet iaculis.</string>
+	<string name="starBuckstxt">Nunc nulla ipsum, dictum vel sapien non, rutrum pellentesque nunc.</string>
 	<string name="expires">Expires on 6/30/2016</string>
 	<string name="redeem">Redeemed on 6/30/2016</string>
 	<string name="otherOffer">Not to be combned with other offers</string>
@@ -192,7 +192,7 @@ create \'Industry Ready Managers\' - an agile group of professionals equipped to
 	<string name="terms_conditions"><u>Terms &amp; Conditions</u></string>
 	<string name="privacy_policy"><u>Privacy Policy</u></string>
 	<string name="welcome_txtView1">Welcome to GeoCouponAlerts&lt;sup&gt;TM&lt;/sup&gt;</string>
-	<string name="welcome_txtView2">Thank you for supporting your local schools and youth groups.</string>
+	<string name="welcome_txtView2">Thank you for supporting your local schools, youth groups and charities.</string>
 	<string name="welcome_txtView3">Please register so that you can continue using the app even if you change phones in the future.</string>
 
     <string-array name="nav_drawer_items_after_login">

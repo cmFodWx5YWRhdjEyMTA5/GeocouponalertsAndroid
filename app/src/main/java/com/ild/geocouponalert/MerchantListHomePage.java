@@ -26,6 +26,8 @@ import com.ild.geocouponalert.classtypes.BusinessLocationMaster;
 import com.ild.geocouponalert.classtypes.BusinessMaster;
 import com.ild.geocouponalert.classtypes.NavDrawerItem;
 import com.ild.geocouponalert.datastore.DataStore;
+import com.ild.geocouponalert.fcm.Config;
+import com.ild.geocouponalert.fcm.NotificationUtils;
 import com.ild.geocouponalert.gpstracker.GPSTracker;
 import com.ild.geocouponalert.utils.COUtils;
 import com.ild.geocouponalert.utils.FOGlobalVariable;
@@ -47,6 +49,7 @@ import android.os.Handler;
 import android.provider.Settings.Secure;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -129,7 +132,6 @@ public class MerchantListHomePage extends AppCompatActivity implements OnClickLi
 	RelativeLayout relcat,searchMerchantRel,catDropdownRel;
 
 	List<BusinessLocationMaster> lst_bus_location = new ArrayList<>();
-	List<BusinessMaster> new_lst_filtered_buss = null;
 	EditText searchText;
 
 	private static final int NORMAL = 0;
@@ -544,10 +546,10 @@ public class MerchantListHomePage extends AppCompatActivity implements OnClickLi
 										alertDialogBuilder.setView(promptView);
 										final AlertDialog alertD2 = alertDialogBuilder.create();
 
-										final TextView dialogNo2 = (TextView) promptView.findViewById(R.id.btnDontAllow);
-										final TextView dialogYes2 = (TextView) promptView.findViewById(R.id.btnAllow);
-										final TextView coupon_alert = (TextView) promptView.findViewById(R.id.coupon_alert);
-										final TextView coupon_alert_sub = (TextView) promptView.findViewById(R.id.coupon_alert_sub);
+										final TextView dialogNo2 =  promptView.findViewById(R.id.btnDontAllow);
+										final TextView dialogYes2 =  promptView.findViewById(R.id.btnAllow);
+										final TextView coupon_alert =  promptView.findViewById(R.id.coupon_alert);
+										final TextView coupon_alert_sub =  promptView.findViewById(R.id.coupon_alert_sub);
 
 										dialogNo2.setText(R.string.txt_dont_allow);
 										coupon_alert.setText(R.string.location_alert_background);
@@ -929,65 +931,49 @@ public class MerchantListHomePage extends AppCompatActivity implements OnClickLi
 						String category_id = vholder.category_id;
 						listViewCategory.setVisibility(View.GONE);
 						category_textview.setText(category_name);
+						lst_filtered_buss.clear();
 
-
-						if (category_id.equalsIgnoreCase("1")) {
-							new_lst_filtered_buss = lst_business;
-							selectedmerchantadapter = new SelectedMerchantAdapter(MerchantListHomePage.this, lst_business);
-							listViewMerchant.setAdapter(selectedmerchantadapter);
-							selectedmerchantadapter.notifyDataSetChanged();
-						} else if (category_id.equalsIgnoreCase("8")) {
-
-							lst_filtered_buss.clear();
+						if (category_id.equalsIgnoreCase("1")) { // For All merchant
+							lst_filtered_buss = lst_business;
+						} else if (category_id.equalsIgnoreCase("8")) { // For New Merchant
 							for (int i = 0; i < lst_business.size(); i++) {
 								if (lst_business.get(i).isNewBusiness.equalsIgnoreCase("yes")) {
 									lst_filtered_buss.add(lst_business.get(i));
 								}
 							}
-							new_lst_filtered_buss = lst_filtered_buss;
-							selectedmerchantadapter = new SelectedMerchantAdapter(MerchantListHomePage.this, lst_filtered_buss);
-							listViewMerchant.setAdapter(selectedmerchantadapter);
-							selectedmerchantadapter.notifyDataSetChanged();
-
 						}
-						else if (category_id.equalsIgnoreCase("9")) {
-
-							lst_filtered_buss.clear();
+						else if (category_id.equalsIgnoreCase("9")) { // For Favorite merchant
 							for (int i = 0; i < lst_business.size(); i++) {
 								if (lst_business.get(i).isFavourite.equalsIgnoreCase("1")) {
 									lst_filtered_buss.add(lst_business.get(i));
 								}
 							}
-							new_lst_filtered_buss = lst_filtered_buss;
-							selectedmerchantadapter = new SelectedMerchantAdapter(MerchantListHomePage.this, lst_filtered_buss);
-							listViewMerchant.setAdapter(selectedmerchantadapter);
-							selectedmerchantadapter.notifyDataSetChanged();
-
 						}
-
+						else if (category_id.equalsIgnoreCase("10")) { // For online merchant
+							for (int i = 0; i < lst_business.size(); i++) {
+								if (lst_business.get(i).hasOnline.equalsIgnoreCase("O")) {
+									lst_filtered_buss.add(lst_business.get(i));
+								}
+							}
+						}
 						else {
-
-							lst_filtered_buss.clear();
 							for (int i = 0; i < lst_business.size(); i++) {
 								if (category_id.equalsIgnoreCase(lst_business.get(i).cat_id)) {
 									lst_filtered_buss.add(lst_business.get(i));
 								}
 							}
-
-							if (lst_filtered_buss.size() > 0) {
-								new_lst_filtered_buss = lst_filtered_buss;
-								selectedmerchantadapter = new SelectedMerchantAdapter(MerchantListHomePage.this, lst_filtered_buss);
-								listViewMerchant.setAdapter(selectedmerchantadapter);
-								selectedmerchantadapter.notifyDataSetChanged();
-							} else {
-								listViewMerchant.setAdapter(null);
-								selectedmerchantadapter.notifyDataSetChanged();
-								Toast.makeText(getApplicationContext(), "There is no merchant in this category.", Toast.LENGTH_LONG).show();
-							}
 						}
 
-
-						populateMarkerOnMap(new_lst_filtered_buss); // filtering map pointing
+						if (lst_filtered_buss.size() > 0) {
+							selectedmerchantadapter = new SelectedMerchantAdapter(MerchantListHomePage.this, lst_filtered_buss);
+							listViewMerchant.setAdapter(selectedmerchantadapter);
+							selectedmerchantadapter.notifyDataSetChanged();
+						} else {
+							listViewMerchant.setAdapter(null);
+							selectedmerchantadapter.notifyDataSetChanged();
+							Toast.makeText(getApplicationContext(), "There is no merchant in this category.", Toast.LENGTH_LONG).show();
+						}
+						populateMarkerOnMap(lst_filtered_buss); // filtering map pointing
 
 					}
 				});
@@ -1164,21 +1150,94 @@ public class MerchantListHomePage extends AppCompatActivity implements OnClickLi
 	 * */
 	private final BroadcastReceiver mHandleMessageReceiver = new BroadcastReceiver() {
 		@Override
-		public void onReceive(Context context, Intent intent) {
-			String newMessage = intent.getExtras().getString(EXTRA_MESSAGE);
+		public void onReceive(Context context, final Intent intent) {
 			// Waking up mobile if it is sleeping
 			WakeLocker.acquire(getApplicationContext());
 			// Releasing wake lock
 			WakeLocker.release();
+			// checking for type intent filter is Arrived or start trip
+			if (intent.getAction().equals(Config.PUSH_NEW_MERCHANT)) {
+				try {
+					JSONObject jsonObj = new JSONObject(intent.getStringExtra("jsonValue"));
+					category_textview.setText("New Merchants");
+					for(int i=0;i<lst_business.size();i++){
+						if(lst_business.get(i).isNewBusiness.equalsIgnoreCase("yes")){
+							lst_filtered_buss.add(lst_business.get(i));
+						}
+					}
+					selectedmerchantadapter = new SelectedMerchantAdapter(MerchantListHomePage.this,lst_filtered_buss);
+					listViewMerchant.setAdapter(selectedmerchantadapter);
+					selectedmerchantadapter.notifyDataSetChanged();
+
+				} catch (JSONException e) {
+					Log.e(TAG, "Exception: " + e.getMessage());
+				}
+			}
+			else if (intent.getAction().equals(Config.PUSH_EXPIRING_CARD_REMINDER)) {
+				try {
+					final JSONObject jsonObj = new JSONObject(intent.getStringExtra("jsonValue"));
+					push_notification_mode = Integer.parseInt(jsonObj.getString("notification_mode"));
+					LayoutInflater layoutInflater2 = LayoutInflater.from(mContext);
+					View promptView = layoutInflater2.inflate(R.layout.alert_card_expiring_days, null);
+					AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(mContext);
+					alertDialogBuilder2.setView(promptView);
+					final AlertDialog alertD2 = alertDialogBuilder2.create();
+					TextView alertTxt = promptView.findViewById(R.id.alertTxt);
+					TextView topTxt = promptView.findViewById(R.id.topTxt);
+					if (push_notification_mode == PUSH_EXPIRING_CARD_7_DAYS)
+						topTxt.setText("Only 7 days Left");
+					else
+						topTxt.setText("Only 1 days Left");
+					Button btnSupport = promptView.findViewById(R.id.btnSupportCharity);
+					btnSupport.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							alertD2.dismiss();
+							try {
+								String web_url = jsonObj.getString("url");
+								Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(web_url));
+								startActivity(browserIntent);
+							} catch (JSONException e) {
+								Log.e(TAG, "Exception: " + e.getMessage());
+							}
+
+						}
+					});
+					Button btnClose = promptView.findViewById(R.id.btnClose);
+					btnClose.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							alertD2.dismiss();
+						}
+					});
+
+					alertD2.setCanceledOnTouchOutside(false);
+					alertD2.show();
+				}catch (JSONException e) {
+					Log.e(TAG, "Exception: " + e.getMessage());
+				}
+			}
 		}
 	};
 	
 
-
 	@Override
 	protected void onResume() {
 		super.onResume();
+		// register for New Merchant
+		LocalBroadcastManager.getInstance(this).registerReceiver(mHandleMessageReceiver,
+				new IntentFilter(Config.PUSH_NEW_MERCHANT));
+		//register for Expiring card
+		LocalBroadcastManager.getInstance(this).registerReceiver(mHandleMessageReceiver,
+				new IntentFilter(Config.PUSH_EXPIRING_CARD_REMINDER));
+		// clear the notification area when the app is opened
+		NotificationUtils.clearNotifications(getApplicationContext());
+	}
 
+	@Override
+	protected void onPause() {
+		super.onPause();
+		LocalBroadcastManager.getInstance(this).unregisterReceiver(mHandleMessageReceiver);
 	}
 
 	private void closeCategoryDropdown(){

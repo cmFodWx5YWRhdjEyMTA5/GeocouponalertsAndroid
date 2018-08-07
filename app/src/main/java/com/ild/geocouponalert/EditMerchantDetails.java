@@ -41,6 +41,7 @@ import com.ild.geocouponalert.gpstracker.GPSTracker;
 import com.ild.geocouponalert.imagefile.ImageLoaderFull;
 import com.ild.geocouponalert.utils.COUtils;
 import com.ild.geocouponalert.webmethod.RestCallManager;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -100,7 +101,12 @@ public class EditMerchantDetails extends Activity implements OnClickListener{
         starBucksHeading.setText(buss_name);
 
         banner_image = (ImageView)findViewById(R.id.banner_image);
-        imageLoader.DisplayImage(banner_img.trim().toString(), banner_image);
+        //imageLoader.DisplayImage(banner_img.trim().toString(), banner_image);
+        Picasso.with(mContext)
+                .load(banner_img.trim().toString())
+                .fit()
+                .placeholder(R.drawable.no_image_full)
+                .into(banner_image);
 
         allRel      = (RelativeLayout) findViewById(R.id.allRel);
         customRel   = (RelativeLayout) findViewById(R.id.customRel);

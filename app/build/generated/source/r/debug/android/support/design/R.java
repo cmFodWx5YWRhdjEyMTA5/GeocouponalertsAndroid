@@ -729,21 +729,21 @@ public final class R {
 		public static final int design_ic_visibility_off = 0x7f0200b8;
 		public static final int design_password_eye = 0x7f0200b9;
 		public static final int design_snackbar_background = 0x7f0200ba;
-		public static final int navigation_empty_icon = 0x7f020187;
-		public static final int notification_action_background = 0x7f02018c;
-		public static final int notification_bg = 0x7f02018d;
-		public static final int notification_bg_low = 0x7f02018e;
-		public static final int notification_bg_low_normal = 0x7f02018f;
-		public static final int notification_bg_low_pressed = 0x7f020190;
-		public static final int notification_bg_normal = 0x7f020191;
-		public static final int notification_bg_normal_pressed = 0x7f020192;
-		public static final int notification_icon_background = 0x7f020193;
-		public static final int notification_template_icon_bg = 0x7f0201f5;
-		public static final int notification_template_icon_low_bg = 0x7f0201f6;
-		public static final int notification_tile_bg = 0x7f020194;
-		public static final int notify_panel_notification_icon_bg = 0x7f020195;
-		public static final int tooltip_frame_dark = 0x7f0201f0;
-		public static final int tooltip_frame_light = 0x7f0201f1;
+		public static final int navigation_empty_icon = 0x7f020188;
+		public static final int notification_action_background = 0x7f02018d;
+		public static final int notification_bg = 0x7f02018e;
+		public static final int notification_bg_low = 0x7f02018f;
+		public static final int notification_bg_low_normal = 0x7f020190;
+		public static final int notification_bg_low_pressed = 0x7f020191;
+		public static final int notification_bg_normal = 0x7f020192;
+		public static final int notification_bg_normal_pressed = 0x7f020193;
+		public static final int notification_icon_background = 0x7f020194;
+		public static final int notification_template_icon_bg = 0x7f0201f6;
+		public static final int notification_template_icon_low_bg = 0x7f0201f7;
+		public static final int notification_tile_bg = 0x7f020195;
+		public static final int notify_panel_notification_icon_bg = 0x7f020196;
+		public static final int tooltip_frame_dark = 0x7f0201f1;
+		public static final int tooltip_frame_light = 0x7f0201f2;
 	}
 	public static final class id {
 		public static final int action0 = 0x7f0e01d7;
@@ -811,9 +811,9 @@ public final class R {
 		public static final int line3 = 0x7f0e0016;
 		public static final int listMode = 0x7f0e002a;
 		public static final int list_item = 0x7f0e00aa;
-		public static final int masked = 0x7f0e0229;
+		public static final int masked = 0x7f0e022d;
 		public static final int media_actions = 0x7f0e01da;
-		public static final int message = 0x7f0e0221;
+		public static final int message = 0x7f0e0225;
 		public static final int mini = 0x7f0e0056;
 		public static final int multiply = 0x7f0e0039;
 		public static final int navigation_header_container = 0x7f0e0172;
@@ -887,7 +887,7 @@ public final class R {
 		public static final int uniform = 0x7f0e003f;
 		public static final int up = 0x7f0e0028;
 		public static final int view_offset_helper = 0x7f0e0029;
-		public static final int visible = 0x7f0e0228;
+		public static final int visible = 0x7f0e022c;
 		public static final int wrap_content = 0x7f0e0040;
 	}
 	public static final class integer {

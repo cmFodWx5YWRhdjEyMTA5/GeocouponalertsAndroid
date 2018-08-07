@@ -27,14 +27,9 @@ public class BusinessMaster {
 	 public List<BusinessLocationMaster> geofence_location_details;
 	 public String isNewBusiness;
 	 public String isFavourite;
-	 
-	 public String getIsNewBusiness() {
-		return isNewBusiness;
-	}
+	 public String hasOnline;
 
-	public void setIsNewBusiness(String isNewBusiness) {
-		this.isNewBusiness = isNewBusiness;
-	}
+
 
 	public String getCat_id() {
 		return cat_id;
@@ -191,5 +186,19 @@ public class BusinessMaster {
 		this.isFavourite = isFavorite;
 	}
 
+	public String getHasOnline() {
+		return hasOnline;
+	}
+
+	public void setHasOnline(String hasOnline) {
+		this.hasOnline = hasOnline;
+	}
+	public String getIsNewBusiness() {
+		return isNewBusiness;
+	}
+
+	public void setIsNewBusiness(String isNewBusiness) {
+		this.isNewBusiness = isNewBusiness;
+	}
 
 }
