@@ -205,6 +205,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/11.8.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-license/11.8.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/11.8.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-safeguard" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
@@ -271,6 +272,7 @@
     <orderEntry type="library" exported="" scope="TEST" name="com.android.support:multidex-instrumentation-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="com.google.android.gms:play-services-wallet-11.8.0" level="project" />
     <orderEntry type="library" exported="" name="com.google.android.gms:play-services-auth-api-phone-11.8.0" level="project" />
+    <orderEntry type="library" exported="" name="com.journeyapps:zxing-android-embedded-3.2.0" level="project" />
     <orderEntry type="library" exported="" name="com.google.android.gms:play-services-instantapps-license-11.8.0" level="project" />
     <orderEntry type="library" exported="" name="com.google.android.gms:play-services-maps-license-11.8.0" level="project" />
     <orderEntry type="library" exported="" name="com.google.android.gms:play-services-fido-license-11.8.0" level="project" />
@@ -331,6 +333,7 @@
     <orderEntry type="library" exported="" name="com.google.firebase:firebase-config-11.8.0" level="project" />
     <orderEntry type="library" exported="" name="com.google.android.gms:play-services-plus-license-11.8.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="junit:junit:4.12@jar" level="project" />
+    <orderEntry type="library" exported="" name="com.google.zxing:core:3.2.1@jar" level="project" />
     <orderEntry type="library" exported="" name="com.google.android.gms:play-services-cast-11.8.0" level="project" />
     <orderEntry type="library" exported="" name="com.google.android.gms:play-services-vision-common-license-11.8.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="javax.inject:javax.inject:1@jar" level="project" />

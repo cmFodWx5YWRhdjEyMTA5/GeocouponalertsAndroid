@@ -14,6 +14,11 @@ public class CouponMaster {
 	 public String disclaimer; 
 	 public String quantity;
 	 public String universal;
+	public String online_flag;
+	public String online_url;
+	public String online_contact;
+	public String online_barcode;
+
 	 public String getUniversal() {
 		return universal;
 	}
@@ -92,6 +97,36 @@ public class CouponMaster {
 	public void setLocation_id(String location_id) {
 		this.location_id = location_id;
 	}
-	
-	
+
+	public String getOnline_flag() {
+		return online_flag;
+	}
+
+	public void setOnline_flag(String online_flag) {
+		this.online_flag = online_flag;
+	}
+
+	public String getOnline_url() {
+		return online_url;
+	}
+
+	public void setOnline_url(String online_url) {
+		this.online_url = online_url;
+	}
+
+	public String getOnline_contact() {
+		return online_contact;
+	}
+
+	public void setOnline_contact(String online_contact) {
+		this.online_contact = online_contact;
+	}
+
+	public String getOnline_barcode() {
+		return online_barcode;
+	}
+
+	public void setOnline_barcode(String online_barcode) {
+		this.online_barcode = online_barcode;
+	}
 }

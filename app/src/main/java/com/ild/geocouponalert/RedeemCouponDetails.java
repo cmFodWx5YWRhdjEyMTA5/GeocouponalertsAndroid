@@ -61,7 +61,6 @@ import android.widget.Toast;
 		GPSTracker gps;
 		Button got_it;
 		Button close_loc;
-		int position1 = 0;
 		Context mContext;
 		public BusinessMaster bussObj;
 		
@@ -300,9 +299,7 @@ import android.widget.Toast;
 					    	  
 								  overlayImg.setVisibility(View.GONE);
 								  relLoc.setVisibility(View.GONE);
-								  position1 = position;
-
-						    	  ViewHolder vholder = (ViewHolder) v.getTag();
+								  ViewHolder vholder = (ViewHolder) v.getTag();
 						    	  loc_name = vholder.loc_name;
 						    	  location_textview.setText(loc_name);
 						    	  loc_id = vholder.loc_id;
@@ -325,7 +322,6 @@ import android.widget.Toast;
 					    	  
 								  overlayImg.setVisibility(View.GONE);
 								  relLoc.setVisibility(View.GONE);
-								  position1 = position;
 
 						    	  ViewHolder vholder = (ViewHolder) v.getTag();
 						    	  loc_name = vholder.loc_name;
@@ -352,7 +348,6 @@ import android.widget.Toast;
 					    	  
 					    	  overlayImg.setVisibility(View.GONE);
 							  relLoc.setVisibility(View.GONE);
-							  position1 = position;
 
 						    	  ViewHolder vholder = (ViewHolder) v.getTag();
 						    	  loc_name = vholder.loc_name;
@@ -383,7 +378,7 @@ import android.widget.Toast;
 			@Override
 			protected Void doInBackground(Void... params) {   
 				
-				if(position1 == 0){
+				if (loc_id.equalsIgnoreCase("")||loc_id.equalsIgnoreCase("O")){
 					bSuccess=RestCallManager.getInstance().downloadAllLocationOfBusiness(Secure.getString(mFriendLogin.getContentResolver(),Secure.ANDROID_ID),buss_id,user_latitude,user_longitude,COUtils.getDefaults("emailID", mFriendLogin));
 				} else {
 					bSuccess=RestCallManager.getInstance().downloadAllLocationCouponByLocationId(Secure.getString(mFriendLogin.getContentResolver(),Secure.ANDROID_ID),buss_id,user_latitude,user_longitude,COUtils.getDefaults("emailID", mFriendLogin),loc_id);

@@ -77,19 +77,19 @@ public class ListviewBusinessAdapter extends BaseAdapter {
     
     public View getView(final int position, View convertView, ViewGroup parent) {
     	
-    	Toast.makeText(activity, ""+position, 1000).show();
+    	Toast.makeText(activity, ""+position, Toast.LENGTH_LONG).show();
         View vi=convertView; 
         ViewHolder holder = null;
         
         if(vi==null){
             vi = inflater.inflate(R.layout.merchant_row, null);
             holder = new ViewHolder();
-            holder.chkTick = (CheckBox) vi.findViewById(R.id.checkboxBusiness);
-            holder.image_view=(ImageView)vi.findViewById(R.id.businessLogo);
-            holder.buss_name=(TextView)vi.findViewById(R.id.txtViewbusinessName);
-            holder.view_coupon_btn=(TextView)vi.findViewById(R.id.view_coupon_btn);
-            holder.no_of_coupon=(TextView)vi.findViewById(R.id.no_of_coupon);
-            holder.coupon_details=(LinearLayout)vi.findViewById(R.id.linder);
+            holder.chkTick =  vi.findViewById(R.id.checkboxBusiness);
+            holder.image_view=vi.findViewById(R.id.businessLogo);
+            holder.buss_name=vi.findViewById(R.id.txtViewbusinessName);
+            holder.view_coupon_btn=vi.findViewById(R.id.view_coupon_btn);
+            holder.no_of_coupon=vi.findViewById(R.id.no_of_coupon);
+            holder.coupon_details=vi.findViewById(R.id.linder);
             
             vi.setTag(holder);
         }
@@ -159,7 +159,7 @@ public class ListviewBusinessAdapter extends BaseAdapter {
  		});  
         
         if (checkedmap.containsKey(business.buss_id.toString().trim())) {
-        	Toast.makeText(activity, business.buss_id.toString().trim(), 1000).show();
+        	Toast.makeText(activity, business.buss_id.toString().trim(), Toast.LENGTH_LONG).show();
         	holder.chkTick.setChecked(true);
         	//holder.chkTick.setChecked(itemChecked.get(position)); 
         } 

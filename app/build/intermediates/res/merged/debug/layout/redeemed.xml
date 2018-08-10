@@ -79,10 +79,30 @@
                 android:text="@string/redemptionlabel" />
             <TextView
                 android:id="@+id/redemptioncode"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="3323232"
+                android:gravity="center_horizontal"
                 android:background="@drawable/border" />
+
+            <LinearLayout
+                android:id="@+id/linearBarcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:id="@+id/imgBardCode"
+                    android:layout_width="250dp"
+                    android:layout_height="100dp"
+                    />
+                <TextView
+                    android:id="@+id/lblBarCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="070707785785"/>
+            </LinearLayout>
 
         </LinearLayout>
     </RelativeLayout>

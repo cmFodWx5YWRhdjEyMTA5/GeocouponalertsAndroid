@@ -198,4 +198,6 @@
     <style name="table_layout_height">
            <item name="android:layout_height">130dp</item>  
     </style>
+    <style name="zxing_CaptureTheme" parent="android:Theme.Holo.NoActionBar.Fullscreen">
+  </style>
 </resources>
