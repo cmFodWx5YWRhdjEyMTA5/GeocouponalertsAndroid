@@ -848,12 +848,12 @@
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\25.2.0\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_21_light.png"
     },
     {
-        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\segment_inactive_merchant_details.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\drawable-xhdpi\\segment_inactive_merchant_details.xml"
-    },
-    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\googleg_standard_color_18.png",
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\11.8.0\\res\\drawable-xhdpi-v4\\googleg_standard_color_18.png"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\segment_inactive_merchant_details.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\drawable-xhdpi\\segment_inactive_merchant_details.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_mr_button_disabled_dark.png",

@@ -56,6 +56,7 @@ import android.widget.Toast;
 		LocationSpinnerAdapter locationadapter=null;
 		List<BusinessCouponLocation> couponLocation = new ArrayList<BusinessCouponLocation>();
 		List<BusinessLocationMaster> locationList = new ArrayList<BusinessLocationMaster>();
+		List<BusinessLocationMaster> tempLocationList = new ArrayList<BusinessLocationMaster>();
 		ListView listViewLocation;
 		LinearLayout linear_tabhost;
 		GPSTracker gps;
@@ -90,7 +91,7 @@ import android.widget.Toast;
 			overlayImg.setOnClickListener(this);
 			relImgTxt = findViewById(R.id.relImgTxt);
 			imageLoader=new ImageLoaderFull(this.getApplicationContext());
-
+			loc_id="";
 			all_coupon_location_same = getIntent().getExtras().getString("all_coupon_location_same");
 			buss_id =  getIntent().getExtras().getString("buss_id");
 			bussObj = DataStore.getInstance().GetBusinessdetails(buss_id);
@@ -156,12 +157,17 @@ import android.widget.Toast;
 			BusinessLocationMaster locObjAllLocation = new BusinessLocationMaster();
 			locObjAllLocation.id="";
 			locObjAllLocation.address1 = "All Locations";
-			locationList.add(0,locObjAllLocation);
+			tempLocationList.add(0,locObjAllLocation);
 			if (bussObj.hasOnline.equalsIgnoreCase("O")){
 				BusinessLocationMaster locObjOnlineLocation = new BusinessLocationMaster();
 				locObjOnlineLocation.id="O";
 				locObjOnlineLocation.address1 = "Online Coupons";
-				locationList.add(1,locObjOnlineLocation);
+				tempLocationList.add(1,locObjOnlineLocation);
+			}
+			if (locationList.size()>0){
+				for (BusinessLocationMaster locObj : locationList) {
+					tempLocationList.add(locObj);
+				}
 			}
 
 			tabrefresh();
@@ -175,6 +181,7 @@ import android.widget.Toast;
 			
 			// Android tab
 			Intent intentCoupons = new Intent().setClass(this, CouponRedeemFragment.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intentCoupons.putExtra("locID",loc_id);
 			TabSpec tabSpecCoupons = tabHost 
 				.newTabSpec("Coupons")
 				.setIndicator("Coupons")
@@ -291,7 +298,7 @@ import android.widget.Toast;
 				overlayImg.setVisibility(View.VISIBLE);
 				relLoc.setVisibility(View.VISIBLE);
 		         if(locationList.size() >0){
-					 locationadapter = new LocationSpinnerAdapter(this,locationList);
+					 locationadapter = new LocationSpinnerAdapter(this,tempLocationList);
 		        	 listViewLocation.setAdapter(locationadapter);
 		        	 listViewLocation.setOnItemClickListener(new OnItemClickListener() {
 					      public void onItemClick(AdapterView<?> parent, View v,
@@ -314,7 +321,7 @@ import android.widget.Toast;
 				overlayImg.setVisibility(View.VISIBLE);
 				relLoc.setVisibility(View.VISIBLE);
 				if(locationList.size() >0){
-		        	 locationadapter = new LocationSpinnerAdapter(this,locationList);
+		        	 locationadapter = new LocationSpinnerAdapter(this,tempLocationList);
 		        	 listViewLocation.setAdapter(locationadapter);
 		        	 listViewLocation.setOnItemClickListener(new OnItemClickListener() {
 					      public void onItemClick(AdapterView<?> parent, View v,
@@ -340,7 +347,7 @@ import android.widget.Toast;
 				relImgTxt.setVisibility(View.GONE);
 				relLoc.setVisibility(View.VISIBLE);
 		         if(locationList.size() >0){
-					 locationadapter = new LocationSpinnerAdapter(this,locationList);
+					 locationadapter = new LocationSpinnerAdapter(this,tempLocationList);
 		        	 listViewLocation.setAdapter(locationadapter);
 		        	 listViewLocation.setOnItemClickListener(new OnItemClickListener() {
 					      public void onItemClick(AdapterView<?> parent, View v,

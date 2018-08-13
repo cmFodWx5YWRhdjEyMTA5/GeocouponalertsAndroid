@@ -118,16 +118,16 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 		if(vi==null){
 			vi = inflater.inflate(R.layout.coupon_fragment_row, null);
 			holder = new ViewHolder();
-			holder.starBucksTitle=(TextView)vi.findViewById(R.id.starBucksTitle);
-			holder.starBuckstxt1=(TextView)vi.findViewById(R.id.starBuckstxt1);
-			holder.expirestxt=(TextView)vi.findViewById(R.id.expirestxt);
-			holder.expires=(TextView)vi.findViewById(R.id.expires);
-			holder.no_of_coupons=(TextView)vi.findViewById(R.id.no_of_coupons);
-			holder.redeemcalender = (LinearLayout)vi.findViewById(R.id.redeemcalender);
+			holder.starBucksTitle=vi.findViewById(R.id.starBucksTitle);
+			holder.starBuckstxt1=vi.findViewById(R.id.starBuckstxt1);
+			holder.expirestxt=vi.findViewById(R.id.expirestxt);
+			holder.expires=vi.findViewById(R.id.expires);
+			holder.no_of_coupons=vi.findViewById(R.id.no_of_coupons);
+			holder.redeemcalender = vi.findViewById(R.id.redeemcalender);
 			holder.redeemcalender.setVisibility(LinearLayout.VISIBLE);
-			holder.settingBacktag = (ImageView)vi.findViewById(R.id.settingBacktag);
+			holder.settingBacktag = vi.findViewById(R.id.settingBacktag);
 			//holder.calenderIcon = (ImageView)vi.findViewById(R.id.calenderIcon);
-			holder.redeem_button = (Button)vi.findViewById(R.id.redeem_button);
+			holder.redeem_button = vi.findViewById(R.id.redeem_button);
 			//holder.universal_logo = (ImageView)vi.findViewById(R.id.universal_logo);
 			vi.setTag(holder);
 		}
@@ -136,9 +136,7 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder = (ViewHolder) vi.getTag();
 		}
-		//final int pos = position;
 		final CouponMaster couponObj = couponList.get(position);
-
 		//holder.starBucksTitle.setText(couponObj.name.toString());
 		//textView.setText(new String(textFromDatabase, "UTF-8"));
 		if(couponObj.details != null){
@@ -167,6 +165,7 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 			holder.redeem_button.setVisibility(View.VISIBLE);
 		} else if(couponObj.quantity.equalsIgnoreCase("4")){
 			holder.settingBacktag.setBackgroundResource(R.drawable.ribbon_fourleft);
+			holder.redeem_button.setVisibility(View.VISIBLE);
 		} else if(couponObj.quantity.equalsIgnoreCase("5")){
 			holder.settingBacktag.setBackgroundResource(R.drawable.ribbon_fiveleft);
 			holder.redeem_button.setVisibility(View.VISIBLE);
@@ -253,52 +252,34 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 		return vi;
 	}
 	private void processThread() {
-
-
-		if (activity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-		{
+		if (activity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
 			activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		}
-		else
-		{
+		}else{
 			activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		}
-
-
 		progressDialog = ProgressDialog.show(activity, "", "Updating...");
 		progressDialog.setMax(10000);
 		new Thread() {
 
 			public void run() {
-
 				int i = 0;
 				while (true) {
 					longTimeMethod();
-
 				}
-
 			}
 
 		}.start();
-
 	}
 
 	private void longTimeMethod() {
-
 		try {
-
 			Thread.sleep(10000);
 
 		} catch (InterruptedException e) {
-
-
 			e.printStackTrace();
-
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
-
 	}
 	public class RedeemcouponAsyncTask extends AsyncTask<Void, Void, Void> {
 		boolean bSuccess;
@@ -319,21 +300,17 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 
 		@Override
 		protected void onPostExecute(Void result) {
-
 			pDialog.dismiss();
-			//Toast.makeText(activity, user_latitude+" "+user_longitude, 3000).show();
 			LayoutInflater layoutInflater = LayoutInflater.from(activity);
 			View promptView = layoutInflater.inflate(R.layout.alert_redeem, null);
-
-			//promptView.setBackgroundColor(Color.TRANSPARENT);
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 			alertDialogBuilder.setView(promptView);
 			final AlertDialog alertD = alertDialogBuilder.create();
 
-			final TextView coupon_alert = (TextView) promptView.findViewById(R.id.coupon_alert);
-			final TextView dialogNo = (TextView) promptView.findViewById(R.id.btnCancel);
-			final TextView dialogYes = (TextView) promptView.findViewById(R.id.btnContinue);
-			final TextView topTxt = (TextView) promptView.findViewById(R.id.topTxt);
+			final TextView coupon_alert =  promptView.findViewById(R.id.coupon_alert);
+			final TextView dialogNo =  promptView.findViewById(R.id.btnCancel);
+			final TextView dialogYes =  promptView.findViewById(R.id.btnContinue);
+			final TextView topTxt =  promptView.findViewById(R.id.topTxt);
 
 			if(bSuccess){
 				dialogNo.setText("No");
@@ -348,19 +325,15 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 				coupon_alert.setText("Are you sure you want to\nredeem this coupon?");
 				modeForValidLocationForCouponRedeem = true;
 			}
-			// if button is clicked, close the custom dialog
 			dialogNo.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					alertD.dismiss();
 				}
 			});
-
-			// if button is clicked, close the custom dialog
 			dialogYes.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-
 					new Thread(){
 						public void run(){
 							final boolean status =RestCallManager.getInstance().redeemCoupon(coupon_id,buss_id,Secure.getString(activity.getContentResolver(),Secure.ANDROID_ID),activation_code,COUtils.getDefaults("emailID", activity),user_latitude,user_longitude);
@@ -373,25 +346,21 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 
 										Toast.makeText(activity,"Coupon Redeemed",
 												Toast.LENGTH_SHORT).show();
-										//notifyDataSetChanged();
-										//notifyDataSetInvalidated();
-
 										LayoutInflater layoutInflater2 = LayoutInflater.from(activity);
 										View promptView = layoutInflater2.inflate(R.layout.redeemed, null);
-										//promptView.setBackgroundColor(Color.TRANSPARENT);
 										final AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(activity);
 										alertDialogBuilder2.setView(promptView);
 										final AlertDialog alertD2 = alertDialogBuilder2.create();
-										TextView starBucksTitle=(TextView)promptView.findViewById(R.id.starBucksTitle);
+										TextView starBucksTitle=promptView.findViewById(R.id.starBucksTitle);
 										starBucksTitle.setText(name);
-										TextView starBuckstxt=(TextView)promptView.findViewById(R.id.starBuckstxt);
+										TextView starBuckstxt=promptView.findViewById(R.id.starBuckstxt);
 										starBuckstxt.setText(details);
-										TextView expirestxt=(TextView)promptView.findViewById(R.id.expirestxt);
+										TextView expirestxt=promptView.findViewById(R.id.expirestxt);
 										expirestxt.setText("Expires on "+expiry_date);
-										TextView expires=(TextView)promptView.findViewById(R.id.expires);
+										TextView expires=promptView.findViewById(R.id.expires);
 										expires.setText(disclaimer);
-										TextView redemptionlabel=(TextView)promptView.findViewById(R.id.redemptionlabel);
-										TextView redemptioncode=(TextView)promptView.findViewById(R.id.redemptioncode);
+										TextView redemptionlabel=promptView.findViewById(R.id.redemptionlabel);
+										TextView redemptioncode=promptView.findViewById(R.id.redemptioncode);
 										LinearLayout linearBarcode = promptView.findViewById(R.id.linearBarcode);
 										ImageView imgBardCode = promptView.findViewById(R.id.imgBardCode);
 										TextView lblBarCode = promptView.findViewById(R.id.lblBarCode);
@@ -439,15 +408,11 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 
 
 										Button dialogclose = (Button) promptView.findViewById(R.id.close);
-										// if button is clicked, close the custom dialog
 										dialogclose.setOnClickListener(new View.OnClickListener() {
 											@Override
 											public void onClick(View v) {
-
 												Dialog dialog = new Dialog(activity,android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
 												dialog.setContentView(R.layout.progressbar);
-
-
 												final ProgressBar progress=(ProgressBar)dialog.findViewById(R.id.progressBar1);
 												final TextView v_coupon=(TextView)dialog.findViewById(R.id.v_coupon);
 												final ImageView tick_img=(ImageView)dialog.findViewById(R.id.tick_img);
@@ -462,8 +427,6 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 												BusinessMaster bussObj = DataStore.getInstance().GetBusinessdetails(buss_id);
 												buss_name.setText(bussObj.name);
 
-												BusinessLocationMaster busLoc;
-
 												couponLocation = DataStore.getInstance().getCouponLocation();
 												location = couponLocation.get(0).location_details;
 												if(modeForValidLocationForCouponRedeem){
@@ -476,8 +439,8 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 														}
 													}
 												}
-												Collections.sort(location,new DistanceComp1());
 												if(location.size() >0){
+													Collections.sort(location,new DistanceComp1());
 													locationadapter = new LocationRedeemFragmnetAdapter(mFriendLogin,location);
 													listViewLocation.setAdapter(locationadapter);
 												} else {
@@ -558,8 +521,6 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 										alertD2.setOnDismissListener(new DialogInterface.OnDismissListener() {
 											@Override
 											public void onDismiss(DialogInterface dialog) {
-
-
 												handler.removeCallbacks(runnable);
 												Intent intent = new Intent(activity, MerchantListHomePage.class);
 												intent.putExtra("business_id", "");
@@ -568,11 +529,7 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 												activity.startActivity(intent);
 											}
 										});
-
 										handler.postDelayed(runnable, 60000*60*3);
-
-
-
 									}
 									else{
 										Toast.makeText(activity," Redeemtion failed",
@@ -586,9 +543,6 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 					alertD.dismiss();
 				}
 			});
-
-
-			// if button is clicked, close the custom dialog
 			dialogNo.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -607,12 +561,9 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 			pDialog.setCanceledOnTouchOutside(false);
 			pDialog.show();
 		}
-
-
 	}
 
 	class DistanceComp1 implements Comparator<BusinessLocationMaster> {
-
 		@Override
 		public int compare(BusinessLocationMaster e1, BusinessLocationMaster e2) {
 
@@ -625,10 +576,8 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 	}
 
 	private Bitmap TextToSmoothImageEncode(String Value) throws WriterException {
-
 		DisplayMetrics displayMetrics = new DisplayMetrics();
 		activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-
 		String myStringToEncode = Value;
 		MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 		BitMatrix bitMatrix = multiFormatWriter.encode(
@@ -639,5 +588,4 @@ public class CouponRedeemFragmnetAdapter extends BaseAdapter {
 		Bitmap bitmpapp = barcodeEncoder.createBitmap(bitMatrix);
 		return bitmpapp;
 	}
-
 }

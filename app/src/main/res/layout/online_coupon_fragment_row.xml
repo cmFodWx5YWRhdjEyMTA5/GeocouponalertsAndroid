@@ -91,6 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/expires"
                     android:orientation="horizontal"
+                    android:paddingBottom="5dp"
                     android:weightSum="2"
                     >
                     <LinearLayout
@@ -102,7 +103,7 @@
                         android:layout_gravity="bottom"
                         >
                         <LinearLayout
-                            android:id="@+id/btnRedeem"
+                            android:id="@+id/onlineBtnRedeem"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
@@ -191,6 +192,7 @@
                                     android:id="@+id/btnCall"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
+                                    android:layout_marginLeft="5dp"
                                     android:background="@drawable/ic_call" />
                             </LinearLayout>
 

@@ -76,12 +76,12 @@
         "source": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0\\res\\anim\\abc_popup_exit.xml"
     },
     {
-        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\anim\\push_down_out.xml",
-        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\anim\\push_down_out.xml"
-    },
-    {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\anim\\push_left_in.xml",
         "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\anim\\push_left_in.xml"
+    },
+    {
+        "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\anim\\push_down_out.xml",
+        "source": "D:\\GeoCouponAlert1\\app\\src\\main\\res\\anim\\push_down_out.xml"
     },
     {
         "merged": "D:\\GeoCouponAlert1\\app\\build\\intermediates\\res\\merged\\debug\\anim\\zoom_out.xml",

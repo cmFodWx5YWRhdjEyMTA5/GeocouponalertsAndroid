@@ -95,6 +95,11 @@ public class ViewHolder {
 	public LinearLayout top_info_group;
 	public ImageView calenderIcon;
 	public Button redeem_button;
+	public TextView lbl_online_contact;
+	public Button btn_call;
+	public TextView lbl_online_link;
+	public LinearLayout online_redeem_button;
+	public LinearLayout online_bottom_section;
 	public LinearLayout linearLayout1;
 	public LinearLayout coupon_details;
 	public String category_name;

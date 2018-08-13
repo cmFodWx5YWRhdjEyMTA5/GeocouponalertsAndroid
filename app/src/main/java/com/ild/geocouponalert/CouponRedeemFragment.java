@@ -7,6 +7,7 @@ import com.ild.geocouponalert.adapter.CategoryAdapter;
 import com.ild.geocouponalert.adapter.CouponFragmnetAdapter;
 import com.ild.geocouponalert.adapter.CouponRedeemFragmnetAdapter;
 import com.ild.geocouponalert.adapter.LocationFragmnetAdapter;
+import com.ild.geocouponalert.adapter.OnlineCouponRedeemFragmentAdapter;
 import com.ild.geocouponalert.classtypes.BusinessCouponLocation;
 import com.ild.geocouponalert.classtypes.BusinessMaster;
 import com.ild.geocouponalert.classtypes.Category;
@@ -27,11 +28,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class CouponRedeemFragment extends Activity {
-	CouponRedeemFragmnetAdapter couponadapter=null;
+	CouponRedeemFragmnetAdapter couponAdapter=null;
+	OnlineCouponRedeemFragmentAdapter onlineCouponAdapter=null;
 	List<BusinessCouponLocation> couponLocation = new ArrayList<BusinessCouponLocation>();
-	List<CouponMaster> coupon = new ArrayList<CouponMaster>();
+	List<CouponMaster> couponArray = new ArrayList<CouponMaster>();
+	List<CouponMaster> onlineCouponArray = new ArrayList<CouponMaster>();
+	List<CouponMaster> physicalCouponArray = new ArrayList<CouponMaster>();
 	ListView couponlistView;
 	TextView nocoupon;
+	String locID;
     public void onCreate(Bundle savedInstanceState) {
     	
     	super.onCreate(savedInstanceState);
@@ -39,15 +44,32 @@ public class CouponRedeemFragment extends Activity {
         nocoupon = (TextView)findViewById(R.id.nocoupon);
         couponlistView = (ListView) findViewById(R.id.couponlistView);
         couponLocation = DataStore.getInstance().getCouponLocation();
-        coupon = couponLocation.get(0).coupons_detail;
-        if(coupon.size() >0){
-        	couponadapter = new CouponRedeemFragmnetAdapter(this,coupon);
-            couponlistView.setAdapter(couponadapter);
-            //couponadapter.notifyDataSetChanged();
-        } else {
-        	nocoupon.setText("All coupons have either expired or been redeemed for this location.");
-       	 	//Toast.makeText(getApplicationContext(), "No Information Found.", 2000).show();
-        }
+		couponArray = couponLocation.get(0).coupons_detail;
+        locID = getIntent().getStringExtra("locID");
+        for (CouponMaster couponObj : couponArray) {
+        	if (couponObj.online_flag.equalsIgnoreCase("O")){
+        		onlineCouponArray.add(couponObj);
+			}
+			else{
+        		physicalCouponArray.add(couponObj);
+			}
+		}
+		if (locID.equalsIgnoreCase("O")){
+			if (onlineCouponArray.size() > 0) {
+				onlineCouponAdapter = new OnlineCouponRedeemFragmentAdapter(this, onlineCouponArray);
+				couponlistView.setAdapter(onlineCouponAdapter);
+			} else {
+				nocoupon.setText("All coupons have been expired");
+			}
+		}
+		else {
+			if (physicalCouponArray.size() > 0) {
+				couponAdapter = new CouponRedeemFragmnetAdapter(this, physicalCouponArray);
+				couponlistView.setAdapter(couponAdapter);
+			} else {
+				nocoupon.setText("All coupons have either expired or been redeemed for this location.");
+			}
+		}
     } 
     @Override
 	public void onBackPressed() {

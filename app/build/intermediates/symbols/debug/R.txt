@@ -1501,7 +1501,6 @@ int id btnDontAllow 0x7f0f00f5
 int id btnOk 0x7f0f0112
 int id btnPreview 0x7f0f01c0
 int id btnPreviewClose 0x7f0f0208
-int id btnRedeem 0x7f0f01f3
 int id btnSubmit 0x7f0f00e4
 int id btnSupportCharity 0x7f0f00f3
 int id btn_register 0x7f0f021e
@@ -1769,6 +1768,7 @@ int id notification_main_column_container 0x7f0f01e6
 int id old_password 0x7f0f0148
 int id omnibox_title_section 0x7f0f0089
 int id omnibox_url_section 0x7f0f008a
+int id onlineBtnRedeem 0x7f0f01f3
 int id overlayImg 0x7f0f0163
 int id pageActivation 0x7f0f00e7
 int id parallax 0x7f0f0053

@@ -4597,7 +4597,6 @@ containing a value of this type.
         public static final int btnOk=0x7f0f0112;
         public static final int btnPreview=0x7f0f01c0;
         public static final int btnPreviewClose=0x7f0f0208;
-        public static final int btnRedeem=0x7f0f01f3;
         public static final int btnSubmit=0x7f0f00e4;
         public static final int btnSupportCharity=0x7f0f00f3;
         public static final int btn_register=0x7f0f021e;
@@ -4865,6 +4864,7 @@ containing a value of this type.
         public static final int old_password=0x7f0f0148;
         public static final int omnibox_title_section=0x7f0f0089;
         public static final int omnibox_url_section=0x7f0f008a;
+        public static final int onlineBtnRedeem=0x7f0f01f3;
         public static final int overlayImg=0x7f0f0163;
         public static final int pageActivation=0x7f0f00e7;
         public static final int parallax=0x7f0f0053;
